@@ -1,0 +1,10 @@
+# PROTOBUF
+#setenv PROTOBUF_VER  protobuf-3.17.2/gcc-5.5.0
+setenv PROTOBUF_VER  protobuf-3.6.1/gcc-5.5.0
+setenv PROTOBUF_ROOT /home/utils
+setenv PROTOBUF_PATH ${PROTOBUF_ROOT}/${PROTOBUF_VER}
+setenv PROTOC              ${PROTOBUF_PATH}/bin/protoc
+setenv PROTOBUF_PKG_CONFIG ${PROTOBUF_PATH}/lib/pkgconfig
+setenv PKG_CONFIG_PATH     ${PROTOBUF_PATH}/lib/pkgconfig
+setenv PATH                ${PROTOBUF_PATH}/bin:$PATH
+setenv LD_LIBRARY_PATH     ${PROTOBUF_PATH}/lib:$LD_LIBRARY_PATH

@@ -1,0 +1,62 @@
+#setenv GCC_VER 6.4.0
+setenv GCC_VER 9.1.0
+setenv GIT_VER 2.42.0
+setenv CMAKE_VER 3.27.2
+setenv BINUTILS_VER 2.40
+setenv PERL_VER 5.26/5.26.2-132
+setenv NASM_VER 2.15.05
+setenv SSH_VER 7.1p2
+setenv TKDIFF_VER 4.3.4
+setenv NINJA_VER 1.9.0
+setenv M4_VER 1.4.16
+setenv GDB_VER 12.1-2
+setenv HDF5_VER 1.12.1
+setenv BOOST_VER 1.80.0/gcc-9.3.0
+
+# scons
+#setenv SCONS_VER 2.3.0
+#setenv PATH /home/utils/gcc-${GCC_VER}/bin:/home/utils/git-${GIT_VER}/bin/:/home/utils/scons-${SCONS_VER}/bin:/home/utils/cmake-${CMAKE_VER}/bin/:${PATH}
+#setenv LD_LIBRARY_PATH /home/utils/gcc-${GCC_VER}/lib64:/home/utils/scons-${SCONS_VER}/lib:/home/utils/binutils-${BINUTILS_VER}/lib:/home/utils/boost-${BOOST_VER}/lib:${LD_LIBRARY_PATH}
+
+setenv PATH /home/utils/gcc-${GCC_VER}/bin:/home/utils/git-${GIT_VER}/bin/:/home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/aqua_gem5/scons/scons-3.0.5_install/bin/:/home/utils/cmake-${CMAKE_VER}/bin/:${PATH}
+setenv LD_LIBRARY_PATH /home/utils/gcc-${GCC_VER}/lib64:/home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/aqua_gem5/scons/scons-3.0.5_install/lib:/home/utils/binutils-${BINUTILS_VER}/lib:/home/utils/boost-${BOOST_VER}/lib:${LD_LIBRARY_PATH}
+
+# Python
+setenv PATH /home/utils/Python/3.7/3.7.12-20220222/bin/:$PATH
+setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/home/utils/Python/3.7/3.7.12-20220222/lib/
+
+#setenv PATH /home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/python3.63/bin/:$PATH
+#setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/python3.63/lib
+
+#setenv PATH /home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/python363/bin/:$PATH
+#setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/python363/lib/
+
+#setenv PYTHON_VER 3.6.3
+##setenv PYTHON_VER 3.4.1-shared
+#setenv PATH /home/utils/Python-${PYTHON_VER}/bin:$PATH
+#setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/home/utils/Python-${PYTHON_VER}/lib
+
+setenv CC /home/utils/gcc-${GCC_VER}/bin/gcc
+setenv CXX /home/utils/gcc-${GCC_VER}/bin/g++
+setenv PATH /home/utils/binutils-${BINUTILS_VER}/bin:$PATH
+setenv PATH /home/utils/perl-${PERL_VER}/bin:$PATH
+setenv PATH /home/utils/nasm-${NASM_VER}/bin:$PATH
+setenv PATH /home/utils/openssh-${SSH_VER}/bin:$PATH
+setenv PATH /home/utils/tkdiff-${TKDIFF_VER}:$PATH
+setenv PATH /home/utils/ninja-${NINJA_VER}:$PATH
+setenv PATH /home/utils/m4-${M4_VER}/bin:$PATH
+#GDB
+setenv PATH /home/utils/gdb-${GDB_VER}/bin:$PATH
+#HDF5
+setenv PATH /home/utils/hdf5-${HDF5_VER}/bin:$PATH
+setenv LD_LIBRARY_PATH /home/utils/hdf5-${HDF5_VER}/lib:$LD_LIBRARY_PATH
+# PROTOBUF
+#setenv PROTOBUF_VER  protobuf-3.17.2/gcc-5.5.0
+setenv PROTOBUF_VER  protobuf-3.6.1/gcc-5.5.0
+setenv PROTOBUF_ROOT /home/utils
+setenv PROTOBUF_PATH ${PROTOBUF_ROOT}/${PROTOBUF_VER}
+setenv PROTOC              ${PROTOBUF_PATH}/bin/protoc
+setenv PROTOBUF_PKG_CONFIG ${PROTOBUF_PATH}/lib/pkgconfig
+setenv PKG_CONFIG_PATH     ${PROTOBUF_PATH}/lib/pkgconfig
+setenv PATH                ${PROTOBUF_PATH}/bin:$PATH
+setenv LD_LIBRARY_PATH     ${PROTOBUF_PATH}/lib:$LD_LIBRARY_PATH

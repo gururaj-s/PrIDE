@@ -1,0 +1,60 @@
+Running command: ./ckptscript.sh nab 4 2017
+Running exports
+GEM5_PATH is set to '/home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5'
+SPEC17_PATH is set to '/home/gsaileshwar/rowhammer_defense/spec2017/spec-cpu-2017-main'
+CKPT_PATH is set to '/home/gsaileshwar/rowhammer_defense/aqua_gem5/cpts'
+checkpoint directory:  /home/gsaileshwar/rowhammer_defense/aqua_gem5/cpts/multiprogram_16GBmem_25Bn.SPEC2017.C4/nab-1-ref-x86
+output directory:  /home/gsaileshwar/rowhammer_defense/aqua_gem5/cpts/output/multiprogram_16GBmem_25Bn.SPEC2017.C4/checkpoint_out/nab
+Command line:
+./ckptscript.sh nab 4 2017
+================= Hardcoded directories ==================
+GEM5_PATH:                                     /home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5
+SPEC17_PATH:                                     /home/gsaileshwar/rowhammer_defense/spec2017/spec-cpu-2017-main
+==================== Script inputs =======================
+BENCHMARK:                                    nab
+OUTPUT_DIR:                                   /home/gsaileshwar/rowhammer_defense/aqua_gem5/cpts/output/multiprogram_16GBmem_25Bn.SPEC2017.C4/checkpoint_out/nab
+==========================================================
+
+
+
+--------- Here goes nothing! Starting gem5! ------------
+
+
+
+------------------------------------------------------------
+Sender: LSF System <lsflin@dc2-sim-e14-054>
+Subject: Job 1608075544: </home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts/qsub_cmds/run_2/32_ckptscript.sh_nab_4_2017.sh> in cluster <nvidia> Exited
+
+Job </home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts/qsub_cmds/run_2/32_ckptscript.sh_nab_4_2017.sh> was submitted from host <sc-xterm-260> by user <gsaileshwar> in cluster <nvidia> at Mon Jun 12 16:44:29 2023
+Job was executed on host(s) <dc2-sim-e14-054>, in queue <o_long>, as user <gsaileshwar> in cluster <nvidia> at Mon Jun 12 16:44:41 2023
+</home/gsaileshwar> was used as the home directory.
+</home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts> was used as the working directory.
+Started at Mon Jun 12 16:44:41 2023
+Terminated at Mon Jun 12 18:19:24 2023
+Results reported at Mon Jun 12 18:19:24 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts/qsub_cmds/run_2/32_ckptscript.sh_nab_4_2017.sh
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with signal termination: 14.
+
+Resource usage summary:
+
+    CPU time :                                   5673.00 sec.
+    Max Memory :                                 366.17 MB
+    Average Memory :                             311.41 MB
+    Total Requested Memory :                     6000.00 MB
+    Delta Memory :                               5633.83 MB
+    Max Swap :                                   -
+    Max Processes :                              1
+    Max Threads :                                1
+    Run time :                                   5685 sec.
+    Turnaround time :                            5695 sec.
+
+The output (if any) is above this job summary.
+

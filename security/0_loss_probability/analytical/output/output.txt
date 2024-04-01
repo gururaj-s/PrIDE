@@ -1,0 +1,8 @@
+
+***** LossProbability for Window-Size: 79 ******
+Capacity: 1	LossProb: 0.6298
+Capacity: 2	LossProb: 0.3048
+Capacity: 4	LossProb: 0.1192
+Capacity: 8	LossProb: 0.0601
+Capacity: 16	LossProb: 0.0304
+

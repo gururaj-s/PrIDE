@@ -1,0 +1,57 @@
+***** LossProbability for Window-Size: 79 ******
+Capacity: 1	LossProb: 0.6298
+Capacity: 2	LossProb: 0.3011
+Capacity: 3	LossProb: 0.1663
+Capacity: 4	LossProb: 0.1186
+Capacity: 5	LossProb: 0.0949
+Capacity: 6	LossProb: 0.0798
+Capacity: 7	LossProb: 0.0685
+Capacity: 8	LossProb: 0.0603
+Capacity: 9	LossProb: 0.0537
+Capacity: 10	LossProb: 0.0484
+Capacity: 11	LossProb: 0.0442
+Capacity: 12	LossProb: 0.0406
+Capacity: 13	LossProb: 0.0375
+Capacity: 14	LossProb: 0.0348
+Capacity: 15	LossProb: 0.0325
+Capacity: 16	LossProb: 0.0305
+
+
+***** LossProbability for Window-Size: 40 ******
+Capacity: 1	LossProb: 0.6277
+Capacity: 2	LossProb: 0.2962
+Capacity: 3	LossProb: 0.1637
+Capacity: 4	LossProb: 0.1164
+Capacity: 5	LossProb: 0.0934
+Capacity: 6	LossProb: 0.0785
+Capacity: 7	LossProb: 0.0677
+Capacity: 8	LossProb: 0.0593
+Capacity: 9	LossProb: 0.0529
+Capacity: 10	LossProb: 0.0476
+Capacity: 11	LossProb: 0.0435
+Capacity: 12	LossProb: 0.0400
+Capacity: 13	LossProb: 0.0370
+Capacity: 14	LossProb: 0.0344
+Capacity: 15	LossProb: 0.0322
+Capacity: 16	LossProb: 0.0302
+
+
+***** LossProbability for Window-Size: 16 ******
+Capacity: 1	LossProb: 0.6205
+Capacity: 2	LossProb: 0.2829
+Capacity: 3	LossProb: 0.1549
+Capacity: 4	LossProb: 0.1123
+Capacity: 5	LossProb: 0.0902
+Capacity: 6	LossProb: 0.0754
+Capacity: 7	LossProb: 0.0649
+Capacity: 8	LossProb: 0.0570
+Capacity: 9	LossProb: 0.0508
+Capacity: 10	LossProb: 0.0458
+Capacity: 11	LossProb: 0.0416
+Capacity: 12	LossProb: 0.0385
+Capacity: 13	LossProb: 0.0353
+Capacity: 14	LossProb: 0.0330
+Capacity: 15	LossProb: 0.0308
+Capacity: 16	LossProb: 0.0289
+
+

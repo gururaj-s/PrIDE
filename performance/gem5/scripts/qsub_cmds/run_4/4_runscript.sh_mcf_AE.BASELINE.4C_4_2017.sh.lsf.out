@@ -1,0 +1,48 @@
+Running command: ./runscript.sh mcf AE.BASELINE.4C 4 2017
+Running exports
+GEM5_PATH is set to '/home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5'
+SPEC17_PATH is set to '/home/gsaileshwar/rowhammer_defense/spec2017/spec-cpu-2017-main'
+CKPT_PATH is set to '/home/gsaileshwar/rowhammer_defense/aqua_gem5/cpts'
+RH_DEFENSE is DISABLED
+checkpoint directory:  /home/gsaileshwar/rowhammer_defense/aqua_gem5/cpts/multiprogram_16GBmem_25Bn.SPEC2017.C4/mcf-1-ref-x86
+output directory:  /home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/stats/multiprogram_16GBmem_250Mn.SPEC2017.C4/AE.BASELINE.4C//mcf
+Command line:
+./runscript.sh mcf AE.BASELINE.4C 4 2017
+
+------------------------------------------------------------
+Sender: LSF System <lsflin@dc7-sim-c21-159>
+Subject: Job 1612684273: </home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts/qsub_cmds/run_4/4_runscript.sh_mcf_AE.BASELINE.4C_4_2017.sh> in cluster <nvidia> Exited
+
+Job </home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts/qsub_cmds/run_4/4_runscript.sh_mcf_AE.BASELINE.4C_4_2017.sh> was submitted from host <sc-xterm-260> by user <gsaileshwar> in cluster <nvidia> at Wed Jun 14 10:58:33 2023
+Job was executed on host(s) <dc7-sim-c21-159>, in queue <o_long>, as user <gsaileshwar> in cluster <nvidia> at Wed Jun 14 10:58:54 2023
+</home/gsaileshwar> was used as the home directory.
+</home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts> was used as the working directory.
+Started at Wed Jun 14 10:58:54 2023
+Terminated at Wed Jun 14 11:11:09 2023
+Results reported at Wed Jun 14 11:11:09 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts/qsub_cmds/run_4/4_runscript.sh_mcf_AE.BASELINE.4C_4_2017.sh
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with signal termination: 14.
+
+Resource usage summary:
+
+    CPU time :                                   718.00 sec.
+    Max Memory :                                 219.45 MB
+    Average Memory :                             209.66 MB
+    Total Requested Memory :                     6000.00 MB
+    Delta Memory :                               5780.55 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   746 sec.
+    Turnaround time :                            756 sec.
+
+The output (if any) is above this job summary.
+

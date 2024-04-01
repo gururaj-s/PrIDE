@@ -1,0 +1,2629 @@
+AbstractMemory.py:# Copyright (c) 2005-2008 The Regents of The University of Michigan
+Bridge.py:# Copyright (c) 2012-2013 ARM Limited
+Bridge.py:# Copyright (c) 2006-2007 The Regents of The University of Michigan
+CommMonitor.py:    # bins up to the maximum, independently for read-to-read,
+CommMonitor.py:    # write-to-write and the combined request-to-request that does not
+DRAMInterface.py:# Copyright (c) 2012-2020 ARM Limited
+DRAMInterface.py:# Copyright (c) 2013 Amin Farmahini-Farahani
+DRAMInterface.py:    # timing behaviour and constraints - all in nanoseconds
+DRAMInterface.py:    # CAS-to-CAS delay for bursts to the same bank group
+DRAMInterface.py:    # for CAS-to-CAS delay for bursts to different bank groups
+DRAMInterface.py:    # Write-to-Write delay for bursts to the same bank group
+DRAMInterface.py:    # write-to-read, same rank turnaround penalty for same bank group
+DRAMInterface.py:    # maximum delay between two-cycle ACT command phases
+DRAMInterface.py:                         "Maximum delay between two-cycle ACT commands")
+DRAMInterface.py:    # time to exit power-down mode
+DRAMInterface.py:    # Exit power-down to next valid command delay
+DRAMInterface.py:    tXP = Param.Latency("0ns", "Power-up Delay")
+DRAMInterface.py:    tXPDLL = Param.Latency("0ns", "Power-up Delay with locked DLL")
+DRAMInterface.py:    # time to exit self-refresh mode
+DRAMInterface.py:    tXS = Param.Latency("0ns", "Self-refresh exit latency")
+DRAMInterface.py:    # time to exit self-refresh mode with locked DLL
+DRAMInterface.py:    tXSDLL = Param.Latency("0ns", "Self-refresh exit latency DLL")
+DRAMInterface.py:    # tRC  - assumed to be tRAS + tRP
+DRAMInterface.py:    # separately. For example, current IDD0 is active-precharge current for
+DRAMInterface.py:    # voltage domain VDD and current IDD02 is active-precharge current for
+DRAMInterface.py:    # Operating 1 Bank Active-Precharge current
+DRAMInterface.py:    # Operating 1 Bank Active-Precharge current multiple voltage Range
+DRAMInterface.py:    # Precharge Power-down Current: Slow exit
+DRAMInterface.py:    # Precharge Power-down Current: Slow exit multiple voltage Range
+DRAMInterface.py:    # Precharge Power-down Current: Fast exit
+DRAMInterface.py:    # Precharge Power-down Current: Fast exit multiple voltage Range
+DRAMInterface.py:    # Active Power-down current: slow exit
+DRAMInterface.py:    # Active Power-down current: slow exit multiple voltage range
+DRAMInterface.py:    # Active Power-down current : fast exit
+DRAMInterface.py:    # Active Power-down current : fast exit multiple voltage range
+DRAMInterface.py:    # Self-Refresh Current
+DRAMInterface.py:    IDD6 = Param.Current("0mA", "Self-refresh Current")
+DRAMInterface.py:    # Self-Refresh Current multiple voltage range
+DRAMInterface.py:    IDD62 = Param.Current("0mA", "Self-refresh Current VDD2")
+DRAMInterface.py:# A single DDR3-1600 x64 channel (one command and address bus), with
+DRAMInterface.py:# timings based on a DDR3-1600 4 Gbit datasheet (Micron MT41J512M8) in
+DRAMInterface.py:    # 8x8 configuration, 8 devices each with an 8-bit interface
+DRAMInterface.py:    # DDR3-1600 11-11-11
+DRAMInterface.py:    # Default same rank rd-to-wr bus turnaround to 2 CK, @800 MHz = 2.5 ns
+DRAMInterface.py:# A single HMC-2500 x32 model based on:
+DRAMInterface.py:# [1] DRAMSpec: a high-level DRAM bank modelling tool
+DRAMInterface.py:# uses RC (resistance-capacitance) and CV (capacitance-voltage) models to
+DRAMInterface.py:# [2] High performance AXI-4.0 based interconnect for extensible smart memory
+DRAMInterface.py:    # bandwidth similar to the cycle-accurate model in [2]
+DRAMInterface.py:# A single DDR3-2133 x64 channel refining a selected subset of the
+DRAMInterface.py:# options for the DDR-1600 configuration, based on the same DDR3-1600
+DRAMInterface.py:    # DDR3-2133 14-14-14
+DRAMInterface.py:# A single DDR4-3200 x64 channel (one command and address bus), with
+DRAMInterface.py:# timings based on a DDR4-2400 8 Gbit datasheet (Micron MT40A2G4)
+DRAMInterface.py:    # 16x4 configuration, 16 devices each with a 4-bit interface
+DRAMInterface.py:    # tBURST is equivalent to the CAS-to-CAS delay (tCCD)
+DRAMInterface.py:    # With bank group architectures, tBURST represents the CAS-to-CAS
+DRAMInterface.py:    # CAS-to-CAS delay for bursts to the same bank group
+DRAMInterface.py:    # for CAS-to-CAS delay for bursts to different bank groups
+DRAMInterface.py:    # DDR4-3200 22-22-22
+DRAMInterface.py:    # Default same rank rd-to-wr bus turnaround to 2 CK, @1600 MHz = 1.25 ns
+DRAMInterface.py:# A single DDR4-2400 x64 channel (one command and address bus), with
+DRAMInterface.py:# timings based on a DDR4-2400 8 Gbit datasheet (Micron MT40A2G4)
+DRAMInterface.py:    # 16x4 configuration, 16 devices each with a 4-bit interface
+DRAMInterface.py:    # tBURST is equivalent to the CAS-to-CAS delay (tCCD)
+DRAMInterface.py:    # With bank group architectures, tBURST represents the CAS-to-CAS
+DRAMInterface.py:    # CAS-to-CAS delay for bursts to the same bank group
+DRAMInterface.py:    # for CAS-to-CAS delay for bursts to different bank groups
+DRAMInterface.py:    # DDR4-2400 17-17-17
+DRAMInterface.py:    # Default same rank rd-to-wr bus turnaround to 2 CK, @1200 MHz = 1.666 ns
+DRAMInterface.py:# A single DDR4-2400 x64 channel (one command and address bus), with
+DRAMInterface.py:# timings based on a DDR4-2400 8 Gbit datasheet (Micron MT40A1G8)
+DRAMInterface.py:    # 8x8 configuration, 8 devices each with an 8-bit interface
+DRAMInterface.py:# A single DDR4-2400 x64 channel (one command and address bus), with
+DRAMInterface.py:# timings based on a DDR4-2400 8 Gbit datasheet (Micron MT40A512M16)
+DRAMInterface.py:    # 4x16 configuration, 4 devices each with an 16-bit interface
+DRAMInterface.py:# A single LPDDR2-S4 x32 interface (one command/address bus), with
+DRAMInterface.py:# default timings based on a LPDDR2-1066 4 Gbit part (Micron MT42L128M32D1)
+DRAMInterface.py:    # 1x32 configuration, 1 device with a 32-bit interface
+DRAMInterface.py:    # LPDDR2-S4 has 8 banks in all configurations
+DRAMInterface.py:    # Pre-charge one bank 15 ns (all banks 18 ns)
+DRAMInterface.py:    # LPDDR2-S4, 4 Gbit
+DRAMInterface.py:    # Default same rank rd-to-wr bus turnaround to 2 CK, @533 MHz = 3.75 ns
+DRAMInterface.py:# default timings based on an estimated WIO-200 8 Gbit part.
+DRAMInterface.py:    # 1x128 configuration, 1 device with a 128-bit interface
+DRAMInterface.py:    # Use one rank for a one-high die stack
+DRAMInterface.py:    # WIO-200
+DRAMInterface.py:    # Default same rank rd-to-wr bus turnaround to 2 CK, @200 MHz = 10 ns
+DRAMInterface.py:# default timings based on a LPDDR3-1600 4 Gbit part (Micron
+DRAMInterface.py:    # 1x32 configuration, 1 device with a 32-bit interface
+DRAMInterface.py:    # Technically the datasheet is a dual-rank package, but for
+DRAMInterface.py:    # Pre-charge one bank 18 ns (all banks 21 ns)
+DRAMInterface.py:    # Default same rank rd-to-wr bus turnaround to 2 CK, @800 MHz = 2.5 ns
+DRAMInterface.py:# default timings based on a GDDR5-4000 1 Gbit part (SK Hynix
+DRAMInterface.py:    # 2x32 configuration, 1 device with a 32-bit interface
+DRAMInterface.py:    # tBURST is equivalent to the CAS-to-CAS delay (tCCD)
+DRAMInterface.py:    # With bank group architectures, tBURST represents the CAS-to-CAS
+DRAMInterface.py:    # CAS-to-CAS delay for bursts to the same bank group
+DRAMInterface.py:    # for CAS-to-CAS delay for bursts to different bank groups
+DRAMInterface.py:    # Read-to-Precharge 2 CK
+DRAMInterface.py:    # HBM gen1 supports up to 8 128-bit physical channels
+DRAMInterface.py:    # 128-bit interface legacy mode
+DRAMInterface.py:    # start with tRFC + tXP -> 160ns + 8ns = 168ns
+DRAMInterface.py:# Note: This defines a pseudo-channel with a unique controller
+DRAMInterface.py:# instantiated per pseudo-channel
+DRAMInterface.py:    # For HBM gen2 with pseudo-channel mode, configure 2X channels.
+DRAMInterface.py:    # 64-bit pseudo-channle interface
+DRAMInterface.py:    # HBM pseudo-channel only supports BL4
+DRAMInterface.py:    # page size is halved with pseudo-channel; maintaining the same same number
+DRAMInterface.py:    # of rows per pseudo-channel with 2X banks across 2 channels
+DRAMInterface.py:    # start with tRFC + tXP -> 160ns + 8ns = 168ns
+DRAMInterface.py:# Configuring for 16-bank mode with bank-group architecture
+DRAMInterface.py:    # 16-bit channel interface
+DRAMInterface.py:    # With BG architecture, burst of 32 transferred in two 16-beat
+DRAMInterface.py:    # sub-bursts, with a 16-beat gap in between.
+DRAMInterface.py:    # Each 16-beat sub-burst is 8 WCK @2.75 GHz or 2 CK @ 687.5 MHz
+DRAMInterface.py:    # 16-beats is 8 WCK @2.75 GHz or 2 CK @ 687.5 MHz
+DRAMInterface.py:    # Required RD-to-WR timing is RL+ BL/n + tWCKDQ0/tCK - WL
+DRAMInterface.py:    # 2 data beats per WCK (DDR) -> 8 per CK
+DRAMInterface.py:    # 2 command phases can be sent back-to-back or
+DRAMInterface.py:# Configuring for 16-bank mode with bank-group architecture, burst of 16
+DRAMInterface.py:# Configuring for 8-bank mode, burst of 32
+DRAMInterface.py:# Configuring for 16-bank mode with bank-group architecture
+DRAMInterface.py:    # With BG architecture, burst of 32 transferred in two 16-beat
+DRAMInterface.py:    # sub-bursts, with a 16-beat gap in between.
+DRAMInterface.py:    # Each 16-beat sub-burst is 8 WCK @3.2 GHz or 2 CK @ 800 MHz
+DRAMInterface.py:    # 16-beats is 8 WCK @2.3 GHz or 2 CK @ 800 MHz
+DRAMInterface.py:    # Required RD-to-WR timing is RL+ BL/n + tWCKDQ0/tCK - WL
+DRAMInterface.py:    # 2 command phases can be sent back-to-back or
+DRAMInterface.py:# Configuring for 16-bank mode with bank-group architecture, burst of 16
+DRAMInterface.py:# Configuring for 8-bank mode, burst of 32
+DRAMSim2.py:# A wrapper for DRAMSim2 multi-channel memory controller
+DRAMsim3.py:# A wrapper for DRAMSim3 multi-channel memory controller
+HMCController.py:# Copyright (c) 2012-2013 ARM Limited
+HMCController.py:# [1] http://www.open-silicon.com/open-silicon-ips/hmc/
+HMCController.py:# [2] Ahn, J.; Yoo, S.; Choi, K., "Low-Power Hybrid Memory Cubes With Link
+HMCController.py:#   Power Management and Two-Level Prefetching," TVLSI 2015
+HMCController.py:# In this model, we have used a round-robin counter, because it is the
+HMCController.py:# simplest way to schedule packets over the non-busy serial links. However,
+MemCtrl.py:# Copyright (c) 2012-2020 ARM Limited
+MemCtrl.py:# Copyright (c) 2013 Amin Farmahini-Farahani
+MemCtrl.py:# Enum for memory scheduling algorithms, currently First-Come
+MemCtrl.py:# First-Served and a First-Row Hit then First-Come First-Served
+MemCtrl.py:# MemCtrl is a single-channel single-ported Memory controller model
+MemCtrl.py:# that aims to model the most important system-level performance
+MemCtrl.py:    # single-ported on the system interface side, instantiate with a
+MemCtrl.py:    # Interface to non-volatile media
+MemCtrl.py:    rh_rq_cache_sets = Param.Unsigned(256, "Row-Quarantine cache sets")
+MemCtrl.py:    rh_rq_drain_threshold = Param.Unsigned(1048576, "Row-Quarantine drain cache miss threshold")
+MemInterface.py:# Copyright (c) 2012-2020 ARM Limited
+MemInterface.py:# Copyright (c) 2013 Amin Farmahini-Farahani
+MemInterface.py:# suitable for an open-page policy, optimising for sequential accesses
+MemInterface.py:# hitting in the open row. For a closed-page policy, RoCoRaBaCh
+MemInterface.py:    # timing behaviour and constraints - all in nanoseconds
+MemInterface.py:    # write-to-read, same rank turnaround penalty
+MemInterface.py:    # read-to-write, same rank turnaround penalty
+MemInterface.py:    # rank-to-rank bus delay penalty
+MemInterface.py:    # 1) RD-to-RD, 2) WR-to-WR, 3) RD-to-WR, and 4) WR-to-RD
+MemObject.py:# Copyright (c) 2006-2007 The Regents of The University of Michigan
+NVMInterface.py:# The following interface aims to model byte-addressable NVM
+NVMInterface.py:# The most important system-level performance effects of a NVM
+NVMInterface.py:    # timing behaviour and constraints - all in nanoseconds
+NVMInterface.py:    # Mimic 64-bit media agnostic DIMM interface
+SConscript:# -*- mode:python -*-
+SConscript:# Copyright (c) 2018-2020 ARM Limited
+SConscript:#### Rowhammer defense-specific files ###
+SerialLink.py:# Copyright (c) 2012-2013 ARM Limited
+SerialLink.py:# Copyright (c) 2006-2007 The Regents of The University of Michigan
+SimpleMemory.py:# Copyright (c) 2012-2013 ARM Limited
+SimpleMemory.py:# Copyright (c) 2005-2008 The Regents of The University of Michigan
+SimpleMemory.py:    # representative of a x64 DDR3-1600 channel.
+XBar.py:# Copyright (c) 2012, 2015, 2017, 2019-2020 ARM Limited
+XBar.py:# Copyright (c) 2005-2008 The Regents of The University of Michigan
+XBar.py:    # a two-level hierarchical lookup. This is useful e.g. for the PCI
+XBar.py:    # 256-bit crossbar by default
+XBar.py:    # Use a snoop-filter by default, and set the latency to zero as
+XBar.py:    # 128-bit crossbar by default
+XBar.py:    # Use a snoop-filter by default
+XBar.py:# or more on-chip I/O crossbars. Note that at some point we might want
+XBar.py:# to also define an off-chip I/O crossbar such as PCIe.
+XBar.py:    # 128-bit crossbar by default
+abstract_mem.cc: * Copyright (c) 2010-2012,2017-2019 ARM Limited
+abstract_mem.cc: * Copyright (c) 2001-2005 The Regents of The University of Michigan
+abstract_mem.cc:    ClockedObject(p), range(params()->range), pmemAddr(NULL),
+abstract_mem.cc:    backdoor(params()->range, nullptr,
+abstract_mem.cc:    confTableReported(p->conf_table_reported), inAddrMap(p->in_addr_map),
+abstract_mem.cc:    kvmMap(p->kvm_map), _system(NULL),
+abstract_mem.cc:             "Memory range %s must be valid with non-zero size.",
+abstract_mem.cc:    const auto &file = params()->image_file;
+abstract_mem.cc:    Loader::debugSymbolTable.insert(*object->symtab().globals());
+abstract_mem.cc:    Loader::MemoryImage image = object->buildImage();
+abstract_mem.cc:                    system()->cacheLineSize());
+abstract_mem.cc:    const auto max_requestors = sys->maxRequestors();
+abstract_mem.cc:        bytesRead.subname(i, sys->getRequestorName(i));
+abstract_mem.cc:        bytesInstRead.subname(i, sys->getRequestorName(i));
+abstract_mem.cc:        bytesWritten.subname(i, sys->getRequestorName(i));
+abstract_mem.cc:        numReads.subname(i, sys->getRequestorName(i));
+abstract_mem.cc:        numWrites.subname(i, sys->getRequestorName(i));
+abstract_mem.cc:        numOther.subname(i, sys->getRequestorName(i));
+abstract_mem.cc:        bwRead.subname(i, sys->getRequestorName(i));
+abstract_mem.cc:        bwInstRead.subname(i, sys->getRequestorName(i));
+abstract_mem.cc:        bwWrite.subname(i, sys->getRequestorName(i));
+abstract_mem.cc:        bwTotal.subname(i, sys->getRequestorName(i));
+abstract_mem.cc:// Add load-locked to tracking list.  Should only be called if the
+abstract_mem.cc:    const RequestPtr &req = pkt->req;
+abstract_mem.cc:    Addr paddr = LockedAddr::mask(req->getPaddr());
+abstract_mem.cc:        if (i->matchesContext(req)) {
+abstract_mem.cc:                    req->contextId(), paddr);
+abstract_mem.cc:            i->addr = paddr;
+abstract_mem.cc:            req->contextId(), paddr);
+abstract_mem.cc:// store-conditional operations.  Check for conventional stores which
+abstract_mem.cc:    const RequestPtr &req = pkt->req;
+abstract_mem.cc:    Addr paddr = LockedAddr::mask(req->getPaddr());
+abstract_mem.cc:    bool isLLSC = pkt->isLLSC();
+abstract_mem.cc:    // Initialize return value.  Non-conditional stores always
+abstract_mem.cc:    // then, remove all records with this address.  Failed store-conditionals do
+abstract_mem.cc:            if (i->addr == paddr && i->matchesContext(req)) {
+abstract_mem.cc:                        req->contextId(), paddr);
+abstract_mem.cc:        req->setExtraData(allowStore ? 1 : 0);
+abstract_mem.cc:    // LLSCs that succeeded AND non-LLSC stores both fall into here:
+abstract_mem.cc:            if (i->addr == paddr) {
+abstract_mem.cc:                        i->contextId, paddr);
+abstract_mem.cc:                ContextID owner_cid = i->contextId;
+abstract_mem.cc:                ContextID requestor_cid = req->hasContextId() ?
+abstract_mem.cc:                                           req->contextId() :
+abstract_mem.cc:                    ThreadContext* ctx = system()->threads[owner_cid];
+abstract_mem.cc:    int size = pkt->getSize();
+abstract_mem.cc:        ByteOrder byte_order = sys->getGuestByteOrder();
+abstract_mem.cc:                "%#x %c\n", label, sys->getRequestorName(pkt->req->
+abstract_mem.cc:                requestorId()), size, pkt->getAddr(),
+abstract_mem.cc:                size, pkt->getAddr(), pkt->getUintX(byte_order),
+abstract_mem.cc:                pkt->req->isUncacheable() ? 'U' : 'C');
+abstract_mem.cc:            label, sys->getRequestorName(pkt->req->requestorId()),
+abstract_mem.cc:            size, pkt->getAddr(), pkt->req->isUncacheable() ? 'U' : 'C');
+abstract_mem.cc:    DDUMP(MemoryAccess, pkt->getConstPtr<uint8_t>(), pkt->getSize());
+abstract_mem.cc:    if (pkt->cacheResponding()) {
+abstract_mem.cc:                pkt->getAddr());
+abstract_mem.cc:    if (pkt->cmd == MemCmd::CleanEvict || pkt->cmd == MemCmd::WritebackClean) {
+abstract_mem.cc:                pkt->getAddr());
+abstract_mem.cc:    assert(pkt->getAddrRange().isSubset(range));
+abstract_mem.cc:    uint8_t *host_addr = toHostAddr(pkt->getAddr());
+abstract_mem.cc:    if (pkt->cmd == MemCmd::SwapReq) {
+abstract_mem.cc:        if (pkt->isAtomicOp()) {
+abstract_mem.cc:                pkt->setData(host_addr);
+abstract_mem.cc:                (*(pkt->getAtomicOp()))(host_addr);
+abstract_mem.cc:            std::vector<uint8_t> overwrite_val(pkt->getSize());
+abstract_mem.cc:            pkt->writeData(&overwrite_val[0]);
+abstract_mem.cc:            pkt->setData(host_addr);
+abstract_mem.cc:            if (pkt->req->isCondSwap()) {
+abstract_mem.cc:                if (pkt->getSize() == sizeof(uint64_t)) {
+abstract_mem.cc:                    condition_val64 = pkt->req->getExtraData();
+abstract_mem.cc:                } else if (pkt->getSize() == sizeof(uint32_t)) {
+abstract_mem.cc:                    condition_val32 = (uint32_t)pkt->req->getExtraData();
+abstract_mem.cc:                std::memcpy(host_addr, &overwrite_val[0], pkt->getSize());
+abstract_mem.cc:            assert(!pkt->req->isInstFetch());
+abstract_mem.cc:            stats.numOther[pkt->req->requestorId()]++;
+abstract_mem.cc:    } else if (pkt->isRead()) {
+abstract_mem.cc:        assert(!pkt->isWrite());
+abstract_mem.cc:        if (pkt->isLLSC()) {
+abstract_mem.cc:            assert(!pkt->fromCache());
+abstract_mem.cc:            pkt->setData(host_addr);
+abstract_mem.cc:        TRACE_PACKET(pkt->req->isInstFetch() ? "IFetch" : "Read");
+abstract_mem.cc:        stats.numReads[pkt->req->requestorId()]++;
+abstract_mem.cc:        stats.bytesRead[pkt->req->requestorId()] += pkt->getSize();
+abstract_mem.cc:        if (pkt->req->isInstFetch())
+abstract_mem.cc:            stats.bytesInstRead[pkt->req->requestorId()] += pkt->getSize();
+abstract_mem.cc:    } else if (pkt->isInvalidate() || pkt->isClean()) {
+abstract_mem.cc:        assert(!pkt->isWrite());
+abstract_mem.cc:    } else if (pkt->isWrite()) {
+abstract_mem.cc:                pkt->writeData(host_addr);
+abstract_mem.cc:                        __func__, pkt->print());
+abstract_mem.cc:            assert(!pkt->req->isInstFetch());
+abstract_mem.cc:            stats.numWrites[pkt->req->requestorId()]++;
+abstract_mem.cc:            stats.bytesWritten[pkt->req->requestorId()] += pkt->getSize();
+abstract_mem.cc:        panic("Unexpected packet %s", pkt->print());
+abstract_mem.cc:    if (pkt->needsResponse()) {
+abstract_mem.cc:        pkt->makeResponse();
+abstract_mem.cc:    assert(pkt->getAddrRange().isSubset(range));
+abstract_mem.cc:    uint8_t *host_addr = toHostAddr(pkt->getAddr());
+abstract_mem.cc:    if (pkt->isRead()) {
+abstract_mem.cc:            pkt->setData(host_addr);
+abstract_mem.cc:        pkt->makeResponse();
+abstract_mem.cc:    } else if (pkt->isWrite()) {
+abstract_mem.cc:            pkt->writeData(host_addr);
+abstract_mem.cc:        pkt->makeResponse();
+abstract_mem.cc:    } else if (pkt->isPrint()) {
+abstract_mem.cc:            dynamic_cast<Packet::PrintReqState*>(pkt->senderState);
+abstract_mem.cc:        prs->printLabels();
+abstract_mem.cc:        ccprintf(prs->os, "%s%#x\n", prs->curPrefix(), *host_addr);
+abstract_mem.cc:              pkt->cmdString());
+abstract_mem.hh: * Copyright (c) 2001-2005 The Regents of The University of Michigan
+abstract_mem.hh:        assert(req->hasContextId());
+abstract_mem.hh:        return (contextId == req->contextId());
+abstract_mem.hh:    LockedAddr(const RequestPtr &req) : addr(mask(req->getPaddr())),
+abstract_mem.hh:                                        contextId(req->contextId())
+abstract_mem.hh:    // this out-of-line function
+abstract_mem.hh:    // Record the address of a load-locked operation so that we can
+abstract_mem.hh:    // non-conditional stores must clear any matching lock addresses.
+abstract_mem.hh:        const RequestPtr &req = pkt->req;
+abstract_mem.hh:            bool isLLSC = pkt->isLLSC();
+abstract_mem.hh:                req->setExtraData(0);
+abstract_mem.hh:    bool isNull() const { return params()->null; }
+abstract_mem.hh:        return pmemAddr + addr - range.start();
+addr_mapper.cc:      memSidePort(name() + "-mem_side_port", *this),
+addr_mapper.cc:      cpuSidePort(name() + "-cpu_side_port", *this)
+addr_mapper.cc:    Addr orig_addr = pkt->getAddr();
+addr_mapper.cc:    pkt->setAddr(remapAddr(orig_addr));
+addr_mapper.cc:    pkt->setAddr(orig_addr);
+addr_mapper.cc:    Addr orig_addr = pkt->getAddr();
+addr_mapper.cc:    pkt->setAddr(remapAddr(orig_addr));
+addr_mapper.cc:    pkt->setAddr(orig_addr);
+addr_mapper.cc:    Addr orig_addr = pkt->getAddr();
+addr_mapper.cc:    pkt->setAddr(remapAddr(orig_addr));
+addr_mapper.cc:    pkt->setAddr(orig_addr);
+addr_mapper.cc:    Addr orig_addr = pkt->getAddr();
+addr_mapper.cc:    pkt->setAddr(remapAddr(orig_addr));
+addr_mapper.cc:    pkt->setAddr(orig_addr);
+addr_mapper.cc:    Addr orig_addr = pkt->getAddr();
+addr_mapper.cc:    bool needsResponse = pkt->needsResponse();
+addr_mapper.cc:    bool cacheResponding = pkt->cacheResponding();
+addr_mapper.cc:        pkt->pushSenderState(new AddrMapperSenderState(orig_addr));
+addr_mapper.cc:    pkt->setAddr(remapAddr(orig_addr));
+addr_mapper.cc:        pkt->setAddr(orig_addr);
+addr_mapper.cc:            delete pkt->popSenderState();
+addr_mapper.cc:        dynamic_cast<AddrMapperSenderState*>(pkt->senderState);
+addr_mapper.cc:    Addr remapped_addr = pkt->getAddr();
+addr_mapper.cc:    pkt->senderState = receivedState->predecessor;
+addr_mapper.cc:    pkt->setAddr(receivedState->origAddr);
+addr_mapper.cc:        pkt->senderState = receivedState;
+addr_mapper.cc:        pkt->setAddr(remapped_addr);
+addr_mapper.cc:    originalRanges(p->original_ranges),
+addr_mapper.cc:    remappedRanges(p->remapped_ranges)
+addr_mapper.cc:            Addr offset = addr - originalRanges[i].start();
+bridge.cc: * Copyright (c) 2011-2013, 2015 ARM Limited
+bridge.cc: * Implementation of a memory-mapped bridge that connects a requestor
+bridge.cc:      cpuSidePort(p->name + ".cpu_side_port", *this, memSidePort,
+bridge.cc:                ticksToCycles(p->delay), p->resp_size, p->ranges),
+bridge.cc:      memSidePort(p->name + ".mem_side_port", *this, cpuSidePort,
+bridge.cc:                 ticksToCycles(p->delay), p->req_size)
+bridge.cc:            pkt->cmdString(), pkt->getAddr());
+bridge.cc:    Tick receive_delay = pkt->headerDelay + pkt->payloadDelay;
+bridge.cc:    pkt->headerDelay = pkt->payloadDelay = 0;
+bridge.cc:            pkt->cmdString(), pkt->getAddr());
+bridge.cc:    panic_if(pkt->cacheResponding(), "Should not see packets where cache "
+bridge.cc:        bool expects_response = pkt->needsResponse();
+bridge.cc:            Tick receive_delay = pkt->headerDelay + pkt->payloadDelay;
+bridge.cc:            pkt->headerDelay = pkt->payloadDelay = 0;
+bridge.cc:            pkt->getAddr(), transmitList.size());
+bridge.cc:            pkt->getAddr(), outstandingResponses);
+bridge.cc:        --outstandingResponses;
+bridge.cc:    panic_if(pkt->cacheResponding(), "Should not see packets where cache "
+bridge.cc:    pkt->pushLabel(name());
+bridge.cc:        if (pkt->trySatisfyFunctional((*i).pkt)) {
+bridge.cc:            pkt->makeResponse();
+bridge.cc:    pkt->popLabel();
+bridge.cc:        if (pkt->trySatisfyFunctional((*i).pkt)) {
+bridge.cc:            pkt->makeResponse();
+bridge.hh: * Copyright (c) 2011-2013 ARM Limited
+bridge.hh: * Declaration of a memory-mapped bridge that connects a requestor
+bridge.hh: * memory-mapped requestor and responder), with buffering for requests and
+coherent_xbar.cc: * Copyright (c) 2011-2020 ARM Limited
+coherent_xbar.cc:    : BaseXBar(p), system(p->system), snoopFilter(p->snoop_filter),
+coherent_xbar.cc:      snoopResponseLatency(p->snoop_response_latency),
+coherent_xbar.cc:      maxOutstandingSnoopCheck(p->max_outstanding_snoops),
+coherent_xbar.cc:      maxRoutingTableSizeCheck(p->max_routing_table_size),
+coherent_xbar.cc:      pointOfCoherency(p->point_of_coherency),
+coherent_xbar.cc:      pointOfUnification(p->point_of_unification),
+coherent_xbar.cc:    // create the ports based on the size of the memory-side port and
+coherent_xbar.cc:    // CPU-side port vector ports, and the presence of the default port,
+coherent_xbar.cc:    for (int i = 0; i < p->port_mem_side_ports_connection_count; ++i) {
+coherent_xbar.cc:    // see if we have a default CPU-side-port device connected and if so add
+coherent_xbar.cc:    // our corresponding memory-side port
+coherent_xbar.cc:    if (p->port_default_connection_count) {
+coherent_xbar.cc:    // create the CPU-side ports, once again starting at zero
+coherent_xbar.cc:    for (int i = 0; i < p->port_cpu_side_ports_connection_count; ++i) {
+coherent_xbar.cc:    // iterate over our CPU-side ports and determine which of our
+coherent_xbar.cc:    // neighbouring memory-side ports are snooping and add them as snoopers
+coherent_xbar.cc:        // check if the connected memory-side port is snooping
+coherent_xbar.cc:        if (p->isSnooping()) {
+coherent_xbar.cc:                    p->getPeer());
+coherent_xbar.cc:    // inform the snoop filter about the CPU-side ports so it can create
+coherent_xbar.cc:        snoopFilter->setCPUSidePorts(cpuSidePorts);
+coherent_xbar.cc:    bool is_express_snoop = pkt->isExpressSnoop();
+coherent_xbar.cc:    bool cache_responding = pkt->cacheResponding();
+coherent_xbar.cc:    PortID mem_side_port_id = findPort(pkt->getAddrRange());
+coherent_xbar.cc:        !reqLayers[mem_side_port_id]->tryTiming(src_port)) {
+coherent_xbar.cc:                src_port->name(), pkt->print());
+coherent_xbar.cc:            src_port->name(), pkt->print());
+coherent_xbar.cc:    unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+coherent_xbar.cc:    unsigned int pkt_cmd = pkt->cmdToIndex();
+coherent_xbar.cc:    Tick old_header_delay = pkt->headerDelay;
+coherent_xbar.cc:    Tick packetFinishTime = clockEdge(headerLatency) + pkt->payloadDelay;
+coherent_xbar.cc:    const bool snoop_caches = !system->bypassCaches() &&
+coherent_xbar.cc:        pkt->cmd != MemCmd::WriteClean;
+coherent_xbar.cc:        assert(pkt->snoopDelay == 0);
+coherent_xbar.cc:        if (pkt->isClean() && !is_destination) {
+coherent_xbar.cc:            if (!memSidePorts[mem_side_port_id]->tryTiming(pkt)) {
+coherent_xbar.cc:                        src_port->name(), pkt->print());
+coherent_xbar.cc:                reqLayers[mem_side_port_id]->failedTiming(src_port,
+coherent_xbar.cc:        // the packet is a memory-mapped request and should be
+coherent_xbar.cc:            auto sf_res = snoopFilter->lookupRequest(pkt, *src_port);
+coherent_xbar.cc:            pkt->headerDelay += sf_res.second * clockPeriod();
+coherent_xbar.cc:                    __func__, src_port->name(), pkt->print(),
+coherent_xbar.cc:            if (pkt->isEviction()) {
+coherent_xbar.cc:                // for block-evicting packets, i.e. writebacks and
+coherent_xbar.cc:                    pkt->setBlockCached();
+coherent_xbar.cc:        pkt->headerDelay += pkt->snoopDelay;
+coherent_xbar.cc:        pkt->snoopDelay = 0;
+coherent_xbar.cc:    const bool expect_snoop_resp = !cache_responding && pkt->cacheResponding();
+coherent_xbar.cc:    bool expect_response = pkt->needsResponse() && !pkt->cacheResponding();
+coherent_xbar.cc:    const Addr addr(pkt->getAddr());
+coherent_xbar.cc:                pkt->print());
+coherent_xbar.cc:            if (pkt->cacheResponding()) {
+coherent_xbar.cc:                pkt->setExpressSnoop();
+coherent_xbar.cc:            if (pkt->isWrite() && is_destination) {
+coherent_xbar.cc:                pkt->clearWriteThrough();
+coherent_xbar.cc:            success = memSidePorts[mem_side_port_id]->sendTimingReq(pkt);
+coherent_xbar.cc:            assert(pkt->needsResponse());
+coherent_xbar.cc:        snoopFilter->finishRequest(!success, addr, pkt->isSecure());
+coherent_xbar.cc:        pkt->headerDelay = old_header_delay;
+coherent_xbar.cc:                src_port->name(), pkt->print());
+coherent_xbar.cc:        reqLayers[mem_side_port_id]->failedTiming(src_port,
+coherent_xbar.cc:                assert(outstandingSnoop.find(pkt->req) ==
+coherent_xbar.cc:                outstandingSnoop.insert(pkt->req);
+coherent_xbar.cc:                assert(routeTo.find(pkt->req) == routeTo.end());
+coherent_xbar.cc:                routeTo[pkt->req] = cpu_side_port_id;
+coherent_xbar.cc:            reqLayers[mem_side_port_id]->succeededTiming(packetFinishTime);
+coherent_xbar.cc:        ((pkt->isClean() && pkt->satisfied()) ||
+coherent_xbar.cc:         pkt->cmd == MemCmd::WriteClean) &&
+coherent_xbar.cc:        PacketPtr deferred_rsp = pkt->isWrite() ? nullptr : pkt;
+coherent_xbar.cc:        auto cmo_lookup = outstandingCMO.find(pkt->id);
+coherent_xbar.cc:            if (pkt->isWrite()) {
+coherent_xbar.cc:                rsp_pkt = cmo_lookup->second;
+coherent_xbar.cc:                const auto route_lookup = routeTo.find(rsp_pkt->req);
+coherent_xbar.cc:                rsp_port_id = route_lookup->second;
+coherent_xbar.cc:            outstandingCMO.emplace(pkt->id, deferred_rsp);
+coherent_xbar.cc:            if (!pkt->isWrite()) {
+coherent_xbar.cc:                assert(routeTo.find(pkt->req) == routeTo.end());
+coherent_xbar.cc:                routeTo[pkt->req] = cpu_side_port_id;
+coherent_xbar.cc:        assert(rsp_pkt->needsResponse());
+coherent_xbar.cc:        rsp_pkt->makeResponse();
+coherent_xbar.cc:        if (snoopFilter && !system->bypassCaches()) {
+coherent_xbar.cc:            snoopFilter->updateResponse(rsp_pkt, *cpuSidePorts[rsp_port_id]);
+coherent_xbar.cc:        Tick response_time = clockEdge() + pkt->headerDelay;
+coherent_xbar.cc:        rsp_pkt->headerDelay = 0;
+coherent_xbar.cc:        cpuSidePorts[rsp_port_id]->schedTimingResp(rsp_pkt, response_time);
+coherent_xbar.cc:    const auto route_lookup = routeTo.find(pkt->req);
+coherent_xbar.cc:    const PortID cpu_side_port_id = route_lookup->second;
+coherent_xbar.cc:    if (!respLayers[cpu_side_port_id]->tryTiming(src_port)) {
+coherent_xbar.cc:                src_port->name(), pkt->print());
+coherent_xbar.cc:            src_port->name(), pkt->print());
+coherent_xbar.cc:    unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+coherent_xbar.cc:    unsigned int pkt_cmd = pkt->cmdToIndex();
+coherent_xbar.cc:    Tick packetFinishTime = clockEdge(headerLatency) + pkt->payloadDelay;
+coherent_xbar.cc:    if (snoopFilter && !system->bypassCaches()) {
+coherent_xbar.cc:        snoopFilter->updateResponse(pkt, *cpuSidePorts[cpu_side_port_id]);
+coherent_xbar.cc:    // send the packet through the destination CPU-side port and pay for
+coherent_xbar.cc:    Tick latency = pkt->headerDelay;
+coherent_xbar.cc:    pkt->headerDelay = 0;
+coherent_xbar.cc:    cpuSidePorts[cpu_side_port_id]->schedTimingResp(pkt, curTick()
+coherent_xbar.cc:    respLayers[cpu_side_port_id]->succeededTiming(packetFinishTime);
+coherent_xbar.cc:            memSidePorts[mem_side_port_id]->name(), pkt->print());
+coherent_xbar.cc:    unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+coherent_xbar.cc:    transDist[pkt->cmdToIndex()]++;
+coherent_xbar.cc:    assert(pkt->isExpressSnoop());
+coherent_xbar.cc:    const bool cache_responding = pkt->cacheResponding();
+coherent_xbar.cc:    assert(pkt->snoopDelay == 0);
+coherent_xbar.cc:        auto sf_res = snoopFilter->lookupSnoop(pkt);
+coherent_xbar.cc:        pkt->headerDelay += sf_res.second * clockPeriod();
+coherent_xbar.cc:                __func__, memSidePorts[mem_side_port_id]->name(),
+coherent_xbar.cc:                pkt->print(), sf_res.first.size(), sf_res.second);
+coherent_xbar.cc:    pkt->headerDelay += pkt->snoopDelay;
+coherent_xbar.cc:    pkt->snoopDelay = 0;
+coherent_xbar.cc:    if (!cache_responding && pkt->cacheResponding()) {
+coherent_xbar.cc:        assert(routeTo.find(pkt->req) == routeTo.end());
+coherent_xbar.cc:        routeTo[pkt->req] = mem_side_port_id;
+coherent_xbar.cc:    // a snoop request came from a connected CPU-side-port device (one of
+coherent_xbar.cc:    // our memory-side ports), and if it is not coming from the CPU-side-port
+coherent_xbar.cc:    assert(findPort(pkt->getAddrRange()) == mem_side_port_id);
+coherent_xbar.cc:    const auto route_lookup = routeTo.find(pkt->req);
+coherent_xbar.cc:    const PortID dest_port_id = route_lookup->second;
+coherent_xbar.cc:    const bool forwardAsSnoop = outstandingSnoop.find(pkt->req) ==
+coherent_xbar.cc:        if (!snoopLayers[dest_port_id]->tryTiming(src_port)) {
+coherent_xbar.cc:                    src_port->name(), pkt->print());
+coherent_xbar.cc:        // get the memory-side port that mirrors this CPU-side port internally
+coherent_xbar.cc:        if (!respLayers[dest_port_id]->tryTiming(snoop_port)) {
+coherent_xbar.cc:                    snoop_port->name(), pkt->print());
+coherent_xbar.cc:            src_port->name(), pkt->print());
+coherent_xbar.cc:    unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+coherent_xbar.cc:    unsigned int pkt_cmd = pkt->cmdToIndex();
+coherent_xbar.cc:    assert(!pkt->isExpressSnoop());
+coherent_xbar.cc:    Tick packetFinishTime = clockEdge(headerLatency) + pkt->payloadDelay;
+coherent_xbar.cc:            snoopFilter->updateSnoopForward(pkt,
+coherent_xbar.cc:            memSidePorts[dest_port_id]->sendTimingSnoopResp(pkt);
+coherent_xbar.cc:        snoopLayers[dest_port_id]->succeededTiming(packetFinishTime);
+coherent_xbar.cc:        // we got a snoop response on one of our CPU-side ports,
+coherent_xbar.cc:        outstandingSnoop.erase(pkt->req);
+coherent_xbar.cc:            snoopFilter->updateSnoopResponse(pkt,
+coherent_xbar.cc:                src_port->name(), pkt->print());
+coherent_xbar.cc:        // one of our CPU-side ports, we also pay for any outstanding
+coherent_xbar.cc:        Tick latency = pkt->headerDelay;
+coherent_xbar.cc:        pkt->headerDelay = 0;
+coherent_xbar.cc:        cpuSidePorts[dest_port_id]->schedTimingResp(pkt,
+coherent_xbar.cc:        respLayers[dest_port_id]->succeededTiming(packetFinishTime);
+coherent_xbar.cc:    DPRINTF(CoherentXBar, "%s for %s\n", __func__, pkt->print());
+coherent_xbar.cc:    assert(!system->bypassCaches());
+coherent_xbar.cc:        // (corresponding to our own CPU-side port that is also in
+coherent_xbar.cc:            p->getId() != exclude_cpu_side_port_id) {
+coherent_xbar.cc:            p->sendTimingSnoopReq(pkt);
+coherent_xbar.cc:    reqLayers[mem_side_port_id]->recvRetry();
+coherent_xbar.cc:            cpuSidePorts[cpu_side_port_id]->name(), pkt->print());
+coherent_xbar.cc:    unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+coherent_xbar.cc:    unsigned int pkt_cmd = pkt->cmdToIndex();
+coherent_xbar.cc:    const bool snoop_caches = !system->bypassCaches() &&
+coherent_xbar.cc:        pkt->cmd != MemCmd::WriteClean;
+coherent_xbar.cc:                snoopFilter->lookupRequest(pkt,
+coherent_xbar.cc:                    __func__, cpuSidePorts[cpu_side_port_id]->name(),
+coherent_xbar.cc:                    pkt->print(), sf_res.first.size(), sf_res.second);
+coherent_xbar.cc:            snoopFilter->finishRequest(false, pkt->getAddr(), pkt->isSecure());
+coherent_xbar.cc:            if (pkt->isEviction()) {
+coherent_xbar.cc:                // for block-evicting packets, i.e. writebacks and
+coherent_xbar.cc:                    pkt->setBlockCached();
+coherent_xbar.cc:    PortID mem_side_port_id = findPort(pkt->getAddrRange());
+coherent_xbar.cc:                pkt->print());
+coherent_xbar.cc:            if (pkt->isWrite() && is_destination) {
+coherent_xbar.cc:                pkt->clearWriteThrough();
+coherent_xbar.cc:                mem_side_port->sendAtomicBackdoor(pkt, *backdoor) :
+coherent_xbar.cc:                mem_side_port->sendAtomic(pkt);
+coherent_xbar.cc:            assert(pkt->needsResponse());
+coherent_xbar.cc:            pkt->makeResponse();
+coherent_xbar.cc:    if (!system->bypassCaches() && snoopFilter && pkt->isResponse()) {
+coherent_xbar.cc:        snoopFilter->updateResponse(pkt, *cpuSidePorts[cpu_side_port_id]);
+coherent_xbar.cc:        assert(!pkt->isResponse());
+coherent_xbar.cc:        pkt->cmd = snoop_response_cmd;
+coherent_xbar.cc:    if (pkt->isClean() && isDestination(pkt) && pkt->satisfied()) {
+coherent_xbar.cc:        auto it = outstandingCMO.find(pkt->id);
+coherent_xbar.cc:    } else if (pkt->cmd == MemCmd::WriteClean && isDestination(pkt)) {
+coherent_xbar.cc:        auto M5_VAR_USED ret = outstandingCMO.emplace(pkt->id, nullptr);
+coherent_xbar.cc:    if (pkt->isResponse()) {
+coherent_xbar.cc:        pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+coherent_xbar.cc:        pkt_cmd = pkt->cmdToIndex();
+coherent_xbar.cc:    pkt->payloadDelay = response_latency;
+coherent_xbar.cc:            memSidePorts[mem_side_port_id]->name(), pkt->print());
+coherent_xbar.cc:    unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+coherent_xbar.cc:        auto sf_res = snoopFilter->lookupSnoop(pkt);
+coherent_xbar.cc:                __func__, memSidePorts[mem_side_port_id]->name(),
+coherent_xbar.cc:                pkt->print(), sf_res.first.size(), sf_res.second);
+coherent_xbar.cc:        pkt->cmd = snoop_response_cmd;
+coherent_xbar.cc:    if (pkt->isResponse()) {
+coherent_xbar.cc:    pkt->payloadDelay = snoop_response_latency;
+coherent_xbar.cc:    MemCmd orig_cmd = pkt->cmd;
+coherent_xbar.cc:    assert(!system->bypassCaches());
+coherent_xbar.cc:        // we could have gotten this request from a snooping memory-side port
+coherent_xbar.cc:        // (corresponding to our own CPU-side port that is also in
+coherent_xbar.cc:            p->getId() == exclude_cpu_side_port_id)
+coherent_xbar.cc:        Tick latency = p->sendAtomicSnoop(pkt);
+coherent_xbar.cc:        if (!pkt->isResponse())
+coherent_xbar.cc:        assert(pkt->cmd != orig_cmd);
+coherent_xbar.cc:        assert(pkt->cacheResponding());
+coherent_xbar.cc:        snoop_response_cmd = pkt->cmd;
+coherent_xbar.cc:                snoopFilter->updateSnoopForward(pkt, *p,
+coherent_xbar.cc:                snoopFilter->updateSnoopResponse(pkt, *p,
+coherent_xbar.cc:        pkt->cmd = orig_cmd;
+coherent_xbar.cc:    if (!pkt->isPrint()) {
+coherent_xbar.cc:                cpuSidePorts[cpu_side_port_id]->name(), pkt->print());
+coherent_xbar.cc:    if (!system->bypassCaches()) {
+coherent_xbar.cc:    if (!pkt->isResponse()) {
+coherent_xbar.cc:        // since our CPU-side ports are queued ports we need to check
+coherent_xbar.cc:            if (p->trySatisfyFunctional(pkt)) {
+coherent_xbar.cc:                if (pkt->needsResponse())
+coherent_xbar.cc:                    pkt->makeResponse();
+coherent_xbar.cc:        PortID dest_id = findPort(pkt->getAddrRange());
+coherent_xbar.cc:        memSidePorts[dest_id]->sendFunctional(pkt);
+coherent_xbar.cc:    if (!pkt->isPrint()) {
+coherent_xbar.cc:                memSidePorts[mem_side_port_id]->name(), pkt->print());
+coherent_xbar.cc:        if (p->trySatisfyFunctional(pkt)) {
+coherent_xbar.cc:            if (pkt->needsResponse())
+coherent_xbar.cc:                pkt->makeResponse();
+coherent_xbar.cc:    assert(!system->bypassCaches());
+coherent_xbar.cc:        // (corresponding to our own CPU-side port that is also in
+coherent_xbar.cc:            p->getId() != exclude_cpu_side_port_id)
+coherent_xbar.cc:            p->sendFunctionalSnoop(pkt);
+coherent_xbar.cc:        if (pkt->isResponse()) {
+coherent_xbar.cc:    return (pointOfCoherency && pkt->cacheResponding()) ||
+coherent_xbar.cc:        (pointOfCoherency && !(pkt->isRead() || pkt->isWrite()) &&
+coherent_xbar.cc:         !pkt->needsResponse()) ||
+coherent_xbar.cc:        (pkt->isCleanEviction() && pkt->isBlockCached()) ||
+coherent_xbar.cc:        (pkt->cacheResponding() &&
+coherent_xbar.cc:         (!pkt->needsWritable() || pkt->responderHadWritable()));
+coherent_xbar.cc:    if (pkt->isClean()) {
+coherent_xbar.cc:    return pkt->isRead() || pkt->isWrite() || !pointOfCoherency;
+coherent_xbar.hh: * Copyright (c) 2011-2015, 2017, 2019 ARM Limited
+coherent_xbar.hh: * Copyright (c) 2002-2005 The Regents of The University of Michigan
+coherent_xbar.hh: * for the L1-to-L2 buses and as the main system interconnect.  @sa
+coherent_xbar.hh:     * Declaration of the coherent crossbar CPU-side port type, one will
+coherent_xbar.hh:     * Declaration of the coherent crossbar memory-side port type, one will be
+coherent_xbar.hh:     * instantiated for each of the CPU-side-port interfaces connecting to the
+coherent_xbar.hh:         * a coherent crossbar memory-side port this is always true.
+coherent_xbar.hh:     * from a CPU-side port and forwarding it through an outgoing
+coherent_xbar.hh:     * CPU-side port. It is effectively a dangling memory-side port.
+coherent_xbar.hh:         * Create a snoop response port that mirrors a given CPU-side port.
+coherent_xbar.hh:         * the mirrored CPU-side port.
+coherent_xbar.hh:     * @param exclude_cpu_side_port_id Id of CPU-side port to exclude
+coherent_xbar.hh:     * @param exclude_cpu_side_port_id Id of CPU-side port to exclude
+coherent_xbar.hh:     * @param exclude_cpu_side_port_id Id of CPU-side port to exclude
+coherent_xbar.hh:     * @param exclude_cpu_side_port_id Id of CPU-side port to exclude
+coherent_xbar.hh:     * @param source_mem_side_port_id Id of the memory-side port for
+coherent_xbar.hh:     * @param exclude_cpu_side_port_id Id of CPU-side port to exclude
+coherent_xbar.hh:        return (pkt->req->isToPOC() && pointOfCoherency) ||
+coherent_xbar.hh:            (pkt->req->isToPOU() && pointOfUnification);
+comm_monitor.cc: * Copyright (c) 2012-2013, 2015, 2018-2019 ARM Limited
+comm_monitor.cc:      memSidePort(name() + "-mem_side_port", *this),
+comm_monitor.cc:      cpuSidePort(name() + "-cpu_side_port", *this),
+comm_monitor.cc:      samplePeriodTicks(params->sample_period),
+comm_monitor.cc:      samplePeriod(params->sample_period / SimClock::Float::s),
+comm_monitor.cc:      disableBurstLengthHists(params->disable_burst_length_hists),
+comm_monitor.cc:      disableBandwidthHists(params->disable_bandwidth_hists),
+comm_monitor.cc:      disableLatencyHists(params->disable_latency_hists),
+comm_monitor.cc:      ADD_STAT(readLatencyHist, "Read request-response latency"),
+comm_monitor.cc:      ADD_STAT(writeLatencyHist, "Write request-response latency"),
+comm_monitor.cc:      disableITTDists(params->disable_itt_dists),
+comm_monitor.cc:      ADD_STAT(ittReadRead, "Read-to-read inter transaction time"),
+comm_monitor.cc:      ADD_STAT(ittWriteWrite , "Write-to-write inter transaction time"),
+comm_monitor.cc:      ADD_STAT(ittReqReq, "Request-to-request inter transaction time"),
+comm_monitor.cc:      disableOutstandingHists(params->disable_outstanding_hists),
+comm_monitor.cc:      disableTransactionHists(params->disable_transaction_hists),
+comm_monitor.cc:      disableAddrDists(params->disable_addr_dists),
+comm_monitor.cc:      readAddrMask(params->read_addr_mask),
+comm_monitor.cc:      writeAddrMask(params->write_addr_mask),
+comm_monitor.cc:        .init(params->burst_length_bins)
+comm_monitor.cc:        .init(params->burst_length_bins)
+comm_monitor.cc:        .init(params->bandwidth_bins)
+comm_monitor.cc:        .init(params->bandwidth_bins)
+comm_monitor.cc:        .init(params->latency_bins)
+comm_monitor.cc:        .init(params->latency_bins)
+comm_monitor.cc:        .init(1, params->itt_max_bin, params->itt_max_bin /
+comm_monitor.cc:              params->itt_bins)
+comm_monitor.cc:        .init(1, params->itt_max_bin, params->itt_max_bin /
+comm_monitor.cc:              params->itt_bins)
+comm_monitor.cc:        .init(1, params->itt_max_bin, params->itt_max_bin /
+comm_monitor.cc:              params->itt_bins)
+comm_monitor.cc:        .init(params->outstanding_bins)
+comm_monitor.cc:        .init(params->outstanding_bins)
+comm_monitor.cc:        .init(params->transaction_bins)
+comm_monitor.cc:        .init(params->transaction_bins)
+comm_monitor.cc:            // Sample value of read-read inter transaction time
+comm_monitor.cc:                ittReadRead.sample(curTick() - timeOfLastRead);
+comm_monitor.cc:            // Sample value of req-req inter transaction time
+comm_monitor.cc:                ittReqReq.sample(curTick() - timeOfLastReq);
+comm_monitor.cc:            // Sample value of write-to-write inter transaction time
+comm_monitor.cc:                ittWriteWrite.sample(curTick() - timeOfLastWrite);
+comm_monitor.cc:            // Sample value of req-to-req inter transaction time
+comm_monitor.cc:                ittReqReq.sample(curTick() - timeOfLastReq);
+comm_monitor.cc:            --outstandingReadReqs;
+comm_monitor.cc:            --outstandingWriteReqs;
+comm_monitor.cc:    const bool expects_response(pkt->needsResponse() &&
+comm_monitor.cc:                                !pkt->cacheResponding());
+comm_monitor.cc:    ppPktReq->notify(req_pkt_info);
+comm_monitor.cc:    assert(pkt->isResponse() || !expects_response);
+comm_monitor.cc:    ppPktResp->notify(resp_pkt_info);
+comm_monitor.cc:    assert(pkt->isRequest());
+comm_monitor.cc:    const bool expects_response(pkt->needsResponse() &&
+comm_monitor.cc:                                !pkt->cacheResponding());
+comm_monitor.cc:        pkt->pushSenderState(new CommMonitorSenderState(curTick()));
+comm_monitor.cc:        delete pkt->popSenderState();
+comm_monitor.cc:        ppPktReq->notify(pkt_info);
+comm_monitor.cc:        DPRINTF(CommMonitor, "Forwarded %s request\n", pkt->isRead() ? "read" :
+comm_monitor.cc:                pkt->isWrite() ? "write" : "non read/write");
+comm_monitor.cc:    assert(pkt->isResponse());
+comm_monitor.cc:        dynamic_cast<CommMonitorSenderState*>(pkt->senderState);
+comm_monitor.cc:        pkt->senderState = received_state->predecessor;
+comm_monitor.cc:            latency = curTick() - received_state->transmitTime;
+comm_monitor.cc:            pkt->senderState = received_state;
+comm_monitor.cc:        ppPktResp->notify(pkt_info);
+comm_monitor.cc:        DPRINTF(CommMonitor, "Received %s response\n", pkt->isRead() ? "read" :
+comm_monitor.cc:                pkt->isWrite() ?  "write" : "non read/write");
+comm_monitor.cc:    // get the address ranges of the connected CPU-side port
+comm_monitor.hh: * Copyright (c) 2012-2013, 2015, 2018-2019 ARM Limited
+comm_monitor.hh: * (read-read, write-write, read/write-read/write). Furthermore it allows
+comm_monitor.hh:         * calculate round-trip latency.
+comm_monitor.hh:     * send function of the CPU-side port is called. Besides this, these
+comm_monitor.hh:     * This is the CPU-side port of the communication monitor. All recv
+comm_monitor.hh:        /** Histogram of read request-to-response latencies */
+comm_monitor.hh:        /** Histogram of write request-to-response latencies */
+drampower.cc:    archSpec.burstLength = p->burst_length;
+drampower.cc:    archSpec.nbrOfBanks = p->banks_per_rank;
+drampower.cc:    archSpec.dataRate = p->beats_per_clock;
+drampower.cc:    archSpec.width = p->device_bus_width;
+drampower.cc:    archSpec.nbrOfBankGroups = p->bank_groups_per_rank;
+drampower.cc:    archSpec.dll = p->dll;
+drampower.cc:    timingSpec.RC = divCeil((p->tRAS + p->tRP), p->tCK);
+drampower.cc:    timingSpec.RCD = divCeil(p->tRCD, p->tCK);
+drampower.cc:    timingSpec.RL = divCeil(p->tCL, p->tCK);
+drampower.cc:    timingSpec.RP = divCeil(p->tRP, p->tCK);
+drampower.cc:    timingSpec.RFC = divCeil(p->tRFC, p->tCK);
+drampower.cc:    timingSpec.RAS = divCeil(p->tRAS, p->tCK);
+drampower.cc:    // Write latency is read latency - 1 cycle
+drampower.cc:    timingSpec.WL = timingSpec.RL - 1;
+drampower.cc:    timingSpec.RTP = divCeil(p->tRTP, p->tCK);
+drampower.cc:    timingSpec.WR = divCeil(p->tWR, p->tCK);
+drampower.cc:    timingSpec.XP = divCeil(p->tXP, p->tCK);
+drampower.cc:    timingSpec.XPDLL = divCeil(p->tXPDLL, p->tCK);
+drampower.cc:    timingSpec.XS = divCeil(p->tXS, p->tCK);
+drampower.cc:    timingSpec.XSDLL = divCeil(p->tXSDLL, p->tCK);
+drampower.cc:    timingSpec.clkPeriod = (p->tCK / (double)(SimClock::Int::ns));
+drampower.cc:    powerSpec.idd0 = p->IDD0 * 1000;
+drampower.cc:    powerSpec.idd02 = p->IDD02 * 1000;
+drampower.cc:    powerSpec.idd2p0 = p->IDD2P0 * 1000;
+drampower.cc:    powerSpec.idd2p02 = p->IDD2P02 * 1000;
+drampower.cc:    powerSpec.idd2p1 = p->IDD2P1 * 1000;
+drampower.cc:    powerSpec.idd2p12 = p->IDD2P12 * 1000;
+drampower.cc:    powerSpec.idd2n = p->IDD2N * 1000;
+drampower.cc:    powerSpec.idd2n2 = p->IDD2N2 * 1000;
+drampower.cc:    powerSpec.idd3p0 = p->IDD3P0 * 1000;
+drampower.cc:    powerSpec.idd3p02 = p->IDD3P02 * 1000;
+drampower.cc:    powerSpec.idd3p1 = p->IDD3P1 * 1000;
+drampower.cc:    powerSpec.idd3p12 = p->IDD3P12 * 1000;
+drampower.cc:    powerSpec.idd3n = p->IDD3N * 1000;
+drampower.cc:    powerSpec.idd3n2 = p->IDD3N2 * 1000;
+drampower.cc:    powerSpec.idd4r = p->IDD4R * 1000;
+drampower.cc:    powerSpec.idd4r2 = p->IDD4R2 * 1000;
+drampower.cc:    powerSpec.idd4w = p->IDD4W * 1000;
+drampower.cc:    powerSpec.idd4w2 = p->IDD4W2 * 1000;
+drampower.cc:    powerSpec.idd5 = p->IDD5 * 1000;
+drampower.cc:    powerSpec.idd52 = p->IDD52 * 1000;
+drampower.cc:    powerSpec.idd6 = p->IDD6 * 1000;
+drampower.cc:    powerSpec.idd62 = p->IDD62 * 1000;
+drampower.cc:    powerSpec.vdd = p->VDD;
+drampower.cc:    powerSpec.vdd2 = p->VDD2;
+drampower.cc:    return p->VDD2 == 0 ? false : true;
+drampower.cc:    uint32_t burst_cycles = divCeil(p->tBURST_MAX, p->tCK);
+drampower.cc:    uint8_t data_rate = p->burst_length / burst_cycles;
+dramsim2.cc:    wrapper(p->deviceConfigFile, p->systemConfigFile, p->filePath,
+dramsim2.cc:            p->traceFile, p->range.size() / 1024 / 1024, p->enableDebug),
+dramsim2.cc:    if (system()->cacheLineSize() != wrapper.burstSize())
+dramsim2.cc:              wrapper.burstSize(), system()->cacheLineSize());
+dramsim2.cc:    return pkt->cacheResponding() ? 0 : 50000;
+dramsim2.cc:    pkt->pushLabel(name());
+dramsim2.cc:        pkt->trySatisfyFunctional(*i);
+dramsim2.cc:    pkt->popLabel();
+dramsim2.cc:    if (pkt->cacheResponding()) {
+dramsim2.cc:    if (pkt->isRead()) {
+dramsim2.cc:            outstandingReads[pkt->getAddr()].push(pkt);
+dramsim2.cc:    } else if (pkt->isWrite()) {
+dramsim2.cc:            outstandingWrites[pkt->getAddr()].push(pkt);
+dramsim2.cc:        DPRINTF(DRAMSim2, "Enqueueing address %lld\n", pkt->getAddr());
+dramsim2.cc:        wrapper.enqueue(pkt->isWrite(), pkt->getAddr());
+dramsim2.cc:    DPRINTF(DRAMSim2, "Access for address %lld\n", pkt->getAddr());
+dramsim2.cc:    bool needsResponse = pkt->needsResponse();
+dramsim2.cc:        assert(pkt->isResponse());
+dramsim2.cc:        Tick time = curTick() + pkt->headerDelay + pkt->payloadDelay;
+dramsim2.cc:        pkt->headerDelay = pkt->payloadDelay = 0;
+dramsim2.cc:                pkt->getAddr());
+dramsim2.cc:    assert(cycle == divCeil(curTick() - startTick,
+dramsim2.cc:    PacketPtr pkt = p->second.front();
+dramsim2.cc:    p->second.pop();
+dramsim2.cc:    if (p->second.empty())
+dramsim2.cc:    --nbrOutstandingReads;
+dramsim2.cc:    assert(cycle == divCeil(curTick() - startTick,
+dramsim2.cc:    p->second.pop();
+dramsim2.cc:    if (p->second.empty())
+dramsim2.cc:    --nbrOutstandingWrites;
+dramsim2_wrapper.cc: * When building the debug binary, we need to undo the command-line
+dramsim2_wrapper.cc:    dramsim->setCPUClockSpeed(0);
+dramsim2_wrapper.cc:    dramsim->printStats(true);
+dramsim2_wrapper.cc:    dramsim->RegisterCallbacks(read_callback, write_callback, NULL);
+dramsim2_wrapper.cc:    return dramsim->willAcceptTransaction();
+dramsim2_wrapper.cc:    bool success M5_VAR_USED = dramsim->addTransaction(is_write, addr);
+dramsim2_wrapper.cc:    dramsim->update();
+dramsim2_wrapper.hh:     * Create an instance of the DRAMSim2 multi-channel memory
+dramsim2_wrapper.hh:     * @param working_dir Path pre-pended to config files
+dramsim3.cc:    wrapper(p->configFile, p->filePath, read_cb, write_cb),
+dramsim3.cc:    if (system()->cacheLineSize() != wrapper.burstSize())
+dramsim3.cc:              wrapper.burstSize(), system()->cacheLineSize());
+dramsim3.cc:    if (system()->isTimingMode()) {
+dramsim3.cc:    return pkt->cacheResponding() ? 0 : 50000;
+dramsim3.cc:    pkt->pushLabel(name());
+dramsim3.cc:        pkt->trySatisfyFunctional(*i);
+dramsim3.cc:    pkt->popLabel();
+dramsim3.cc:    if (pkt->cacheResponding()) {
+dramsim3.cc:    if (pkt->isRead()) {
+dramsim3.cc:            outstandingReads[pkt->getAddr()].push(pkt);
+dramsim3.cc:    } else if (pkt->isWrite()) {
+dramsim3.cc:            outstandingWrites[pkt->getAddr()].push(pkt);
+dramsim3.cc:        assert(wrapper.canAccept(pkt->getAddr(), pkt->isWrite()));
+dramsim3.cc:        DPRINTF(DRAMsim3, "Enqueueing address %lld\n", pkt->getAddr());
+dramsim3.cc:        wrapper.enqueue(pkt->getAddr(), pkt->isWrite());
+dramsim3.cc:    DPRINTF(DRAMsim3, "Access for address %lld\n", pkt->getAddr());
+dramsim3.cc:    bool needsResponse = pkt->needsResponse();
+dramsim3.cc:        assert(pkt->isResponse());
+dramsim3.cc:        Tick time = curTick() + pkt->headerDelay + pkt->payloadDelay;
+dramsim3.cc:        pkt->headerDelay = pkt->payloadDelay = 0;
+dramsim3.cc:                pkt->getAddr());
+dramsim3.cc:    PacketPtr pkt = p->second.front();
+dramsim3.cc:    p->second.pop();
+dramsim3.cc:    if (p->second.empty())
+dramsim3.cc:    --nbrOutstandingReads;
+dramsim3.cc:    p->second.pop();
+dramsim3.cc:    if (p->second.empty())
+dramsim3.cc:    --nbrOutstandingWrites;
+dramsim3_wrapper.cc: * When building the debug binary, we need to undo the command-line
+dramsim3_wrapper.cc:    _clockPeriod = dramsim->GetTCK();
+dramsim3_wrapper.cc:    _queueSize = dramsim->GetQueueSize();
+dramsim3_wrapper.cc:   unsigned int dataBusBits = dramsim->GetBusBits();
+dramsim3_wrapper.cc:   unsigned int burstLength = dramsim->GetBurstLength();
+dramsim3_wrapper.cc:    dramsim->PrintStats();
+dramsim3_wrapper.cc:    dramsim->ResetStats();
+dramsim3_wrapper.cc:    dramsim->RegisterCallbacks(read_complete, write_complete);
+dramsim3_wrapper.cc:    return dramsim->WillAcceptTransaction(addr, is_write);
+dramsim3_wrapper.cc:    bool success M5_VAR_USED = dramsim->AddTransaction(addr, is_write);
+dramsim3_wrapper.cc:    dramsim->ClockTick();
+dramsim3_wrapper.hh:     * Create an instance of the DRAMsim3 multi-channel memory
+dramsim3_wrapper.hh:     * @param working_dir Path pre-pended to config files
+external_master.cc: * Copyright (c) 2012-2014 ARM Limited
+external_master.cc:    portName(params->name + ".port"),
+external_master.cc:    portType(params->port_type),
+external_master.cc:    portData(params->port_data),
+external_master.cc:    id(params->system->getRequestorId(this))
+external_master.cc:            externalPort = portHandlers[portType]->getExternalPort(portName,
+external_master.cc:    } else if (!externalPort->isConnected()) {
+external_master.hh: * Copyright (c) 2012-2014 ARM Limited
+external_master.hh: * bridge object in the external system to accomodate the port-to-port
+external_master.hh:    /** Handler-specific port configuration */
+external_slave.cc: * Copyright (c) 2012-2014 ARM Limited
+external_slave.cc:        unsigned int M5_VAR_USED size = packet->getSize();
+external_slave.cc:            " data: ...\n", packet->getAddr(), size);
+external_slave.cc:        DDUMP(ExternalPort, packet->getConstPtr<uint8_t>(), size);
+external_slave.cc:    responsePacket->makeResponse();
+external_slave.cc:    responsePacket->headerDelay = 0;
+external_slave.cc:    responsePacket->payloadDelay = 0;
+external_slave.cc:    portName(params->name + ".port"),
+external_slave.cc:    portType(params->port_type),
+external_slave.cc:    portData(params->port_data),
+external_slave.cc:    addrRanges(params->addr_ranges.begin(), params->addr_ranges.end())
+external_slave.cc:            externalPort = portHandlers[portType]->getExternalPort(portName,
+external_slave.cc:    } else if (!externalPort->isConnected()) {
+external_slave.cc:        externalPort->sendRangeChange();
+external_slave.hh: * Copyright (c) 2012-2014 ARM Limited
+external_slave.hh: * bridge object in the external system to accomodate the port-to-port
+external_slave.hh:    /** Handler-specific port configuration */
+hmc_controller.cc:    numMemSidePorts(p->port_mem_side_ports_connection_count),
+hmc_controller.cc:    assert(p->port_cpu_side_ports_connection_count == 1);
+hmc_controller.cc:    // we should never see express snoops on a non-coherent component
+hmc_controller.cc:    assert(!pkt->isExpressSnoop());
+hmc_controller.cc:    if (!reqLayers[mem_side_port_id]->tryTiming(src_port)) {
+hmc_controller.cc:                src_port->name(), pkt->cmdString(), pkt->getAddr());
+hmc_controller.cc:            src_port->name(), pkt->cmdString(), pkt->getAddr());
+hmc_controller.cc:    unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+hmc_controller.cc:    unsigned int pkt_cmd = pkt->cmdToIndex();
+hmc_controller.cc:    Tick old_header_delay = pkt->headerDelay;
+hmc_controller.cc:    Tick packetFinishTime = clockEdge(Cycles(1)) + pkt->payloadDelay;
+hmc_controller.cc:    const bool expect_response = pkt->needsResponse() &&
+hmc_controller.cc:        !pkt->cacheResponding();
+hmc_controller.cc:    bool success = memSidePorts[mem_side_port_id]->sendTimingReq(pkt);
+hmc_controller.cc:                src_port->name(), pkt->cmdString(), pkt->getAddr());
+hmc_controller.cc:        pkt->headerDelay = old_header_delay;
+hmc_controller.cc:        reqLayers[mem_side_port_id]->failedTiming(src_port,
+hmc_controller.cc:        assert(routeTo.find(pkt->req) == routeTo.end());
+hmc_controller.cc:        routeTo[pkt->req] = cpu_side_port_id;
+hmc_controller.cc:    reqLayers[mem_side_port_id]->succeededTiming(packetFinishTime);
+hmc_controller.hh: * Copyright (c) 2011-2013 ARM Limited
+hmc_controller.hh: * [1] http://www.hybridmemorycube.org/specification-download/
+hmc_controller.hh: * [2] Low-Power Hybrid Memory Cubes With Link Power Manageme and Two-Level
+hmc_controller.hh: * [3] The Open-Silicon HMC Controller IP
+hmc_controller.hh: * http://www.open-silicon.com/open-silicon-ips/hmc/
+hmc_controller.hh:    //  Round-robin counter
+hmc_controller.hh:    // The round-robin counter
+htm.cc:    return it == cause_to_str.end() ? "Unrecognized Failure" : it->second;
+htm.cc:    return it == rc_to_str.end() ? "Unrecognized Failure" : it->second;
+htm.hh:    INVALID = -1,
+mem_checker.cc:    assert(it->second.complete == TICK_FUTURE);
+mem_checker.cc:    it->second.complete = _complete;
+mem_checker.cc:    if (--numIncomplete == 0) {
+mem_checker.cc:    if (--numIncomplete == 0 && !writes.empty()) {
+mem_checker.cc:        for (const auto& addr_write : cluster->writes) {
+mem_checker.cc:            // Record possible, but non-matching data for debugging
+mem_checker.cc:                // -> continue checking the overlapping write cluster
+mem_checker.cc:            // write-cluster -> set the exit condition for the outer loop
+mem_checker.cc:            // Matched data from last observation -> all good
+mem_checker.cc:        // Record non-matching, but possible value
+mem_checker.cc:            assert(writeClusters.begin()->start < complete &&
+mem_checker.cc:                   writeClusters.rbegin()->complete > start);
+mem_checker.cc:        // We have not found any possible (non-matching data). Can happen in
+mem_checker.cc:    Tick start = it->second.start;
+mem_checker.cc:    getIncompleteWriteCluster()->startWrite(serial, start, data);
+mem_checker.cc:    getIncompleteWriteCluster()->completeWrite(serial, complete);
+mem_checker.cc:    getIncompleteWriteCluster()->abortWrite(serial);
+mem_checker.cc:                        outstandingReads.begin()->second.start;
+mem_checker.cc:        if (!tracker->completeRead(serial, complete, data[i])) {
+mem_checker.cc:            for (size_t j = 0; j < tracker->lastExpectedData().size(); ++j) {
+mem_checker.cc:                             tracker->lastExpectedData()[j],
+mem_checker.cc:                             (j == tracker->lastExpectedData().size() - 1)
+mem_checker.hh: * of transactions of memory operations may be overlapping -- we assume that if
+mem_checker.hh: * on the particular location, and we do not consider the effect of multi-byte
+mem_checker.hh: * reads or writes. This precludes us from discovering single-copy atomicity
+mem_checker.hh:         * Map of Serial --> Transaction of all writes in cluster; contains
+mem_checker.hh:         * all, in-flight or already completed.
+mem_checker.hh:     * The ByteTracker keeps track of transactions for the *same byte* -- all
+mem_checker.hh:            : Named((parent != NULL ? parent->name() : "") +
+mem_checker.hh:            assert(!l->empty());
+mem_checker.hh:            auto it = l->end();
+mem_checker.hh:            for (--it; it != l->begin() && it->complete >= before; --it);
+mem_checker.hh:         * Maintains a map of Serial -> Transaction for all outstanding reads.
+mem_checker.hh:     * in-flight, this will cause a warning to be issued if these are completed
+mem_checker.hh:     * Resets an address-range. This may be useful in case other unmonitored
+mem_checker.hh:        return &it->second;
+mem_checker.hh:     * Maintain a map of address --> byte-tracker. Per-byte entries are
+mem_checker.hh:     * the number of nodes in the system, those may affect the size of per-byte
+mem_checker.hh:        getByteTracker(addr + i)->startRead(nextSerial, start);
+mem_checker.hh:        getByteTracker(addr + i)->startWrite(nextSerial, start, data[i]);
+mem_checker.hh:        getByteTracker(addr + i)->completeWrite(serial, complete);
+mem_checker.hh:        getByteTracker(addr + i)->abortWrite(serial);
+mem_checker_monitor.cc: * Copyright (c) 2012-2014 ARM Limited
+mem_checker_monitor.cc:      memSidePort(name() + "-memSidePort", *this),
+mem_checker_monitor.cc:      cpuSidePort(name() + "-cpuSidePort", *this),
+mem_checker_monitor.cc:      warnOnly(params->warn_only),
+mem_checker_monitor.cc:      memchecker(params->memchecker)
+mem_checker_monitor.cc:    Addr addr = pkt->getAddr();
+mem_checker_monitor.cc:    unsigned size = pkt->getSize();
+mem_checker_monitor.cc:    // Conservatively reset this address-range. Alternatively we could try to
+mem_checker_monitor.cc:    memchecker->reset(addr, size);
+mem_checker_monitor.cc:    Addr addr = pkt->getAddr();
+mem_checker_monitor.cc:    unsigned size = pkt->getSize();
+mem_checker_monitor.cc:    memchecker->reset(addr, size);
+mem_checker_monitor.cc:    assert(pkt->isRequest());
+mem_checker_monitor.cc:    bool is_read = pkt->isRead() && !pkt->req->isPrefetch();
+mem_checker_monitor.cc:    bool is_write = pkt->isWrite();
+mem_checker_monitor.cc:    unsigned size = pkt->getSize();
+mem_checker_monitor.cc:    Addr addr = pkt->getAddr();
+mem_checker_monitor.cc:    bool expects_response = pkt->needsResponse() && !pkt->cacheResponding();
+mem_checker_monitor.cc:        pkt->writeData(pkt_data.get());
+mem_checker_monitor.cc:        pkt->pushSenderState(state);
+mem_checker_monitor.cc:        delete pkt->popSenderState();
+mem_checker_monitor.cc:            MemChecker::Serial serial = memchecker->startRead(curTick(),
+mem_checker_monitor.cc:            // At the time where we push the sender-state, we do not yet know
+mem_checker_monitor.cc:            // cannot call startRead at the time we push the sender-state, as
+mem_checker_monitor.cc:            // serial of the newly constructed sender-state. This is legal, as
+mem_checker_monitor.cc:            // deletion of our sender-state.
+mem_checker_monitor.cc:            state->serial = serial;
+mem_checker_monitor.cc:            MemChecker::Serial serial = memchecker->startWrite(curTick(),
+mem_checker_monitor.cc:            state->serial = serial;
+mem_checker_monitor.cc:    assert(pkt->isResponse());
+mem_checker_monitor.cc:    bool is_read = pkt->isRead() && !pkt->req->isPrefetch();
+mem_checker_monitor.cc:    bool is_write = pkt->isWrite();
+mem_checker_monitor.cc:    bool is_failed_LLSC = pkt->isLLSC() && pkt->req->getExtraData() == 0;
+mem_checker_monitor.cc:    unsigned size = pkt->getSize();
+mem_checker_monitor.cc:    Addr addr = pkt->getAddr();
+mem_checker_monitor.cc:        pkt->writeData(pkt_data.get());
+mem_checker_monitor.cc:            dynamic_cast<MemCheckerMonitorSenderState*>(pkt->senderState);
+mem_checker_monitor.cc:        pkt->senderState = received_state->predecessor;
+mem_checker_monitor.cc:                    received_state->serial, addr, size);
+mem_checker_monitor.cc:            bool result = memchecker->completeRead(received_state->serial,
+mem_checker_monitor.cc:                     memchecker->getErrorMessage().c_str());
+mem_checker_monitor.cc:                    received_state->serial, addr, size);
+mem_checker_monitor.cc:                memchecker->abortWrite(received_state->serial,
+mem_checker_monitor.cc:                memchecker->completeWrite(received_state->serial,
+mem_checker_monitor.cc:        pkt->senderState = received_state;
+mem_checker_monitor.hh: * Copyright (c) 2012-2014 ARM Limited
+mem_ctrl.cc: * Copyright (c) 2010-2020 ARM Limited
+mem_ctrl.cc: * Copyright (c) 2013 Amin Farmahini-Farahani
+mem_ctrl.cc:    dram(p->dram), nvm(p->nvm),
+mem_ctrl.cc:    readBufferSize((dram ? dram->readBufferSize : 0) +
+mem_ctrl.cc:                   (nvm ? nvm->readBufferSize : 0)),
+mem_ctrl.cc:    writeBufferSize((dram ? dram->writeBufferSize : 0) +
+mem_ctrl.cc:                    (nvm ? nvm->writeBufferSize : 0)),
+mem_ctrl.cc:    writeHighThreshold(writeBufferSize * p->write_high_thresh_perc / 100.0),
+mem_ctrl.cc:    writeLowThreshold(writeBufferSize * p->write_low_thresh_perc / 100.0),
+mem_ctrl.cc:    minWritesPerSwitch(p->min_writes_per_switch),
+mem_ctrl.cc:    memSchedPolicy(p->mem_sched_policy),
+mem_ctrl.cc:    frontendLatency(p->static_frontend_latency),
+mem_ctrl.cc:    backendLatency(p->static_backend_latency),
+mem_ctrl.cc:    commandWindow(p->command_window),
+mem_ctrl.cc:    rh_defense_enable(p->rh_defense),
+mem_ctrl.cc:    rh_detector(p->rh_detector),
+mem_ctrl.cc:    rh_mitigation(p->rh_mitigation),
+mem_ctrl.cc:    rh_threshold(p->rh_threshold),
+mem_ctrl.cc:    rh_actual_threshold(p->rh_actual_threshold),
+mem_ctrl.cc:    rh_mg_entries(p->rh_mg_entries),
+mem_ctrl.cc:    rh_rrs_tuples(p->rh_rrs_tuples),
+mem_ctrl.cc:    rh_rrs_swap_delay(p->rh_rrs_swap_delay),
+mem_ctrl.cc:    rh_rit_acc_delay(p->rh_rit_acc_delay),
+mem_ctrl.cc:    readQueue.resize(p->qos_priorities);
+mem_ctrl.cc:    writeQueue.resize(p->qos_priorities);
+mem_ctrl.cc:        dram->setCtrl(this, commandWindow);
+mem_ctrl.cc:        nvm->setCtrl(this, commandWindow);
+mem_ctrl.cc:    if (p->write_low_thresh_perc >= p->write_high_thresh_perc)
+mem_ctrl.cc:              "high threshold %d\n", p->write_low_thresh_perc,
+mem_ctrl.cc:              p->write_high_thresh_perc);
+mem_ctrl.cc:            rh_defense = new Randomized_Row_Swap(rh_rrs_tuples, dram->getRowsPerBank(), 
+mem_ctrl.cc:                                rh_threshold, dram->getBanksPerRank(), dram->getRanksPerChannel(), 1);
+mem_ctrl.cc:            rh_defense->swapDelay = rh_rrs_swap_delay;
+mem_ctrl.cc:            rh_defense->virtualize_RIT = false;
+mem_ctrl.cc:            rh_defense->SRAM_RIT_accDelay = rh_rit_acc_delay;
+mem_ctrl.cc:            rh_defense->detector = new Misra_Gries(rh_mg_entries, rh_threshold, dram->getRowsPerBank(),
+mem_ctrl.cc:                                    dram->getBanksPerRank(), dram->getRanksPerChannel(), 1);
+mem_ctrl.cc:            rh_defense = new Row_Quarantine(p->rh_rq_qr_size, dram->getRowsPerBank(), rh_threshold, 
+mem_ctrl.cc:                                dram->getBanksPerRank(), dram->getRanksPerChannel(), 1);
+mem_ctrl.cc:            rh_defense->filter = NULL;
+mem_ctrl.cc:            rh_defense->cache = new Functional_Cache(p->rh_rq_cache_sets, 16); 
+mem_ctrl.cc:            rh_defense->cache->partial_lookup_factor = p->rh_rq_rows_per_btv_bit;
+mem_ctrl.cc:            rh_defense->moveDelay = rh_rrs_swap_delay/2;
+mem_ctrl.cc:            rh_defense->accDelay = 45000; // 45ns
+mem_ctrl.cc:            rh_defense->rows_per_btv_bit = p->rh_rq_rows_per_btv_bit; 
+mem_ctrl.cc:            rh_defense->drain_cache_miss_threshold = p->rh_rq_drain_threshold;
+mem_ctrl.cc:            int cache_delay_index = p->rh_rq_cache_sets/256;
+mem_ctrl.cc:            rh_defense->SRAM_Cache_accDelay = delay_ps_cacti[cache_delay_index];
+mem_ctrl.cc:            int cbf_delay_index = log2(32/p->rh_rq_rows_per_btv_bit);
+mem_ctrl.cc:            rh_defense->SRAM_CBF_accDelay = delay_ps_cacti[cbf_delay_index];
+mem_ctrl.cc:            rh_defense->virtualize_RIT = p->rh_rq_virtualize_rit;
+mem_ctrl.cc:            if (rh_defense->virtualize_RIT == false) {
+mem_ctrl.cc:                rh_defense->SRAM_RQT_accDelay = rh_rit_acc_delay; 
+mem_ctrl.cc:                rh_defense->SRAM_QRT_accDelay = 0; // off-the critical path
+mem_ctrl.cc:                rh_defense->SRAM_Cache_accDelay = 0;
+mem_ctrl.cc:                rh_defense->SRAM_CBF_accDelay = 0;
+mem_ctrl.cc:                rh_detector.c_str(), rh_mitigation.c_str(), rh_threshold, rh_defense->rows_per_btv_bit, 
+mem_ctrl.cc:                rh_mg_entries, rh_defense->virtualize_RIT, p->rh_rq_cache_sets, p->rh_rq_qr_size, 
+mem_ctrl.cc:                p->rh_rq_drain_threshold, rh_defense->SRAM_CBF_accDelay, rh_defense->SRAM_Cache_accDelay);
+mem_ctrl.cc:            rh_defense->detector = new Misra_Gries(rh_mg_entries, rh_threshold, dram->getRowsPerBank(),
+mem_ctrl.cc:                                    dram->getBanksPerRank(), dram->getRanksPerChannel(), 1);
+mem_ctrl.cc:            uint32_t black_list_threshold = (rh_threshold * p->rh_bh_black_list_threshold / 100.0);
+mem_ctrl.cc:            rh_defense = new BlockHammer(rh_threshold, dram->getRowsPerBank(), black_list_threshold, 
+mem_ctrl.cc:                                            dram->getBanksPerRank(), dram->getRanksPerChannel(), 1);
+mem_ctrl.cc:            rh_defense->filter = NULL;
+mem_ctrl.cc:            rh_defense->cache = NULL;
+mem_ctrl.cc:            rh_defense->SRAM_CBF_accDelay = rh_rit_acc_delay;
+mem_ctrl.cc:                rh_defense->SRAM_CBF_accDelay);
+mem_ctrl.cc:          rh_defense = new RFM(rh_actual_threshold, bus_delay, p->rh_rfm_maxacts_per_trefi / p->rh_rfm_per_trefi, 
+mem_ctrl.cc:                               45000, p->rh_rfm_blast_radius, 
+mem_ctrl.cc:                               dram->getRowsPerBank(), dram->getBanksPerRank(), dram->getRanksPerChannel(),1);
+mem_ctrl.cc:                 rh_mitigation.c_str(), ((RFM*)rh_defense)->bus_delay,  p->rh_rfm_per_trefi,  
+mem_ctrl.cc:                 ((RFM*)rh_defense)->rfm_act_threshold, ((RFM*)rh_defense)->blast_radius, 
+mem_ctrl.cc:                 ((RFM*)rh_defense)->delay_ticks_tRC);
+mem_ctrl.cc:            dram->getRowsPerBank(), dram->getBanksPerRank(), dram->getRanksPerChannel());
+mem_ctrl.cc:    isTimingMode = system()->isTimingMode();
+mem_ctrl.cc:        nextBurstAt = curTick() + (dram ? dram->commandOffset() :
+mem_ctrl.cc:                                          nvm->commandOffset());
+mem_ctrl.cc:                     pkt->cmdString(), pkt->getAddr());
+mem_ctrl.cc:    panic_if(pkt->cacheResponding(), "Should not see packets where cache "
+mem_ctrl.cc:    if (dram && dram->getAddrRange().contains(pkt->getAddr())) {
+mem_ctrl.cc:        dram->access(pkt);
+mem_ctrl.cc:        if (pkt->hasData()) {
+mem_ctrl.cc:            latency = dram->accessLatency();
+mem_ctrl.cc:    } else if (nvm && nvm->getAddrRange().contains(pkt->getAddr())) {
+mem_ctrl.cc:        nvm->access(pkt);
+mem_ctrl.cc:        if (pkt->hasData()) {
+mem_ctrl.cc:            latency = nvm->accessLatency();
+mem_ctrl.cc:              pkt->print());
+mem_ctrl.cc:    assert(!pkt->isWrite());
+mem_ctrl.cc:    const Addr base_addr = pkt->getAddr();
+mem_ctrl.cc:    uint32_t burst_size = is_dram ? dram->bytesPerBurst() :
+mem_ctrl.cc:                                    nvm->bytesPerBurst();
+mem_ctrl.cc:        unsigned size = std::min((addr | (burst_size - 1)) + 1,
+mem_ctrl.cc:                        base_addr + pkt->getSize()) - addr;
+mem_ctrl.cc:        stats.requestorReadAccesses[pkt->requestorId()]++;
+mem_ctrl.cc:                    if (p->addr <= addr &&
+mem_ctrl.cc:                       ((addr + size) <= (p->addr + p->size))) {
+mem_ctrl.cc:                        "memory requests\n", pkt->getAddr(), pkt_count);
+mem_ctrl.cc:                mem_pkt = dram->decodePacket(pkt, addr, size, true, true);
+mem_ctrl.cc:                      rh_decision = rh_defense->access(curTick(), mem_pkt->row, mem_pkt->bank, mem_pkt->rank, 0);
+mem_ctrl.cc:                      rh_decision = rh_defense->access(curTick(), mem_pkt->addr, 0, 0, 0);
+mem_ctrl.cc:                    mem_pkt->rh_injectDelay = true;
+mem_ctrl.cc:                    mem_pkt->rh_bubbleSize = rh_decision.delay;
+mem_ctrl.cc:                    mem_pkt->rh_SRAMDelay = rh_decision.SRAM_delay + rh_decision.MC_delay;
+mem_ctrl.cc:                                mem_pkt->row, mem_pkt->bank, mem_pkt->rank, mem_pkt->rh_bubbleSize, mem_pkt->rh_SRAMDelay);
+mem_ctrl.cc:                dram->setupRank(mem_pkt->rank, true);
+mem_ctrl.cc:                mem_pkt = nvm->decodePacket(pkt, addr, size, true, false);
+mem_ctrl.cc:                // Increment count to trigger issue of non-deterministic read
+mem_ctrl.cc:                nvm->setupRank(mem_pkt->rank, true);
+mem_ctrl.cc:                mem_pkt->readyTime = MaxTick;
+mem_ctrl.cc:            mem_pkt->burstHelper = burst_helper;
+mem_ctrl.cc:            readQueue[mem_pkt->qosValue()].push_back(mem_pkt);
+mem_ctrl.cc:            logRequest(MemCtrl::READ, pkt->requestorId(), pkt->qosValue(),
+mem_ctrl.cc:                       mem_pkt->addr, 1);
+mem_ctrl.cc:        addr = (addr | (burst_size - 1)) + 1;
+mem_ctrl.cc:        burst_helper->burstsServiced = pktsServicedByWrQ;
+mem_ctrl.cc:    assert(pkt->isWrite());
+mem_ctrl.cc:    const Addr base_addr = pkt->getAddr();
+mem_ctrl.cc:    uint32_t burst_size = is_dram ? dram->bytesPerBurst() :
+mem_ctrl.cc:                                    nvm->bytesPerBurst();
+mem_ctrl.cc:        unsigned size = std::min((addr | (burst_size - 1)) + 1,
+mem_ctrl.cc:                        base_addr + pkt->getSize()) - addr;
+mem_ctrl.cc:        stats.requestorWriteAccesses[pkt->requestorId()]++;
+mem_ctrl.cc:                mem_pkt = dram->decodePacket(pkt, addr, size, false, true);
+mem_ctrl.cc:                        rh_decision = rh_defense->access(curTick(), mem_pkt->row, mem_pkt->bank, mem_pkt->rank, 0);
+mem_ctrl.cc:                        rh_decision = rh_defense->access(curTick(), mem_pkt->addr, 0, 0, 0);
+mem_ctrl.cc:                    mem_pkt->rh_injectDelay = true;
+mem_ctrl.cc:                    mem_pkt->rh_bubbleSize = rh_decision.delay;
+mem_ctrl.cc:                    mem_pkt->rh_SRAMDelay = rh_decision.SRAM_delay + rh_decision.MC_delay;
+mem_ctrl.cc:                                mem_pkt->row, mem_pkt->bank, mem_pkt->rank, mem_pkt->rh_bubbleSize, mem_pkt->rh_SRAMDelay);
+mem_ctrl.cc:                dram->setupRank(mem_pkt->rank, false);
+mem_ctrl.cc:                mem_pkt = nvm->decodePacket(pkt, addr, size, false, false);
+mem_ctrl.cc:                nvm->setupRank(mem_pkt->rank, false);
+mem_ctrl.cc:            writeQueue[mem_pkt->qosValue()].push_back(mem_pkt);
+mem_ctrl.cc:            logRequest(MemCtrl::WRITE, pkt->requestorId(), pkt->qosValue(),
+mem_ctrl.cc:                       mem_pkt->addr, 1);
+mem_ctrl.cc:        addr = (addr | (burst_size - 1)) + 1;
+mem_ctrl.cc:            DPRINTF(MemCtrl, "Read %lu\n", packet->addr);
+mem_ctrl.cc:        DPRINTF(MemCtrl, "Response %lu\n", packet->addr);
+mem_ctrl.cc:            DPRINTF(MemCtrl, "Write %lu\n", packet->addr);
+mem_ctrl.cc:            pkt->cmdString(), pkt->getAddr(), pkt->getSize());
+mem_ctrl.cc:    panic_if(pkt->cacheResponding(), "Should not see packets where cache "
+mem_ctrl.cc:    panic_if(!(pkt->isRead() || pkt->isWrite()),
+mem_ctrl.cc:        stats.totGap += curTick() - prevArrival;
+mem_ctrl.cc:    if (dram && dram->getAddrRange().contains(pkt->getAddr())) {
+mem_ctrl.cc:    } else if (nvm && nvm->getAddrRange().contains(pkt->getAddr())) {
+mem_ctrl.cc:              pkt->print());
+mem_ctrl.cc:    unsigned size = pkt->getSize();
+mem_ctrl.cc:    uint32_t burst_size = is_dram ? dram->bytesPerBurst() :
+mem_ctrl.cc:                                    nvm->bytesPerBurst();
+mem_ctrl.cc:    unsigned offset = pkt->getAddr() & (burst_size - 1);
+mem_ctrl.cc:    if (pkt->isWrite()) {
+mem_ctrl.cc:        assert(pkt->isRead());
+mem_ctrl.cc:    if (mem_pkt->isDram()) {
+mem_ctrl.cc:        dram->respondEvent(mem_pkt->rank);
+mem_ctrl.cc:    if (mem_pkt->burstHelper) {
+mem_ctrl.cc:        mem_pkt->burstHelper->burstsServiced++;
+mem_ctrl.cc:        if (mem_pkt->burstHelper->burstsServiced ==
+mem_ctrl.cc:            mem_pkt->burstHelper->burstCount) {
+mem_ctrl.cc:            if (rh_defense_enable && mem_pkt->pkt->isRequest()) {
+mem_ctrl.cc:                accessAndRespond(mem_pkt->pkt, mem_pkt->rh_SRAMDelay +
+mem_ctrl.cc:                accessAndRespond(mem_pkt->pkt, frontendLatency + backendLatency);
+mem_ctrl.cc:            delete mem_pkt->burstHelper;
+mem_ctrl.cc:            mem_pkt->burstHelper = NULL;
+mem_ctrl.cc:        if (rh_defense_enable && mem_pkt->pkt->isRequest()) {
+mem_ctrl.cc:            accessAndRespond(mem_pkt->pkt, mem_pkt->rh_SRAMDelay +
+mem_ctrl.cc:            accessAndRespond(mem_pkt->pkt, frontendLatency + backendLatency);
+mem_ctrl.cc:        assert(respQueue.front()->readyTime >= curTick());
+mem_ctrl.cc:        schedule(respondEvent, respQueue.front()->readyTime);
+mem_ctrl.cc:        } else if (mem_pkt->isDram()) {
+mem_ctrl.cc:            dram->checkRefreshState(mem_pkt->rank);
+mem_ctrl.cc:                 dram->chooseNextFRFCFS(queue, min_col_at);
+mem_ctrl.cc:                 nvm->chooseNextFRFCFS(queue, min_col_at);
+mem_ctrl.cc:                 dram->chooseNextFRFCFS(queue, min_col_at);
+mem_ctrl.cc:                 nvm->chooseNextFRFCFS(queue, min_col_at);
+mem_ctrl.cc:    DPRINTF(MemCtrl, "Responding to Address %lld.. \n",pkt->getAddr());
+mem_ctrl.cc:    bool needsResponse = pkt->needsResponse();
+mem_ctrl.cc:    if (dram && dram->getAddrRange().contains(pkt->getAddr())) {
+mem_ctrl.cc:        dram->access(pkt);
+mem_ctrl.cc:    } else if (nvm && nvm->getAddrRange().contains(pkt->getAddr())) {
+mem_ctrl.cc:        nvm->access(pkt);
+mem_ctrl.cc:              pkt->print());
+mem_ctrl.cc:        assert(pkt->isResponse());
+mem_ctrl.cc:        Tick response_time = curTick() + static_latency + pkt->headerDelay +
+mem_ctrl.cc:                             pkt->payloadDelay;
+mem_ctrl.cc:        pkt->headerDelay = pkt->payloadDelay = 0;
+mem_ctrl.cc:    return (cmd_tick - burst_offset);
+mem_ctrl.cc:    Tick first_cmd_tick = burst_tick - std::min(burst_offset, burst_tick);
+mem_ctrl.cc:             ((burst_tick - first_cmd_tick) > max_multi_cmd_split);
+mem_ctrl.cc:    if (mem_pkt->isDram()) {
+mem_ctrl.cc:        act_info curr_act_info = dram->checkBurstACT(mem_pkt);
+mem_ctrl.cc:            rh_decision = rh_defense->access(curTick(), mem_pkt->row, mem_pkt->bank, mem_pkt->rank, 0);
+mem_ctrl.cc:            rh_decision = rh_defense->access(curTick(), mem_pkt->addr, 0, 0, 0);
+mem_ctrl.cc:          DPRINTF(RH_DEFENSE, "RH Tracker Access to rank: %d, bank: %d, row: %d, ACT: %s\n ",mem_pkt->rank,mem_pkt->bank, mem_pkt->row, curr_act_info.act?"TRUE":"FALSE");
+mem_ctrl.cc:          mem_pkt->rh_injectDelay = rh_decision.mitigate;
+mem_ctrl.cc:          mem_pkt->rh_bubbleSize = rh_decision.delay;
+mem_ctrl.cc:          mem_pkt->rh_SRAMDelay = rh_decision.SRAM_delay + rh_decision.MC_delay;
+mem_ctrl.cc:          mem_pkt->rh_bankDelay = rh_decision.bank_delay;
+mem_ctrl.cc:          mem_pkt->rh_busDelay = rh_decision.bus_delay;
+mem_ctrl.cc:          mem_pkt->rh_defense = \
+mem_ctrl.cc:                    (int) mem_pkt->rh_defense, mem_pkt->row, mem_pkt->bank, mem_pkt->rank, mem_pkt->rh_bubbleSize, mem_pkt->rh_SRAMDelay);
+mem_ctrl.cc:        if (rh_defense_enable && mem_pkt->rh_injectDelay && mem_pkt->rh_bubbleSize > 0) {
+mem_ctrl.cc:                        mem_pkt->rh_bubbleSize, mem_pkt->row, mem_pkt->bank, mem_pkt->rank);
+mem_ctrl.cc:            nextBurstAt += (mem_pkt->rh_bubbleSize >= 7800*1000 ? 7000*1000 : mem_pkt->rh_bubbleSize);
+mem_ctrl.cc:        if (rh_defense_enable && rh_defense->s_num_accesses%100 == 0) {
+mem_ctrl.cc:        std::vector<MemPacketQueue>& queue = selQueue(mem_pkt->isRead());
+mem_ctrl.cc:          dram->doBurstAccess(mem_pkt, nextBurstAt, queue, actinfo);
+mem_ctrl.cc:        //   printf("Access to rank: %d, bank: %d, row: %d, ACT: %s\n ",mem_pkt->rank,mem_pkt->bank, mem_pkt->row, actinfo.act?"TRUE":"FALSE");
+mem_ctrl.cc:            nvm->addRankToRankDelay(cmd_at);
+mem_ctrl.cc:                 nvm->doBurstAccess(mem_pkt, nextBurstAt);
+mem_ctrl.cc:            dram->addRankToRankDelay(cmd_at);
+mem_ctrl.cc:            mem_pkt->addr, mem_pkt->readyTime, nextBurstAt);
+mem_ctrl.cc:    nextReqTime = nextBurstAt - (dram ? dram->commandOffset() :
+mem_ctrl.cc:                                        nvm->commandOffset());
+mem_ctrl.cc:    if (mem_pkt->isRead()) {
+mem_ctrl.cc:        stats.requestorReadTotalLat[mem_pkt->requestorId()] +=
+mem_ctrl.cc:            mem_pkt->readyTime - mem_pkt->entryTime;
+mem_ctrl.cc:        stats.requestorReadBytes[mem_pkt->requestorId()] += mem_pkt->size;
+mem_ctrl.cc:        stats.requestorWriteBytes[mem_pkt->requestorId()] += mem_pkt->size;
+mem_ctrl.cc:        stats.requestorWriteTotalLat[mem_pkt->requestorId()] +=
+mem_ctrl.cc:            mem_pkt->readyTime - mem_pkt->entryTime;
+mem_ctrl.cc:        // select bus state - only done if QoS algorithms are in use
+mem_ctrl.cc:             // select non-deterministic NVM read to issue
+mem_ctrl.cc:             if (nvm->readsWaitingToIssue()) {
+mem_ctrl.cc:                 // select non-deterministic NVM read to issue
+mem_ctrl.cc:                 nvm->chooseRead(*queue);
+mem_ctrl.cc:    // check ranks for refresh/wakeup - uses busStateNext, so done after
+mem_ctrl.cc:    bool dram_busy = dram ? dram->isBusy() : true;
+mem_ctrl.cc:        all_writes_nvm = nvm->numWritesQueued == totalWriteQueueSize;
+mem_ctrl.cc:        nvm_busy = nvm->isBusy(read_queue_empty, all_writes_nvm);
+mem_ctrl.cc:                prio--;
+mem_ctrl.cc:                        prio, queue->size());
+mem_ctrl.cc:                if (to_read != queue->end()) {
+mem_ctrl.cc:                DPRINTF(MemCtrl, "No Reads Found - exiting\n");
+mem_ctrl.cc:            assert(mem_pkt->size <= (mem_pkt->isDram() ?
+mem_ctrl.cc:                                      dram->bytesPerBurst() :
+mem_ctrl.cc:                                      nvm->bytesPerBurst()) );
+mem_ctrl.cc:            assert(mem_pkt->readyTime >= curTick());
+mem_ctrl.cc:            logResponse(MemCtrl::READ, (*to_read)->requestorId(),
+mem_ctrl.cc:                        mem_pkt->qosValue(), mem_pkt->getAddr(), 1,
+mem_ctrl.cc:                        mem_pkt->readyTime - mem_pkt->entryTime);
+mem_ctrl.cc:                schedule(respondEvent, mem_pkt->readyTime);
+mem_ctrl.cc:                assert(respQueue.back()->readyTime <= mem_pkt->readyTime);
+mem_ctrl.cc:               !(nvm && all_writes_nvm && nvm->writeRespQueueFull())) {
+mem_ctrl.cc:            readQueue[mem_pkt->qosValue()].erase(to_read);
+mem_ctrl.cc:            prio--;
+mem_ctrl.cc:                    prio, queue->size());
+mem_ctrl.cc:            if (to_write != queue->end()) {
+mem_ctrl.cc:            DPRINTF(MemCtrl, "No Writes Found - exiting\n");
+mem_ctrl.cc:        assert(mem_pkt->size <= (mem_pkt->isDram() ?
+mem_ctrl.cc:                                  dram->bytesPerBurst() :
+mem_ctrl.cc:                                  nvm->bytesPerBurst()) );
+mem_ctrl.cc:        isInWriteQueue.erase(burstAlign(mem_pkt->addr, mem_pkt->isDram()));
+mem_ctrl.cc:        logResponse(MemCtrl::WRITE, mem_pkt->requestorId(),
+mem_ctrl.cc:                    mem_pkt->qosValue(), mem_pkt->getAddr(), 1,
+mem_ctrl.cc:                    mem_pkt->readyTime - mem_pkt->entryTime);
+mem_ctrl.cc:        // remove the request from the queue - the iterator is no longer valid
+mem_ctrl.cc:        writeQueue[mem_pkt->qosValue()].erase(to_write);
+mem_ctrl.cc:            (totalReadQueueSize && nvm && nvm->writeRespQueueFull() &&
+mem_ctrl.cc:    return (pkt->isDram() ?
+mem_ctrl.cc:        dram->burstReady(pkt) : nvm->burstReady(pkt));
+mem_ctrl.cc:    Tick dram_min = dram ?  dram->minReadToWriteDataGap() : MaxTick;
+mem_ctrl.cc:    Tick nvm_min = nvm ?  nvm->minReadToWriteDataGap() : MaxTick;
+mem_ctrl.cc:    Tick dram_min = dram ? dram->minWriteToReadDataGap() : MaxTick;
+mem_ctrl.cc:    Tick nvm_min = nvm ?  nvm->minWriteToReadDataGap() : MaxTick;
+mem_ctrl.cc:        return (addr & ~(Addr(dram->bytesPerBurst() - 1)));
+mem_ctrl.cc:        return (addr & ~(Addr(nvm->bytesPerBurst() - 1)));
+mem_ctrl.cc:    ADD_STAT(requestorReadBytes, "Per-requestor bytes read from memory"),
+mem_ctrl.cc:    ADD_STAT(requestorWriteBytes, "Per-requestor bytes write to memory"),
+mem_ctrl.cc:             "Per-requestor bytes read from memory rate (Bytes/sec)"),
+mem_ctrl.cc:             "Per-requestor bytes write to memory rate (Bytes/sec)"),
+mem_ctrl.cc:             "Per-requestor read serviced memory accesses"),
+mem_ctrl.cc:             "Per-requestor write serviced memory accesses"),
+mem_ctrl.cc:             "Per-requestor read total memory access latency"),
+mem_ctrl.cc:             "Per-requestor write total memory access latency"),
+mem_ctrl.cc:             "Per-requestor read average memory access latency"),
+mem_ctrl.cc:             "Per-requestor write average memory access latency"),
+mem_ctrl.cc:        "RRS swaps inserted using re-swap without eviction"),
+mem_ctrl.cc:        "RRS swaps inserted using re-swap with eviction"),
+mem_ctrl.cc:    ADD_STAT(rh_num_access_to_bank_0_2        , "Banks with accesses 0->2 per 7.8us"),
+mem_ctrl.cc:    ADD_STAT(rh_num_access_to_bank_2_4        , "Banks with accesses 2->4 per 7.8us"),
+mem_ctrl.cc:    ADD_STAT(rh_num_access_to_bank_4_8        , "Banks with accesses 4->8 per 7.8us"),
+mem_ctrl.cc:    ADD_STAT(rh_num_access_to_bank_8_16       , "Banks with accesses 8->16 per 7.8us"),
+mem_ctrl.cc:    ADD_STAT(rh_num_access_to_bank_16_32      , "Banks with accesses 16->32 per 7.8us"),
+mem_ctrl.cc:    ADD_STAT(rh_num_access_to_bank_32_64      , "Banks with accesses 32->64 per 7.8us"),
+mem_ctrl.cc:    ADD_STAT(rh_num_access_to_bank_64_128     , "Banks with accesses 64->128 per 7.8us"),
+mem_ctrl.cc:    ADD_STAT(rh_num_access_to_bank_128_166    , "Banks with accesses 128->166 per 7.8us"),
+mem_ctrl.cc:    ADD_STAT(rh_num_access_to_bank_166_above  , "Banks with accesses 166->above per 7.8us"),
+mem_ctrl.cc:    const auto max_requestors = ctrl.system()->maxRequestors();
+mem_ctrl.cc:    readPktSize.init(ceilLog2(ctrl.system()->cacheLineSize()) + 1);
+mem_ctrl.cc:    writePktSize.init(ceilLog2(ctrl.system()->cacheLineSize()) + 1);
+mem_ctrl.cc:    // per-requestor bytes read and written to memory
+mem_ctrl.cc:    // per-requestor bytes read and written to memory rate
+mem_ctrl.cc:        const std::string requestor = ctrl.system()->getRequestorName(i);
+mem_ctrl.cc:    if (dram && dram->getAddrRange().contains(pkt->getAddr())) {
+mem_ctrl.cc:        dram->functionalAccess(pkt);
+mem_ctrl.cc:    } else if (nvm && nvm->getAddrRange().contains(pkt->getAddr())) {
+mem_ctrl.cc:        nvm->functionalAccess(pkt);
+mem_ctrl.cc:              pkt->print());
+mem_ctrl.cc:   bool dram_drained = !dram || dram->allRanksDrained();
+mem_ctrl.cc:   bool nvm_drained = !nvm || nvm->allRanksDrained();
+mem_ctrl.cc:            dram->drainRanks();
+mem_ctrl.cc:    if (!isTimingMode && system()->isTimingMode()) {
+mem_ctrl.cc:        dram->startup();
+mem_ctrl.cc:    } else if (isTimingMode && !system()->isTimingMode()) {
+mem_ctrl.cc:            dram->suspend();
+mem_ctrl.cc:    isTimingMode = system()->isTimingMode();
+mem_ctrl.cc:        ranges.push_back(ctrl.dram->getAddrRange());
+mem_ctrl.cc:        ranges.push_back(ctrl.nvm->getAddrRange());
+mem_ctrl.cc:    pkt->pushLabel(ctrl.name());
+mem_ctrl.cc:    pkt->popLabel();
+mem_ctrl.cc:    stats.rh_rrs_remapped_row_accessed = rh_defense->s_remapped_row_accessed;
+mem_ctrl.cc:    stats.rh_rrs_clean_install = rh_defense->s_clean_install;
+mem_ctrl.cc:    stats.rh_rrs_only_unswap = rh_defense->s_only_unswap;
+mem_ctrl.cc:    stats.rh_rrs_clean_reswap = rh_defense->s_clean_reswap;
+mem_ctrl.cc:    stats.rh_rrs_dirty_reswap = rh_defense->s_dirty_reswap;
+mem_ctrl.cc:    stats.rh_rrs_num_resets = rh_defense->s_num_resets;
+mem_ctrl.cc:    stats.rh_rrs_num_accesses = rh_defense->s_num_accesses;
+mem_ctrl.cc:    stats.rh_rrs_rand_row_gen_failed = rh_defense->s_randRowGenerationFailed;
+mem_ctrl.cc:    stats.rh_move_to_qr = rh_defense->s_move_to_qr;
+mem_ctrl.cc:    stats.rh_move_within_qr = rh_defense->s_move_within_qr;
+mem_ctrl.cc:    stats.rh_move_to_qr_remove = rh_defense->s_move_to_qr_remove;
+mem_ctrl.cc:    stats.rh_move_within_qr_remove = rh_defense->s_move_within_qr_remove;
+mem_ctrl.cc:    stats.rh_drain_qr = rh_defense->s_drain_qr;
+mem_ctrl.cc:    uint32_t eff_resets = (rh_defense->s_num_resets == 0 ? 1 : rh_defense->s_num_resets);
+mem_ctrl.cc:    stats.rh_num_access_to_row_1 = rh_defense->s_numLogRowAccesses[0]/eff_resets;
+mem_ctrl.cc:    stats.rh_num_access_to_row_10 = rh_defense->s_numLogRowAccesses[1]/eff_resets;
+mem_ctrl.cc:    stats.rh_num_access_to_row_100 = rh_defense->s_numLogRowAccesses[2]/eff_resets;
+mem_ctrl.cc:    stats.rh_num_access_to_row_1000 = rh_defense->s_numLogRowAccesses[3]/eff_resets;
+mem_ctrl.cc:    stats.rh_num_access_over_rh = rh_defense->s_numRowAccesses_RH/eff_resets;
+mem_ctrl.cc:    stats.rh_btv_occupancy_0 = rh_defense->s_btv_residency[0]/eff_resets;
+mem_ctrl.cc:    stats.rh_btv_occupancy_1 = rh_defense->s_btv_residency[1]/eff_resets;
+mem_ctrl.cc:    stats.rh_btv_occupancy_2 = rh_defense->s_btv_residency[2]/eff_resets;
+mem_ctrl.cc:    stats.rh_btv_occupancy_3 = rh_defense->s_btv_residency[3]/eff_resets;
+mem_ctrl.cc:        if (rh_defense->filter) {
+mem_ctrl.cc:            stats.rh_cbf_true_pos = rh_defense->filter->s_truePositives;
+mem_ctrl.cc:            stats.rh_cbf_false_pos = rh_defense->filter->s_falsePositives;
+mem_ctrl.cc:            stats.rh_cbf_true_neg = rh_defense->filter->s_trueNegatives;
+mem_ctrl.cc:            stats.rh_btv_true_pos = rh_defense->s_btv_true_positives;
+mem_ctrl.cc:            stats.rh_btv_false_pos = rh_defense->s_btv_false_positives;
+mem_ctrl.cc:            stats.rh_btv_true_neg = rh_defense->s_btv_true_negatives;
+mem_ctrl.cc:        stats.rh_cache_hit = rh_defense->s_cache_hit;
+mem_ctrl.cc:        stats.rh_cache_partial_hit_orr_set = rh_defense->s_cache_partial_hit_orr_set;
+mem_ctrl.cc:        stats.rh_cache_partial_hit_orr_unset = rh_defense->s_cache_partial_hit_orr_unset;
+mem_ctrl.cc:        stats.rh_cache_miss = rh_defense->s_cache_miss;
+mem_ctrl.cc:        stats.rh_cache_miss_entry_inserts = rh_defense->s_cache_miss_entry_inserts;
+mem_ctrl.cc:        stats.rh_cache_miss_line_entry_inserts = rh_defense->s_cache_miss_line_entry_inserts;
+mem_ctrl.cc:        stats.rh_cache_clean_evicts = rh_defense->s_cache_clean_evicts;
+mem_ctrl.cc:        stats.rh_cache_dirty_evicts = rh_defense->s_cache_dirty_evicts;
+mem_ctrl.cc:        stats.rh_rq_occupancy = rh_defense->s_QR_CumulativeOccupancy/eff_resets;
+mem_ctrl.cc:      stats.rh_num_rfms = rh_defense->s_rfms;
+mem_ctrl.cc:      stats.rh_num_access_to_bank_0_2 = rh_defense->s_numLogBankAccesses[0]/eff_resets;
+mem_ctrl.cc:      stats.rh_num_access_to_bank_2_4 = rh_defense->s_numLogBankAccesses[1]/eff_resets;
+mem_ctrl.cc:      stats.rh_num_access_to_bank_4_8 = rh_defense->s_numLogBankAccesses[2]/eff_resets;
+mem_ctrl.cc:      stats.rh_num_access_to_bank_8_16 = rh_defense->s_numLogBankAccesses[3]/eff_resets;
+mem_ctrl.cc:      stats.rh_num_access_to_bank_16_32 = rh_defense->s_numLogBankAccesses[4]/eff_resets;
+mem_ctrl.cc:      stats.rh_num_access_to_bank_32_64 = rh_defense->s_numLogBankAccesses[5]/eff_resets;
+mem_ctrl.cc:      stats.rh_num_access_to_bank_64_128 = rh_defense->s_numLogBankAccesses[6]/eff_resets;
+mem_ctrl.cc:      stats.rh_num_access_to_bank_128_166 = rh_defense->s_numLogBankAccesses[7]/eff_resets;
+mem_ctrl.cc:      stats.rh_num_access_to_bank_166_above = rh_defense->s_numLogBankAccesses[8]/eff_resets;
+mem_ctrl.cc:      stats.rh_num_access_bank_over_rfm_th = rh_defense->s_numBankAccesses_RFMThreshold/eff_resets;
+mem_ctrl.hh: * Copyright (c) 2012-2020 ARM Limited
+mem_ctrl.hh: * Copyright (c) 2013 Amin Farmahini-Farahani
+mem_ctrl.hh:     * eg: 2 ranks eacoh with 8 banks, then bankId = 0 --> rank0, bank0 and
+mem_ctrl.hh:     * bankId = 8 --> rank1, bank0
+mem_ctrl.hh:          _requestorId(pkt->requestorId()),
+mem_ctrl.hh:          rh_injectDelay(false), rh_bubbleSize(0), rh_SRAMDelay(0), rh_bankDelay(0), rh_busDelay(0),  rh_defense(none),  _qosValue(_pkt->qosValue())
+mem_ctrl.hh: * The memory controller is a single-channel memory controller capturing
+mem_ctrl.hh: * contemporary controller. For multi-channel memory systems, the controller
+mem_ctrl.hh:     * Our incoming port, for a multi-ported controller add a crossbar
+mem_ctrl.hh:     * Calculate the minimum delay used when scheduling a read-to-write
+mem_ctrl.hh:     * Calculate the minimum delay used when scheduling a write-to-read
+mem_ctrl.hh:     * The memory schduler/arbiter - picks which request needs to
+mem_ctrl.hh:     * go next, based on the specified policy such as FCFS or FR-FCFS
+mem_ctrl.hh:     * For FR-FCFS policy reorder the read/write queue depending on row buffer
+mem_ctrl.hh:     * Burst-align an address.
+mem_ctrl.hh:        // per-requestor bytes read and written to memory
+mem_ctrl.hh:        // per-requestor bytes read and written to memory rate
+mem_ctrl.hh:        // per-requestor read and write serviced memory accesses
+mem_ctrl.hh:        // per-requestor read and write total memory access latency
+mem_ctrl.hh:        // per-requestor raed and write average memory access latency
+mem_ctrl.hh:        // Rowhammer defense-specific stats
+mem_ctrl.hh:    // Rowhammer-defense specific
+mem_ctrl.hh:     * Check for command bus contention for multi-cycle (2 currently)
+mem_delay.cc:      requestPort(name() + "-mem_side_port", *this),
+mem_delay.cc:      responsePort(name() + "-cpu_side_port", *this),
+mem_delay.cc:    const Tick receive_delay = pkt->headerDelay + pkt->payloadDelay;
+mem_delay.cc:    pkt->headerDelay = pkt->payloadDelay = 0;
+mem_delay.cc:        pkt->makeResponse();
+mem_delay.cc:    Tick receive_delay = pkt->headerDelay + pkt->payloadDelay;
+mem_delay.cc:    pkt->headerDelay = pkt->payloadDelay = 0;
+mem_delay.cc:        pkt->makeResponse();
+mem_delay.cc:      readReqDelay(p->read_req),
+mem_delay.cc:      readRespDelay(p->read_resp),
+mem_delay.cc:      writeReqDelay(p->write_req),
+mem_delay.cc:      writeRespDelay(p->write_resp)
+mem_delay.cc:    if (pkt->isRead()) {
+mem_delay.cc:    } else if (pkt->isWrite()) {
+mem_delay.cc:    if (pkt->isRead()) {
+mem_delay.cc:    } else if (pkt->isWrite()) {
+mem_interface.cc: * Copyright (c) 2010-2020 ARM Limited
+mem_interface.cc: * Copyright (c) 2013 Amin Farmahini-Farahani
+mem_interface.cc:      addrMapping(_p->addr_mapping),
+mem_interface.cc:      burstSize((_p->devices_per_rank * _p->burst_length *
+mem_interface.cc:                 _p->device_bus_width) / 8),
+mem_interface.cc:      deviceSize(_p->device_size),
+mem_interface.cc:      deviceRowBufferSize(_p->device_rowbuffer_size),
+mem_interface.cc:      devicesPerRank(_p->devices_per_rank),
+mem_interface.cc:      ranksPerChannel(_p->ranks_per_channel),
+mem_interface.cc:      banksPerRank(_p->banks_per_rank), rowsPerBank(0),
+mem_interface.cc:      tCK(_p->tCK), tCS(_p->tCS), tBURST(_p->tBURST),
+mem_interface.cc:      tRTW(_p->tRTW),
+mem_interface.cc:      tWTR(_p->tWTR),
+mem_interface.cc:      readBufferSize(_p->read_buffer_size),
+mem_interface.cc:      writeBufferSize(_p->write_buffer_size)
+mem_interface.cc:    // use a 64-bit unsigned during the computations as the row is
+mem_interface.cc:        // next, the higher-order column bites
+mem_interface.cc:        if (pkt->isDram()) {
+mem_interface.cc:            const Bank& bank = ranks[pkt->rank]->banks[pkt->bank];
+mem_interface.cc:            const Tick col_allowed_at = pkt->isRead() ? bank.rdAllowedAt :
+mem_interface.cc:                    __func__, pkt->bank, pkt->row);
+mem_interface.cc:                        "%s bank %d - Rank %d available\n", __func__,
+mem_interface.cc:                        pkt->bank, pkt->rank);
+mem_interface.cc:                if (bank.openRow == pkt->row) {
+mem_interface.cc:                    // no additional rank-to-rank or same bank-group
+mem_interface.cc:                        // and/or different bank-group accesses
+mem_interface.cc:                    if (bits(earliest_banks[pkt->rank],
+mem_interface.cc:                             pkt->bank, pkt->bank)) {
+mem_interface.cc:                        // col-to-col command requirements
+mem_interface.cc:                DPRINTF(DRAM, "%s bank %d - Rank %d not available\n", __func__,
+mem_interface.cc:                        pkt->bank, pkt->rank);
+mem_interface.cc:    uint32_t row_neighbour = ((int64_t)row - 1) > 0? row - 1: row + 1;
+mem_interface.cc:    // --rank_ref.numBanksActive;
+mem_interface.cc:        act_at = ctrl->verifyMultiCmd(act_tick, maxCommandsPerWindow, tAAD);
+mem_interface.cc:        act_at = ctrl->verifySingleCmd(act_tick, maxCommandsPerWindow);
+mem_interface.cc:    // auto-precharged, and when this access is forced to
+mem_interface.cc:            ranks[rank_ref.rank]->numBanksActive);
+mem_interface.cc:    DPRINTF(DRAMPower, "%llu,ACT,%d,%d\n", divCeil(act_at, tCK) -
+mem_interface.cc:    // Respect the row-to-column command delay for both read and write cmds
+mem_interface.cc:           (act_at - rank_ref.actTicks.back()) < tXAW) {
+mem_interface.cc:            panic("Got %d activates in window %d (%llu - %llu) which "
+mem_interface.cc:                  "is smaller than %llu\n", activationLimit, act_at -
+mem_interface.cc:           (act_at - rank_ref.actTicks.back()) < tXAW) {
+mem_interface.cc:        pre_at = ctrl->verifySingleCmd(pre_tick, maxCommandsPerWindow);
+mem_interface.cc:    --rank_ref.numBanksActive;
+mem_interface.cc:        DPRINTF(DRAMPower, "%llu,PRE,%d,%d\n", divCeil(pre_at, tCK) -
+mem_interface.cc:    Rank& rank_ref = *ranks[mem_pkt->rank];
+mem_interface.cc:    Bank& bank_ref = rank_ref.banks[mem_pkt->bank];
+mem_interface.cc:    actinfo.act = bank_ref.openRow != mem_pkt->row ? true: false;
+mem_interface.cc:    actinfo.rank = mem_pkt->rank;
+mem_interface.cc:    actinfo.bank = mem_pkt->bank;
+mem_interface.cc:            mem_pkt->addr, mem_pkt->rank, mem_pkt->bank, mem_pkt->row);
+mem_interface.cc:    Rank& rank_ref = *ranks[mem_pkt->rank];
+mem_interface.cc:    // are we in or transitioning to a low-power state and have not scheduled
+mem_interface.cc:    // a power-up event?
+mem_interface.cc:    Bank& bank_ref = rank_ref.banks[mem_pkt->bank];
+mem_interface.cc:    actinfo.rank = mem_pkt->rank;
+mem_interface.cc:    actinfo.bank = mem_pkt->bank;
+mem_interface.cc:    if (bank_ref.openRow == mem_pkt->row) {
+mem_interface.cc:        activateBank(rank_ref, bank_ref, act_tick, mem_pkt->row);
+mem_interface.cc:    const Tick col_allowed_at = mem_pkt->isRead() ?
+mem_interface.cc:    if (mem_pkt->rh_injectDelay && (mem_pkt->rh_bubbleSize == 90000) && ((mem_pkt->rh_defense == rrs) || (mem_pkt->rh_defense == rq)) ) {
+mem_interface.cc:                                next_burst_at-tCL-tBURST, curTick()});
+mem_interface.cc:    if (dataClockSync && ((cmd_at - rank_ref.lastBurstTick) > clkResyncDelay))
+mem_interface.cc:        cmd_at = ctrl->verifyMultiCmd(cmd_at, maxCommandsPerWindow, tCK);
+mem_interface.cc:        cmd_at = ctrl->verifySingleCmd(cmd_at, maxCommandsPerWindow);
+mem_interface.cc:    mem_pkt->readyTime = cmd_at + tCL + tBURST;
+mem_interface.cc:            if (mem_pkt->rank == j) {
+mem_interface.cc:                   (bank_ref.bankgr == ranks[j]->banks[i].bankgr)) {
+mem_interface.cc:                    // tCCD_L_WR is required for write-to-write
+mem_interface.cc:                    dly_to_rd_cmd = mem_pkt->isRead() ?
+mem_interface.cc:                    dly_to_wr_cmd = mem_pkt->isRead() ?
+mem_interface.cc:                    dly_to_rd_cmd = mem_pkt->isRead() ? burst_gap :
+mem_interface.cc:                    dly_to_wr_cmd = mem_pkt->isRead() ? readToWriteDelay() :
+mem_interface.cc:                // Need to account for rank-to-rank switching
+mem_interface.cc:            ranks[j]->banks[i].rdAllowedAt = std::max(cmd_at + dly_to_rd_cmd,
+mem_interface.cc:                                             ranks[j]->banks[i].rdAllowedAt);
+mem_interface.cc:            ranks[j]->banks[i].wrAllowedAt = std::max(cmd_at + dly_to_wr_cmd,
+mem_interface.cc:                                             ranks[j]->banks[i].wrAllowedAt);
+mem_interface.cc:    activeRank = mem_pkt->rank;
+mem_interface.cc:                                 mem_pkt->isRead() ? cmd_at + tRTP :
+mem_interface.cc:                                 mem_pkt->readyTime + tWR);
+mem_interface.cc:    // if we reached the max, then issue with an auto-precharge
+mem_interface.cc:    // auto-precharge
+mem_interface.cc:        for (uint8_t i = 0; i < ctrl->numPriorities(); ++i) {
+mem_interface.cc:                    bool same_rank_bank = (mem_pkt->rank == (*p)->rank) &&
+mem_interface.cc:                                          (mem_pkt->bank == (*p)->bank);
+mem_interface.cc:                    bool same_row = mem_pkt->row == (*p)->row;
+mem_interface.cc:        // auto pre-charge when either
+mem_interface.cc:    std::string mem_cmd = mem_pkt->isRead() ? "RD" : "WR";
+mem_interface.cc:    rank_ref.cmdList.push_back(Command(command, mem_pkt->bank, cmd_at));
+mem_interface.cc:    DPRINTF(DRAMPower, "%llu,%s,%d,%d\n", divCeil(cmd_at, tCK) -
+mem_interface.cc:            timeStampOffset, mem_cmd, mem_pkt->bank, mem_pkt->rank);
+mem_interface.cc:    // if this access should use auto-precharge, then we are
+mem_interface.cc:        // if auto-precharge push a PRE command at the correct tick to the
+mem_interface.cc:        DPRINTF(DRAM, "Auto-precharged bank: %d\n", mem_pkt->bankId);
+mem_interface.cc:    if (mem_pkt->isRead()) {
+mem_interface.cc:        stats.perBankRdBursts[mem_pkt->bankId]++;
+mem_interface.cc:        stats.totMemAccLat += mem_pkt->readyTime - mem_pkt->entryTime;
+mem_interface.cc:        stats.totQLat += cmd_at - mem_pkt->entryTime;
+mem_interface.cc:        // to holdoff power-down entry events
+mem_interface.cc:            schedule(rank_ref.writeDoneEvent, mem_pkt->readyTime);
+mem_interface.cc:        } else if (rank_ref.writeDoneEvent.when() < mem_pkt->readyTime) {
+mem_interface.cc:            reschedule(rank_ref.writeDoneEvent, mem_pkt->readyTime);
+mem_interface.cc:        --rank_ref.writeEntries;
+mem_interface.cc:        stats.perBankWrBursts[mem_pkt->bankId]++;
+mem_interface.cc:    uint64_t rh_bus_delay = mem_pkt->rh_injectDelay? mem_pkt->rh_busDelay : 0;
+mem_interface.cc:    if(mem_pkt->rh_injectDelay && (mem_pkt->rh_bankDelay != 0)){
+mem_interface.cc:      delayBankRowhammer(rank_ref, bank_ref,mem_pkt->row, act_tick, mem_pkt->rh_bankDelay);
+mem_interface.cc:            // Need to only account for rank-to-rank switching
+mem_interface.cc:            n->banks[i].rdAllowedAt = std::max(cmd_at + rankToRankDelay(),
+mem_interface.cc:                                             n->banks[i].rdAllowedAt);
+mem_interface.cc:            n->banks[i].wrAllowedAt = std::max(cmd_at + rankToRankDelay(),
+mem_interface.cc:                                             n->banks[i].wrAllowedAt);
+mem_interface.cc:      bankGroupsPerRank(_p->bank_groups_per_rank),
+mem_interface.cc:      bankGroupArch(_p->bank_groups_per_rank > 0),
+mem_interface.cc:      tCL(_p->tCL),
+mem_interface.cc:      tBURST_MIN(_p->tBURST_MIN), tBURST_MAX(_p->tBURST_MAX),
+mem_interface.cc:      tCCD_L_WR(_p->tCCD_L_WR), tCCD_L(_p->tCCD_L), tRCD(_p->tRCD),
+mem_interface.cc:      tRP(_p->tRP), tRAS(_p->tRAS), tWR(_p->tWR), tRTP(_p->tRTP),
+mem_interface.cc:      tRFC(_p->tRFC), tREFI(_p->tREFI), tRRD(_p->tRRD), tRRD_L(_p->tRRD_L),
+mem_interface.cc:      tPPD(_p->tPPD), tAAD(_p->tAAD),
+mem_interface.cc:      tXAW(_p->tXAW), tXP(_p->tXP), tXS(_p->tXS),
+mem_interface.cc:      clkResyncDelay(tCL + _p->tBURST_MAX),
+mem_interface.cc:      dataClockSync(_p->data_clock_sync),
+mem_interface.cc:      twoCycleActivate(_p->two_cycle_activate),
+mem_interface.cc:      activationLimit(_p->activation_limit),
+mem_interface.cc:      wrToRdDlySameBG(tCL + _p->tBURST_MAX + _p->tWTR_L),
+mem_interface.cc:      rdToWrDlySameBG(_p->tRTW + _p->tBURST_MAX),
+mem_interface.cc:      pageMgmt(_p->page_policy),
+mem_interface.cc:      maxAccessesPerRow(_p->max_accesses_per_row),
+mem_interface.cc:      enableDRAMPowerdown(_p->enable_dram_powerdown),
+mem_interface.cc:    // basic bank group architecture checks ->
+mem_interface.cc:        // tCCD_L should be greater than minimal, back-to-back burst delay
+mem_interface.cc:        // tCCD_L_WR should be greater than minimal, back-to-back burst delay
+mem_interface.cc:        // tRRD_L is greater than minimal, same bank group ACT-to-ACT delay
+mem_interface.cc:            // lower-order column bits as the least-significant bits
+mem_interface.cc:            if (system()->cacheLineSize() > range.granularity()) {
+mem_interface.cc:            // ...and equal or smaller than the row-buffer size
+mem_interface.cc:                      "as the row-buffer size\n", name());
+mem_interface.cc:    if (system()->isTimingMode()) {
+mem_interface.cc:            r->startup(curTick() + tREFI - tRP);
+mem_interface.cc:        if (!r->inRefIdleState()) {
+mem_interface.cc:            if (r->pwrState != PWR_SREF) {
+mem_interface.cc:                DPRINTF(DRAMState, "Rank %d is not available\n", r->rank);
+mem_interface.cc:                r->checkDrainDone();
+mem_interface.cc:            // check if we were in self-refresh and haven't started
+mem_interface.cc:            if ((r->pwrState == PWR_SREF) && r->inLowPowerState) {
+mem_interface.cc:                DPRINTF(DRAMState, "Rank %d is in self-refresh\n", r->rank);
+mem_interface.cc:                // exit self-refresh
+mem_interface.cc:                if (r->forceSelfRefreshExit()) {
+mem_interface.cc:                           " should wake up\n", r->rank);
+mem_interface.cc:                    //wake up from self-refresh
+mem_interface.cc:                    r->scheduleWakeUpEvent(tXS);
+mem_interface.cc:                    // performed after self-refresh
+mem_interface.cc:        ++ranks[rank]->readEntries;
+mem_interface.cc:        ++ranks[rank]->writeEntries;
+mem_interface.cc:    // if a read has reached its ready-time, decrement the number of reads
+mem_interface.cc:    // to switch to low-power mode if no other packet is available
+mem_interface.cc:    --rank_ref.readEntries;
+mem_interface.cc:    --rank_ref.outstandingEvents;
+mem_interface.cc:    // at this moment should not have transitioned to a low-power state
+mem_interface.cc:        // active power-down else go to precharge power-down
+mem_interface.cc:        // default to ACT power-down unless already in IDLE state
+mem_interface.cc:    // also need to kick off events to exit self-refresh
+mem_interface.cc:        // force self-refresh exit, which in turn will issue auto-refresh
+mem_interface.cc:        if (r->pwrState == PWR_SREF) {
+mem_interface.cc:            DPRINTF(DRAM,"Rank%d: Forcing self-refresh wakeup in drain\n",
+mem_interface.cc:                    r->rank);
+mem_interface.cc:            r->scheduleWakeUpEvent(tXS);
+mem_interface.cc:        all_ranks_drained = r->inPwrIdleState() && r->inRefIdleState() &&
+mem_interface.cc:        r->suspend();
+mem_interface.cc:    const Tick hidden_act_max = std::max(min_col_at - tRCD, curTick());
+mem_interface.cc:    // Flag condition when burst can issue back-to-back with previous burst
+mem_interface.cc:        if (p->isDram() && ranks[p->rank]->inRefIdleState())
+mem_interface.cc:            got_waiting[p->bankId] = true;
+mem_interface.cc:                assert(ranks[i]->inRefIdleState());
+mem_interface.cc:                // an activate, ignoring any rank-to-rank switching
+mem_interface.cc:                Tick act_at = ranks[i]->banks[j].openRow == Bank::NO_ROW ?
+mem_interface.cc:                    std::max(ranks[i]->banks[j].actAllowedAt, curTick()) :
+mem_interface.cc:                    std::max(ranks[i]->banks[j].preAllowedAt, curTick()) + tRP;
+mem_interface.cc:                const Tick col_allowed_at = ctrl->inReadBusState(false) ?
+mem_interface.cc:                                              ranks[i]->banks[j].rdAllowedAt :
+mem_interface.cc:                                              ranks[i]->banks[j].wrAllowedAt;
+mem_interface.cc:                // bank can issue burst back-to-back (seamlessly) with
+mem_interface.cc:      wakeUpAllowedAt(0), power(_p, false), banks(_p->banks_per_rank),
+mem_interface.cc:      numBanksActive(0), actTicks(_p->activation_limit, 0), lastBurstTick(0),
+mem_interface.cc:    for (int b = 0; b < _p->banks_per_rank; b++) {
+mem_interface.cc:        if (_p->bank_groups_per_rank > 0) {
+mem_interface.cc:            banks[b].bankgr = b % _p->bank_groups_per_rank;
+mem_interface.cc:    bool no_queued_cmds = (dram.ctrl->inReadBusState(true) &&
+mem_interface.cc:                       || (dram.ctrl->inWriteBusState(true) &&
+mem_interface.cc:                                      divCeil(cmd.timeStamp, dram.tCK) -
+mem_interface.cc:             // done - found all commands at or before curTick()
+mem_interface.cc:    --outstandingEvents;
+mem_interface.cc:            // All banks closed - switch to precharge power down state.
+mem_interface.cc:    --outstandingEvents;
+mem_interface.cc:        // power down and self-refresh are not entered
+mem_interface.cc:            && (dram.ctrl->requestEventScheduled())) {
+mem_interface.cc:    // at this point, ensure that rank is not in a power-down state
+mem_interface.cc:        // wake-up for refresh
+mem_interface.cc:                    divCeil(pre_at, dram.tCK) -
+mem_interface.cc:            // no outstanding ACT,RD/WR,Auto-PRE sequence scheduled
+mem_interface.cc:            // or have outstanding ACT,RD/WR,Auto-PRE sequence scheduled
+mem_interface.cc:                   dram.ctrl->respondEventScheduled());
+mem_interface.cc:        // precharged, will call this method to get loop re-started
+mem_interface.cc:        DPRINTF(DRAMPower, "%llu,REF,0,%d\n", divCeil(curTick(), dram.tCK) -
+mem_interface.cc:        if ((dram.ctrl->drainState() == DrainState::Draining) ||
+mem_interface.cc:            (dram.ctrl->drainState() == DrainState::Drained)) {
+mem_interface.cc:            // if draining, do not re-enter low-power mode.
+mem_interface.cc:            // woken up again if previously in a low-power state.
+mem_interface.cc:            // Force PRE power-down if there are no outstanding commands
+mem_interface.cc:        schedule(refreshEvent, refreshDueAt - dram.tRP);
+mem_interface.cc:                dram.tCK) - dram.timeStampOffset, rank);
+mem_interface.cc:                dram.tCK) - dram.timeStampOffset, rank);
+mem_interface.cc:                dram.tCK) - dram.timeStampOffset, rank);
+mem_interface.cc:        // should only enter SREF after PRE-PD wakeup to do a refresh
+mem_interface.cc:                dram.tCK) - dram.timeStampOffset, rank);
+mem_interface.cc:    // Ensure that we don't power-down and back up in same tick
+mem_interface.cc:    DPRINTF(DRAMState, "Scheduling wake-up for rank %d at tick %d\n",
+mem_interface.cc:    // schedule wake-up with event to ensure entry has completed before
+mem_interface.cc:    // we try to wake-up
+mem_interface.cc:                dram.tCK) - dram.timeStampOffset, rank);
+mem_interface.cc:                dram.tCK) - dram.timeStampOffset, rank);
+mem_interface.cc:                dram.tCK) - dram.timeStampOffset, rank);
+mem_interface.cc:    // Should be in a power-down or self-refresh state
+mem_interface.cc:        // transitioning from a precharge power-down or self-refresh state
+mem_interface.cc:        // banks are closed - transition to PWR_IDLE
+mem_interface.cc:    Tick duration = curTick() - pwrStateTick;
+mem_interface.cc:        --outstandingEvents;
+mem_interface.cc:        // if moving back to power-down after refresh
+mem_interface.cc:        if (!dram.ctrl->requestEventScheduled()) {
+mem_interface.cc:            dram.ctrl->restartScheduler(curTick());
+mem_interface.cc:                    // and re-kick off refresh
+mem_interface.cc:    // transition to the refresh state and re-start refresh process
+mem_interface.cc:        // completed final PRE for refresh or exiting power-down
+mem_interface.cc:        // bypass auto-refresh and go straight to SREF, where memory
+mem_interface.cc:           (dram.ctrl->drainState() != DrainState::Draining) &&
+mem_interface.cc:           (dram.ctrl->drainState() != DrainState::Drained) &&
+mem_interface.cc:            --outstandingEvents;
+mem_interface.cc:    power.powerlib.calcWindowEnergy(divCeil(curTick(), dram.tCK) -
+mem_interface.cc:    //              energy (pJ)     1e-9
+mem_interface.cc:    // power (mW) = ----------- * ----------
+mem_interface.cc:                    (curTick() - dram.lastStatsResetTick)) *
+mem_interface.cc:    stats.pwrStateTime[pwrState] += (curTick() - pwrStateTick);
+mem_interface.cc:    power.powerlib.calcWindowEnergy(divCeil(curTick(), dram.tCK) -
+mem_interface.cc:           (dram.ctrl->inWriteBusState(true) && (writeEntries != 0));
+mem_interface.cc:             "Energy for active power-down per rank (pJ)"),
+mem_interface.cc:             "Energy for precharge power-down per rank (pJ)"),
+mem_interface.cc:      maxPendingWrites(_p->max_pending_writes),
+mem_interface.cc:      maxPendingReads(_p->max_pending_reads),
+mem_interface.cc:      twoCycleRdWr(_p->two_cycle_rdwr),
+mem_interface.cc:      tREAD(_p->tREAD), tWRITE(_p->tWRITE), tSEND(_p->tSEND),
+mem_interface.cc:    : EventManager(&_nvm), rank(_rank), banks(_p->banks_per_rank)
+mem_interface.cc:    for (int b = 0; b < _p->banks_per_rank; b++) {
+mem_interface.cc:        if (!pkt->isDram()) {
+mem_interface.cc:            const Bank& bank = ranks[pkt->rank]->banks[pkt->bank];
+mem_interface.cc:            const Tick col_allowed_at = pkt->isRead() ? bank.rdAllowedAt :
+mem_interface.cc:                DPRINTF(NVM, "%s bank %d - Rank %d available\n", __func__,
+mem_interface.cc:                        pkt->bank, pkt->rank);
+mem_interface.cc:                // no additional rank-to-rank or media delays
+mem_interface.cc:                DPRINTF(NVM, "%s bank %d - Rank %d not available\n", __func__,
+mem_interface.cc:                        pkt->bank, pkt->rank);
+mem_interface.cc:    // This method does the arbitration between non-deterministic read
+mem_interface.cc:    // chooseNext function in the top-level controller.
+mem_interface.cc:    numReadsToIssue--;
+mem_interface.cc:    // For simplicity, issue non-deterministic reads in order (fcfs)
+mem_interface.cc:        if (pkt->readyTime == MaxTick && !pkt->isDram() && pkt->isRead()) {
+mem_interface.cc:           Bank& bank_ref = ranks[pkt->rank]->banks[pkt->bank];
+mem_interface.cc:                cmd_at = ctrl->verifyMultiCmd(cmd_at,
+mem_interface.cc:                cmd_at = ctrl->verifySingleCmd(cmd_at,
+mem_interface.cc:            if (bank_ref.openRow != pkt->row) {
+mem_interface.cc:                // update the open bank, re-using row field
+mem_interface.cc:                bank_ref.openRow = pkt->row;
+mem_interface.cc:                // here when we are re-buffering the data
+mem_interface.cc:            pkt->readyTime = std::max(cmd_at, bank_ref.actAllowedAt);
+mem_interface.cc:                         bank_ref.bank, cmd_at, pkt->readyTime);
+mem_interface.cc:                schedule(readReadyEvent, pkt->readyTime);
+mem_interface.cc:            } else if (readReadyEvent.when() > pkt->readyTime) {
+mem_interface.cc:                reschedule(readReadyEvent, pkt->readyTime);
+mem_interface.cc:            readReadyQueue.push_back(pkt->readyTime);
+mem_interface.cc:            // found an NVM read to issue - break out
+mem_interface.cc:    if (!ctrl->requestEventScheduled()) {
+mem_interface.cc:        ctrl->restartScheduler(curTick());
+mem_interface.cc:    bool read_rdy =  pkt->isRead() && (ctrl->inReadBusState(true)) &&
+mem_interface.cc:               (pkt->readyTime <= curTick()) && (numReadDataReady > 0);
+mem_interface.cc:    bool write_rdy =  !pkt->isRead() && !ctrl->inReadBusState(true) &&
+mem_interface.cc:            pkt->addr, pkt->rank, pkt->bank, pkt->row);
+mem_interface.cc:    Bank& bank_ref = ranks[pkt->rank]->banks[pkt->bank];
+mem_interface.cc:    const Tick bst_allowed_at = pkt->isRead() ?
+mem_interface.cc:    if (pkt->isRead() || !twoCycleRdWr) {
+mem_interface.cc:        cmd_at = ctrl->verifySingleCmd(cmd_at, maxCommandsPerWindow);
+mem_interface.cc:        cmd_at = ctrl->verifyMultiCmd(cmd_at, maxCommandsPerWindow, tCK);
+mem_interface.cc:    pkt->readyTime = cmd_at + tSEND + tBURST;
+mem_interface.cc:            dly_to_rd_cmd = pkt->isRead() ? tBURST : writeToReadDelay();
+mem_interface.cc:            dly_to_wr_cmd = pkt->isRead() ? readToWriteDelay() : tBURST;
+mem_interface.cc:            if (pkt->rank != n->rank) {
+mem_interface.cc:                // Need to account for rank-to-rank switching with tCS
+mem_interface.cc:            n->banks[i].rdAllowedAt = std::max(cmd_at + dly_to_rd_cmd,
+mem_interface.cc:                                      n->banks[i].rdAllowedAt);
+mem_interface.cc:            n->banks[i].wrAllowedAt = std::max(cmd_at + dly_to_wr_cmd,
+mem_interface.cc:                                      n->banks[i].wrAllowedAt);
+mem_interface.cc:            pkt->addr, pkt->readyTime);
+mem_interface.cc:    if (pkt->isRead()) {
+mem_interface.cc:        numPendingReads--;
+mem_interface.cc:        numReadDataReady--;
+mem_interface.cc:        numWritesQueued--;
+mem_interface.cc:        // the non-deterministic read is issued, before the data transfer
+mem_interface.cc:        if ((bank_ref.bank == pkt->bank) &&
+mem_interface.cc:            (bank_ref.openRow != pkt->row)) {
+mem_interface.cc:           // update the open buffer, re-using row field
+mem_interface.cc:           bank_ref.openRow = pkt->row;
+mem_interface.cc:           // here when we are re-buffering the data
+mem_interface.cc:        bank_ref.actAllowedAt = std::max(pkt->readyTime,
+mem_interface.cc:    if (pkt->isRead()) {
+mem_interface.cc:        stats.perBankRdBursts[pkt->bankId]++;
+mem_interface.cc:        stats.totMemAccLat += pkt->readyTime - pkt->entryTime;
+mem_interface.cc:        stats.totQLat += cmd_at - pkt->entryTime;
+mem_interface.cc:        stats.perBankWrBursts[pkt->bankId]++;
+mem_interface.cc:    if (!ctrl->requestEventScheduled()) {
+mem_interface.cc:        ctrl->restartScheduler(curTick());
+mem_interface.cc:            // Need to only account for rank-to-rank switching
+mem_interface.cc:            n->banks[i].rdAllowedAt = std::max(cmd_at + rankToRankDelay(),
+mem_interface.cc:                                             n->banks[i].rdAllowedAt);
+mem_interface.cc:            n->banks[i].wrAllowedAt = std::max(cmd_at + rankToRankDelay(),
+mem_interface.cc:                                             n->banks[i].wrAllowedAt);
+mem_interface.cc:     return (ctrl->inReadBusState(true) ?
+mem_interface.hh: * Copyright (c) 2012-2020 ARM Limited
+mem_interface.hh: * Copyright (c) 2013 Amin Farmahini-Farahani
+mem_interface.hh:        static const uint32_t NO_ROW = -1;
+mem_interface.hh:     * For FR-FCFS policy, find first command that can issue
+mem_interface.hh:     * @return minimum additional bus turnaround required for read-to-write
+mem_interface.hh:     * @return minimum additional bus turnaround required for write-to-read
+mem_interface.hh:     *               addition of rank-to-rank delay
+mem_interface.hh:    // Row Quarantine-specific functions
+mem_interface.hh:     * PWR_REF       : Auto-refresh state.  Will transition when refresh is
+mem_interface.hh:     * PWR_SREF      : Self-refresh state.  Entered after refresh if
+mem_interface.hh:     * REF_SREF_EXIT : Exiting a self-refresh; refresh event scheduled
+mem_interface.hh:     *                 after self-refresh exit completes
+mem_interface.hh:         * Active Power-Down Energy
+mem_interface.hh:         * Precharge Power-Down Energy
+mem_interface.hh:     * rank. This class allows the implementation of rank-wise refresh
+mem_interface.hh:     * and rank-wise power-down.
+mem_interface.hh:         * Previous low-power state, which will be re-entered after refresh.
+mem_interface.hh:         * rank is in or transitioning to power-down or self-refresh
+mem_interface.hh:         * Used to determine when a low-power state can be entered
+mem_interface.hh:         * delay low-power exit until this requirement is met
+mem_interface.hh:         * Trigger a self-refresh exit if there are entries enqueued
+mem_interface.hh:         * @return boolean indicating self-refresh exit should be scheduled
+mem_interface.hh:         * Schedule a transition to power-down (sleep)
+mem_interface.hh:         * schedule and event to wake-up from power-down or self-refresh
+mem_interface.hh:         *                   low-power exit and the next command
+mem_interface.hh:     * @param auto_or_preall Is this an auto-precharge or precharge all command
+mem_interface.hh:     * @return One-hot encoded mask of bank indices
+mem_interface.hh:     * Iterate through dram ranks to exit self-refresh in order to drain
+mem_interface.hh:     * For FR-FCFS policy, find first DRAM command that can issue
+mem_interface.hh:     * Actually do the burst - figure out the latency it
+mem_interface.hh:        return ranks[pkt->rank]->inRefIdleState();
+mem_interface.hh:     * the self-refresh state, in which case, a self-refresh exit
+mem_interface.hh:     *               addition of rank-to-rank delay
+mem_interface.hh:     * Holding queue for non-deterministic write commands, which
+mem_interface.hh:     *                    has been updated to a non-zero value to
+mem_interface.hh:     * For FR-FCFS policy, find first NVM command that can issue
+mem_interface.hh:     *               addition of rank-to-rank delay
+mem_object.hh: * Copyright (c) 2002-2005 The Regents of The University of Michigan
+multi_level_page_table.hh: * Declaration of a multi-level page table.
+multi_level_page_table.hh: * This class implements an in-memory multi-level page table that can be
+multi_level_page_table.hh: * To reduce memory required to store the page table, a multi-level page
+multi_level_page_table.hh: * the number of levels and {Ln, Ln-1, ..., L1, L0} a set that specifies
+multi_level_page_table.hh: * multi-level page table will store its translations at level 0 (the
+multi_level_page_table.hh: *                              +------------------------------+
+multi_level_page_table.hh: * level n                      |Ln-1_E0|Ln-1_E1|...|Ln-1_E2^Ln|
+multi_level_page_table.hh: *                              +------------------------------+
+multi_level_page_table.hh: *            +------------------------+   +------------------------+
+multi_level_page_table.hh: * level n-1  |Ln-2_E0|...|Ln-2_E2^Ln-1|   |Ln-2_E0|...|Ln-2_E2^Ln-1|
+multi_level_page_table.hh: *            +------------------------+   +------------------------+
+multi_level_page_table.hh: *          +------------------+   +------------+     +------------+
+multi_level_page_table.hh: *          +------------------+   +------------+     +------------+
+multi_level_page_table.hh: * +------------------------------+
+multi_level_page_table.hh: * |Lk-1_E0|Lk-1_E1|...|Lk-1_E2^Lk|
+multi_level_page_table.hh: * +------------------------------+
+multi_level_page_table.hh: * is a level k entry that holds 2^Lk entries in Lk-1 level.
+multi_level_page_table.hh: * Essentially, a level n entry will contain 2^Ln level n-1 entries,
+multi_level_page_table.hh: * a level n-1 entry will hold 2^Ln-1 level n-2 entries etc.
+multi_level_page_table.hh: * +--------------------------------+
+multi_level_page_table.hh: * +--------------------------------+
+multi_level_page_table.hh:    Addr addr = system->allocPhysPages(First::tableSize());
+multi_level_page_table.hh:    PortProxy &p = system->physProxy;
+multi_level_page_table.hh:        entry->read(system->physProxy, table, vaddr);
+multi_level_page_table.hh:        first.read(system->physProxy, table, vaddr);
+multi_level_page_table.hh:            first.write(system->physProxy);
+multi_level_page_table.hh:            entry.write(system->physProxy);
+multi_level_page_table.hh:            DPRINTF(MMU, "New mapping: %#x-%#x\n",
+multi_level_page_table.hh:            old_entry.write(system->physProxy);
+multi_level_page_table.hh:            new_entry.write(system->physProxy);
+multi_level_page_table.hh:            entry.write(system->physProxy);
+noncoherent_xbar.cc: * Copyright (c) 2011-2015, 2018-2019 ARM Limited
+noncoherent_xbar.cc: * Definition of a non-coherent crossbar object.
+noncoherent_xbar.cc:    // create the ports based on the size of the memory-side port and
+noncoherent_xbar.cc:    // CPU-side port vector ports, and the presence of the default port,
+noncoherent_xbar.cc:    for (int i = 0; i < p->port_mem_side_ports_connection_count; ++i) {
+noncoherent_xbar.cc:    // see if we have a default CPU-side-port device connected and if so add
+noncoherent_xbar.cc:    // our corresponding memory-side port
+noncoherent_xbar.cc:    if (p->port_default_connection_count) {
+noncoherent_xbar.cc:    // create the CPU-side ports, once again starting at zero
+noncoherent_xbar.cc:    for (int i = 0; i < p->port_cpu_side_ports_connection_count; ++i) {
+noncoherent_xbar.cc:    // we should never see express snoops on a non-coherent crossbar
+noncoherent_xbar.cc:    assert(!pkt->isExpressSnoop());
+noncoherent_xbar.cc:    PortID mem_side_port_id = findPort(pkt->getAddrRange());
+noncoherent_xbar.cc:    if (!reqLayers[mem_side_port_id]->tryTiming(src_port)) {
+noncoherent_xbar.cc:                src_port->name(), pkt->cmdString(), pkt->getAddr());
+noncoherent_xbar.cc:            src_port->name(), pkt->cmdString(), pkt->getAddr());
+noncoherent_xbar.cc:    unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+noncoherent_xbar.cc:    unsigned int pkt_cmd = pkt->cmdToIndex();
+noncoherent_xbar.cc:    Tick old_header_delay = pkt->headerDelay;
+noncoherent_xbar.cc:    Tick packetFinishTime = clockEdge(Cycles(1)) + pkt->payloadDelay;
+noncoherent_xbar.cc:    const bool expect_response = pkt->needsResponse() &&
+noncoherent_xbar.cc:        !pkt->cacheResponding();
+noncoherent_xbar.cc:    bool success = memSidePorts[mem_side_port_id]->sendTimingReq(pkt);
+noncoherent_xbar.cc:                src_port->name(), pkt->cmdString(), pkt->getAddr());
+noncoherent_xbar.cc:        pkt->headerDelay = old_header_delay;
+noncoherent_xbar.cc:        reqLayers[mem_side_port_id]->failedTiming(src_port,
+noncoherent_xbar.cc:        assert(routeTo.find(pkt->req) == routeTo.end());
+noncoherent_xbar.cc:        routeTo[pkt->req] = cpu_side_port_id;
+noncoherent_xbar.cc:    reqLayers[mem_side_port_id]->succeededTiming(packetFinishTime);
+noncoherent_xbar.cc:    const auto route_lookup = routeTo.find(pkt->req);
+noncoherent_xbar.cc:    const PortID cpu_side_port_id = route_lookup->second;
+noncoherent_xbar.cc:    if (!respLayers[cpu_side_port_id]->tryTiming(src_port)) {
+noncoherent_xbar.cc:                src_port->name(), pkt->cmdString(), pkt->getAddr());
+noncoherent_xbar.cc:            src_port->name(), pkt->cmdString(), pkt->getAddr());
+noncoherent_xbar.cc:    unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+noncoherent_xbar.cc:    unsigned int pkt_cmd = pkt->cmdToIndex();
+noncoherent_xbar.cc:    Tick packetFinishTime = clockEdge(Cycles(1)) + pkt->payloadDelay;
+noncoherent_xbar.cc:    // send the packet through the destination CPU-side port, and pay for
+noncoherent_xbar.cc:    Tick latency = pkt->headerDelay;
+noncoherent_xbar.cc:    pkt->headerDelay = 0;
+noncoherent_xbar.cc:    cpuSidePorts[cpu_side_port_id]->schedTimingResp(pkt,
+noncoherent_xbar.cc:    respLayers[cpu_side_port_id]->succeededTiming(packetFinishTime);
+noncoherent_xbar.cc:    reqLayers[mem_side_port_id]->recvRetry();
+noncoherent_xbar.cc:            cpuSidePorts[cpu_side_port_id]->name(), pkt->getAddr(),
+noncoherent_xbar.cc:            pkt->cmdString());
+noncoherent_xbar.cc:    unsigned int pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+noncoherent_xbar.cc:    unsigned int pkt_cmd = pkt->cmdToIndex();
+noncoherent_xbar.cc:    PortID mem_side_port_id = findPort(pkt->getAddrRange());
+noncoherent_xbar.cc:        mem_side_port->sendAtomicBackdoor(pkt, *backdoor) :
+noncoherent_xbar.cc:        mem_side_port->sendAtomic(pkt);
+noncoherent_xbar.cc:    if (pkt->isResponse()) {
+noncoherent_xbar.cc:        pkt_size = pkt->hasData() ? pkt->getSize() : 0;
+noncoherent_xbar.cc:        pkt_cmd = pkt->cmdToIndex();
+noncoherent_xbar.cc:    // @todo: Not setting first-word time
+noncoherent_xbar.cc:    pkt->payloadDelay = response_latency;
+noncoherent_xbar.cc:    if (!pkt->isPrint()) {
+noncoherent_xbar.cc:                cpuSidePorts[cpu_side_port_id]->name(), pkt->getAddr(),
+noncoherent_xbar.cc:                pkt->cmdString());
+noncoherent_xbar.cc:    // since our CPU-side ports are queued ports we need to check them as well
+noncoherent_xbar.cc:        if (p->trySatisfyFunctional(pkt)) {
+noncoherent_xbar.cc:            if (pkt->needsResponse())
+noncoherent_xbar.cc:                pkt->makeResponse();
+noncoherent_xbar.cc:    PortID dest_id = findPort(pkt->getAddrRange());
+noncoherent_xbar.cc:    memSidePorts[dest_id]->sendFunctional(pkt);
+noncoherent_xbar.hh: * Copyright (c) 2011-2015, 2019 ARM Limited
+noncoherent_xbar.hh: * Copyright (c) 2002-2005 The Regents of The University of Michigan
+noncoherent_xbar.hh: * Declaration of a non-coherent crossbar.
+noncoherent_xbar.hh: * A non-coherent crossbar connects a number of non-snooping memory-side ports
+noncoherent_xbar.hh: * the address. The request packets issued by the memory-side port connected to
+noncoherent_xbar.hh: * a non-coherent crossbar could still snoop in caches attached to a
+noncoherent_xbar.hh: * memory-side port on the non-coherent crossbar itself.
+noncoherent_xbar.hh: * The non-coherent crossbar can be used as a template for modelling
+noncoherent_xbar.hh: * PCIe, and non-coherent AMBA and OCP buses, and is typically used
+noncoherent_xbar.hh:     * Declaration of the non-coherent crossbar CPU-side port type, one
+noncoherent_xbar.hh:     * will be instantiated for each of the memory-side ports connecting to
+noncoherent_xbar.hh:     * Declaration of the crossbar memory-side port type, one will be
+noncoherent_xbar.hh:     * instantiated for each of the CPU-side ports connecting to the
+packet.cc: * Copyright (c) 2011-2019 ARM Limited
+packet.cc: * between a single level of the memory heirarchy (ie L1->L2).
+packet.cc:    /* ReadReq - Read issued by a non-caching agent such as a CPU or
+packet.cc:    /* WriteCompleteResp - The WriteCompleteResp command is needed
+packet.cc:    /* WritebackClean - This allows the upstream cache to writeback a
+packet.cc:    /* WriteClean - This allows a cache to write a dirty block to a memory
+packet.cc:    /* UpgradeFailResp - Behaves like a ReadExReq, but notifies an SC
+packet.cc:    /* ReadExReq - Read issues by a cache, always cache-line aligned,
+packet.cc:    /* ReadExResp - Response matching a read exclusive, as we check
+packet.cc:    /* ReadCleanReq - Read issued by a cache, always cache-line
+packet.cc:    /* ReadSharedReq - Read issued by a cache, always cache-line
+packet.cc:    /* SwapReq -- for Swap ldstub type operations */
+packet.cc:    /* SwapResp -- for Swap ldstub type operations */
+packet.cc:    /* MemFenceReq -- for synchronization requests */
+packet.cc:    /* MemFenceResp -- for synchronization responses */
+packet.cc:    /* Cache Clean Request -- Update with the latest data all existing
+packet.cc:    /* Cache Clean Response - Indicates that all caches up to the
+packet.cc:       specified point of reference have a up-to-date copy of the
+packet.cc:    /* Cache Clean and Invalidate Request -- Invalidate all existing
+packet.cc:     /* Cache Clean and Invalidate Respose -- Indicates that no cache
+packet.cc:    /* InvalidDestError  -- packet dest field invalid */
+packet.cc:    /* BadAddressError   -- memory address invalid */
+packet.cc:    const Addr func_end   = getAddr() + getSize() - 1;
+packet.cc:    const Addr val_end    = val_start + size - 1;
+packet.cc:        safe_cast<PrintReqState*>(senderState)->printObj(obj);
+packet.cc:        func_start - val_start : 0;
+packet.cc:        val_start - func_start : 0;
+packet.cc:    const Addr overlap_size = std::min(val_end, func_end)+1 -
+packet.cc:    assert(!pkt->cacheResponding() || !cacheResponding());
+packet.cc:    flags.set(pkt->flags & RESPONDER_FLAGS);
+packet.cc:    sender_state->predecessor = senderState;
+packet.cc:    senderState = sender_state->predecessor;
+packet.cc:    sender_state->predecessor = NULL;
+packet.cc:             getAddr(), getAddr() + getSize() - 1,
+packet.cc:             req->isSecure() ? " (s)" : "",
+packet.cc:             req->isInstFetch() ? " IF" : "",
+packet.cc:             req->isUncacheable() ? " UC" : "",
+packet.cc:             req->isToPOC() ? " PoC" : "",
+packet.cc:             req->isToPOU() ? " PoU" : "");
+packet.cc:    return matchBlockAddr(pkt->getBlockAddr(blk_size), pkt->isSecure(),
+packet.cc:    return matchAddr(pkt->getAddr(), pkt->isSecure());
+packet.cc:            if (!i->labelPrinted) {
+packet.cc:                ccprintf(os, "%s%s\n", *(i->prefix), i->label);
+packet.cc:                i->labelPrinted = true;
+packet.cc:    obj->print(os, verbosity, curPrefix());
+packet.hh: * Copyright (c) 2012-2019 ARM Limited
+packet.hh:        // Fake simulator-only commands
+packet.hh:        NeedsWritable,  //!< Requires writable copy to complete in-cache
+packet.hh:        /// Special timing-mode atomic snoop for multi-level coherence.
+packet.hh:        // Snoop co-ordination flag to indicate that a cache is
+packet.hh:        // Response co-ordination flag for cache maintenance
+packet.hh:     * a 32-bit unsigned should be sufficient.
+packet.hh:     * relative, a 32-bit unsigned should be sufficient.
+packet.hh:            sender_state = sender_state->predecessor;
+packet.hh:     * used to bypass flow control for normal (non-snoop) requests
+packet.hh:    inline RequestorID requestorId() const { return req->requestorId(); }
+packet.hh:    void copyError(Packet *pkt) { assert(pkt->isError()); cmd = pkt->cmd; }
+packet.hh:     * Update the address of this packet mid-transaction. This is used
+packet.hh:        return getAddr() & Addr(blk_size - 1);
+packet.hh:        return getAddr() & ~(Addr(blk_size - 1));
+packet.hh:    AtomicOpFunctor *getAtomicOp() const { return req->getAtomicOpFunctor(); }
+packet.hh:    bool isAtomicOp() const { return req->isAtomic(); }
+packet.hh:        if (req->hasPaddr()) {
+packet.hh:            addr = req->getPaddr();
+packet.hh:            _isSecure = req->isSecure();
+packet.hh:        if (req->isHTMCmd()) {
+packet.hh:        if (req->hasSize()) {
+packet.hh:            size = req->getSize();
+packet.hh:        if (req->hasPaddr()) {
+packet.hh:            addr = req->getPaddr() & ~(_blkSize - 1);
+packet.hh:            _isSecure = req->isSecure();
+packet.hh:        :  cmd(pkt->cmd), id(pkt->id), req(pkt->req),
+packet.hh:           addr(pkt->addr), _isSecure(pkt->_isSecure), size(pkt->size),
+packet.hh:           bytesValid(pkt->bytesValid),
+packet.hh:           _qosValue(pkt->qosValue()),
+packet.hh:           headerDelay(pkt->headerDelay),
+packet.hh:           payloadDelay(pkt->payloadDelay),
+packet.hh:           senderState(pkt->senderState)
+packet.hh:            flags.set(pkt->flags & COPY_FLAGS);
+packet.hh:        flags.set(pkt->flags & (VALID_ADDR|VALID_SIZE));
+packet.hh:        if (pkt->isHtmTransactional())
+packet.hh:            setHtmTransactional(pkt->getHtmTransactionUid());
+packet.hh:        if (pkt->htmTransactionFailedInCache()) {
+packet.hh:                pkt->getHtmTransactionFailedInCacheRC()
+packet.hh:        // co-ordinate state changes
+packet.hh:            if (pkt->flags.isSet(STATIC_DATA)) {
+packet.hh:                data = pkt->data;
+packet.hh:        if (req->isHTMCmd()) {
+packet.hh:            if (req->isHTMAbort())
+packet.hh:        } else if (req->isLLSC())
+packet.hh:        else if (req->isPrefetchEx())
+packet.hh:        else if (req->isPrefetch())
+packet.hh:        if (req->isLLSC())
+packet.hh:        else if (req->isSwap() || req->isAtomic())
+packet.hh:        else if (req->isCacheInvalidate()) {
+packet.hh:          return req->isCacheClean() ? MemCmd::CleanInvalidReq :
+packet.hh:        } else if (req->isCacheClean()) {
+packet.hh:     * Constructor-like methods that return Packets based on Request objects.
+packet.hh:     * Fine-tune the MemCmd type if it's not a vanilla read or write.
+packet.hh:        this->size = size;
+packet.hh:     * Check if packet corresponds to a given block-aligned address and
+packet.hh:     * Check if this packet refers to the same block-aligned address and
+packet.hh:     * and non-const data pointer and cleverly choose between
+packet.hh:     * endianness and zero-extended to 64 bits.
+packet.hh:            assert(req->getByteEnable().size() == getSize());
+packet.hh:                if (req->getByteEnable()[i]) {
+packet.hh:     * another packet (i.e. an in-transit request or
+packet.hh:        if (other->isMaskedWrite()) {
+packet.hh:            if (_isSecure == other->isSecure() &&
+packet.hh:                getAddr() <= (other->getAddr() + other->getSize() - 1) &&
+packet.hh:                other->getAddr() <= (getAddr() + getSize() - 1)) {
+packet.hh:                     other->getAddr());
+packet.hh:        return trySatisfyFunctional(other, other->getAddr(), other->isSecure(),
+packet.hh:                                    other->getSize(),
+packet.hh:                                    other->hasData() ?
+packet.hh:                                    other->getPtr<uint8_t>() : NULL);
+packet.hh:        return (cmd == MemCmd::WriteReq && req->isMasked());
+packet.hh:            safe_cast<PrintReqState*>(senderState)->pushLabel(lbl);
+packet.hh:            safe_cast<PrintReqState*>(senderState)->popLabel();
+packet.hh:     * A no-args wrapper of print(std::ostream...)
+packet.hh:     * @return string with the request's type and start<->end addresses
+packet_queue.cc: * Copyright (c) 2012,2015,2018-2020 ARM Limited
+packet_queue.cc:        if (p.pkt->matchBlockAddr(pkt, blk_size))
+packet_queue.cc:    pkt->pushLabel(label);
+packet_queue.cc:        found = pkt->trySatisfyFunctional(i->pkt);
+packet_queue.cc:    pkt->popLabel();
+packet_queue.cc:            __func__, pkt->cmdString(), pkt->getAddr(), pkt->getSize(), when,
+packet_queue.cc:    assert(!pkt->isExpressSnoop());
+packet_queue.cc:    // x86 page-table walker and timing CPU send out a new request as
+packet_queue.cc:    // not to re-order in front of some existing packet with the same
+packet_queue.cc:        --it;
+packet_queue.cc:        if ((forceOrder && it->pkt->matchAddr(pkt)) || it->tick <= when) {
+packet_queue.hh: * sends them using the associated CPU-side port or memory-side port.
+packet_queue.hh:     * caller must guarantee that the list is non-empty and that the
+packet_queue.hh:    { return memSidePort.name() + "-" + label; }
+packet_queue.hh:     * memory-side port, and a label that will be used for functional print
+packet_queue.hh:    { return memSidePort.name() + "-" + label; }
+packet_queue.hh:     * manager, a memory-side port, and a label that will be used for
+packet_queue.hh:     * @param _mem_side_port memory-side port used to send the packets
+packet_queue.hh:    { return cpuSidePort.name() + "-" + label; }
+packet_queue.hh:     * CPU-side port, and a label that will be used for functional print
+page_table.cc:    DPRINTF(MMU, "Allocating Page: %#x-%#x\n", vaddr, vaddr + size);
+page_table.cc:            it->second = Entry(paddr, flags);
+page_table.cc:        size -= pageSize;
+page_table.cc:        pTable.emplace(new_vaddr, old_it->second);
+page_table.cc:        size -= pageSize;
+page_table.cc:        addr_maps->push_back(std::make_pair(iter.first, iter.second.paddr));
+page_table.cc:    DPRINTF(MMU, "Unmapping page: %#x-%#x\n", vaddr, vaddr + size);
+page_table.cc:        size -= pageSize;
+page_table.cc:    return &(iter->second);
+page_table.cc:    paddr = pageOffset(vaddr) + entry->paddr;
+page_table.cc:    DPRINTF(MMU, "Translating: %#x->%#x\n", vaddr, paddr);
+page_table.cc:    assert(pageAlign(req->getVaddr() + req->getSize() - 1) ==
+page_table.cc:           pageAlign(req->getVaddr()));
+page_table.cc:    if (!translate(req->getVaddr(), paddr))
+page_table.cc:        return Fault(new GenericPageTableFault(req->getVaddr()));
+page_table.cc:    req->setPaddr(paddr);
+page_table.cc:    if ((paddr & (pageSize - 1)) + req->getSize() > pageSize) {
+page_table.hh: * Declarations of a non-full system Page Table.
+page_table.hh:     * bit 0 - no-clobber | clobber
+page_table.hh:     * bit 2 - cacheable  | uncacheable
+page_table.hh:     * bit 3 - read-write | read-only
+page_table.hh:     * @param flags Generic mapping flags that can be set by or-ing values
+physical.cc:        if (m->isInAddrMap()) {
+physical.cc:            size += m->size();
+physical.cc:            fatal_if(addrMap.insert(m->getAddrRange(), m) == addrMap.end(),
+physical.cc:                     m->name());
+physical.cc:                    m->name());
+physical.cc:            fatal_if(m->getAddrRange().interleaved(),
+physical.cc:                     "be interleaved\n", m->name());
+physical.cc:            createBackingStore(m->getAddrRange(), unmapped_mems,
+physical.cc:                               m->isConfReported(), m->isInAddrMap(),
+physical.cc:                               m->isKvmMap());
+physical.cc:        if (!r.second->isNull()) {
+physical.cc:                        if (f->isConfReported() != c->isConfReported() ||
+physical.cc:                            f->isInAddrMap() != c->isInAddrMap() ||
+physical.cc:                            f->isKvmMap() != c->isKvmMap())
+physical.cc:                                       f->isConfReported(), f->isInAddrMap(),
+physical.cc:                                       f->isKvmMap());
+physical.cc:                                   r.second->isConfReported(),
+physical.cc:                                   r.second->isInAddrMap(),
+physical.cc:                                   r.second->isKvmMap());
+physical.cc:            if (f->isConfReported() != c->isConfReported() ||
+physical.cc:                f->isInAddrMap() != c->isInAddrMap() ||
+physical.cc:                f->isKvmMap() != c->isKvmMap())
+physical.cc:                           f->isConfReported(), f->isInAddrMap(),
+physical.cc:                           f->isKvmMap());
+physical.cc:        shm_fd = -1;
+physical.cc:        if (shm_fd == -1)
+physical.cc:                m->name());
+physical.cc:        m->setBackingStore(pmem);
+physical.cc:        if (r.second->isConfReported()) {
+physical.cc:    assert(pkt->isRequest());
+physical.cc:    const auto& m = addrMap.contains(pkt->getAddrRange());
+physical.cc:    m->second->access(pkt);
+physical.cc:    assert(pkt->isRequest());
+physical.cc:    const auto& m = addrMap.contains(pkt->getAddrRange());
+physical.cc:    m->second->functionalAccess(pkt);
+physical.cc:        const list<LockedAddr>& locked_addrs = m->getLockedAddrList();
+physical.cc:        pass_size = (uint64_t)INT_MAX < (range.size() - written) ?
+physical.cc:            (uint64_t)INT_MAX : (range.size() - written);
+physical.cc:        m->second->addLockedAddr(LockedAddr(lal_addr[i], lal_cid[i]));
+physical.cc:            // Only copy bytes that are non-zero, so we don't give
+physical.hh:    // All address-mapped memories
+physical.hh:     * the OS-visible global address map and thus are allowed to
+port.cc: * Copyright (c) 2002-2005 The Regents of The University of Michigan
+port.cc:    fatal_if(!response_port, "Can't bind port %s to non-response port %s.",
+port.cc:    _responsePort->responderBind(*this);
+port.cc:    _responsePort->responderUnbind();
+port.cc:    return _responsePort->getAddrRanges();
+port.hh: * Copyright (c) 2011-2012,2015,2017 ARM Limited
+port.hh: * Copyright (c) 2002-2005 The Regents of The University of Michigan
+port.hh:     * wait for a recvReqRetry at which point it can re-issue a
+port.hh:     * at which point it can re-issue a sendTimingReq.
+port.hh:     * re-issue a sendTimingSnoopResp.
+port.hh:    bool isSnooping() const { return _requestPort->isSnooping(); }
+port.hh:    void sendRangeChange() const { _requestPort->recvRangeChange(); }
+port.hh:     * Get a list of the non-overlapping address ranges the owner is
+port.hh:     * wait for a recvRespRetry at which point it can re-issue a
+port_proxy.cc:    while (maxlen--) {
+port_proxy.cc:    *--str = '\0';
+port_proxy.hh: * Copyright (c) 2011-2013, 2018 ARM Limited
+port_proxy.hh: * Port proxies are used when non-structural entities need access to
+port_proxy.hh:        sendFunctional([&port](PacketPtr pkt)->void {
+request.hh: * Copyright (c) 2012-2013,2017-2020 ARM Limited
+request.hh: * Copyright (c) 2002-2005 The Regents of The University of Michigan
+request.hh: * Special TaskIds that are used for per-context-switch stats dumps
+request.hh:         * architecture-specific code. For example, SPARC uses them to
+request.hh:         * models</i> and is non-speculative.
+request.hh:         * re-ordered or executed speculatively by a CPU model. The
+request.hh:     * between atomic return/no-return operations.
+request.hh:        /** user-policy flags */
+request.hh:        /** user-policy flags */
+request.hh:    /** Byte-enable mask for writes. */
+request.hh:     * device behind an SMMU/IOMMU. It's intended to map 1-to-1 to
+request.hh:                                other.atomicOpFunctor->clone() : nullptr);
+request.hh:    // TODO: this function is still required by TimingSimpleCPU - should be
+request.hh:    // removed once TimingSimpleCPU will support arbitrarily long multi-line
+request.hh:        req1->_size = split_addr - _vaddr;
+request.hh:        req2->_vaddr = split_addr;
+request.hh:        req2->_size = _size - req1->_size;
+request.hh:            req1->_byteEnable = std::vector<bool>(
+request.hh:                _byteEnable.begin() + req1->_size);
+request.hh:            req2->_byteEnable = std::vector<bool>(
+request.hh:                _byteEnable.begin() + req1->_size,
+request.hh:     * Accessor for atomic-op functor.
+request.hh:    // PTE-access specific set-flag interface
+request.hh:    /** Accessor function for architecture-specific flags.*/
+request.hh:    void setTranslateLatency() { translateDelta = curTick() - _time; }
+request.hh:    void setAccessLatency() { accessDelta = curTick() - _time - translateDelta; }
+request.hh:    // PTE integrity-specific flags
+rowhammer_detector.cc:    if (isFuncLookup == false) tracker->s_num_access++;
+rowhammer_detector.cc:    if (tracker->rowHasEntry[rowAddr]) {
+rowhammer_detector.cc:        uint32_t entryID = tracker->rowHasEntry[rowAddr]-1;
+rowhammer_detector.cc:        if (!(tracker->entries[entryID].valid == true && 
+rowhammer_detector.cc:                tracker->entries[entryID].addr == rowAddr)) {
+rowhammer_detector.cc:            tracker->entries[entryID].count++;
+rowhammer_detector.cc:            if (tracker->entries[entryID].count % threshold == 0) {
+rowhammer_detector.cc:                if (tracker->uniq_rows.insert(rowAddr).second) {
+rowhammer_detector.cc:            if (tracker->entries[ii].count == tracker->spill_counter) {
+rowhammer_detector.cc:                if (tracker->entries[ii].valid) {
+rowhammer_detector.cc:                    tracker->rowHasEntry[tracker->entries[ii].addr] = 0;
+rowhammer_detector.cc:                tracker->entries[ii].addr = rowAddr;
+rowhammer_detector.cc:                tracker->entries[ii].count++;
+rowhammer_detector.cc:                tracker->entries[ii].valid = true;
+rowhammer_detector.cc:                tracker->s_num_install++;
+rowhammer_detector.cc:                tracker->rowHasEntry[rowAddr] = ii+1;
+rowhammer_detector.cc:                if (tracker->entries[ii].count % threshold == 0) {
+rowhammer_detector.cc:                    if (tracker->uniq_rows.insert(rowAddr).second) {
+rowhammer_detector.cc:            else if (tracker->entries[ii].valid == false) {
+rowhammer_detector.cc:            tracker->spill_counter++;
+rowhammer_detector.cc:        tracker->s_aggressors++;
+rowhammer_detector.hh:        uint32_t            s_num_reset;        //-- how many times was the tracker reset
+rowhammer_detector.hh:        uint32_t            s_glob_spill_count; //-- what is the total spill_count over time
+rowhammer_detector.hh:        //---- Update below statistics in mgries_access() ----
+rowhammer_detector.hh:        uint64_t            s_num_access;  //-- how many times was the tracker called
+rowhammer_detector.hh:        uint64_t            s_num_install; //-- how many times did the tracker install rowIDs 
+rowhammer_detector.hh:        uint64_t            s_aggressors; //-- how many times did the tracker flag an aggressor
+rowhammer_mitigation.cc:    if (table->rowHasEntry[rowAddr]) {
+rowhammer_mitigation.cc:        uint32_t entryID = table->rowHasEntry[rowAddr] - 1;
+rowhammer_mitigation.cc:        assert(table->tuples[entryID].valid && 
+rowhammer_mitigation.cc:                (table->tuples[entryID].origRowID == rowAddr || 
+rowhammer_mitigation.cc:                table->tuples[entryID].remappedRowID == rowAddr));
+rowhammer_mitigation.cc:        remappedAddr = (table->tuples[entryID].origRowID == rowAddr) ? 
+rowhammer_mitigation.cc:                        table->tuples[entryID].remappedRowID : table->tuples[entryID].origRowID;
+rowhammer_mitigation.cc:    // For swap-tuple <X, Y>, only X can potentially exist in RIT. Search if it is already in RIT
+rowhammer_mitigation.cc:    if (table->rowHasEntry[__origRowID]) {
+rowhammer_mitigation.cc:        uint32_t entryID = table->rowHasEntry[__origRowID] - 1;
+rowhammer_mitigation.cc:        assert(table->tuples[entryID].valid && 
+rowhammer_mitigation.cc:                (table->tuples[entryID].origRowID == __origRowID || 
+rowhammer_mitigation.cc:                table->tuples[entryID].remappedRowID == __origRowID));
+rowhammer_mitigation.cc:        // To re-swap existing <X, A> to <X, Y>, <A, B>
+rowhammer_mitigation.cc:        table->tuples[reswap_tuple_ID].locked = true;
+rowhammer_mitigation.cc:        if (table->tuples[reswap_tuple_ID].origRowID == __origRowID) {
+rowhammer_mitigation.cc:            prev_swap_rowAddr = table->tuples[reswap_tuple_ID].remappedRowID;
+rowhammer_mitigation.cc:            table->tuples[reswap_tuple_ID].remappedRowID = remapped_rowAddr; 
+rowhammer_mitigation.cc:            table->rowHasEntry[prev_swap_rowAddr] = 0;
+rowhammer_mitigation.cc:            table->rowHasEntry[remapped_rowAddr] = reswap_tuple_ID + 1;
+rowhammer_mitigation.cc:            prev_swap_rowAddr = table->tuples[reswap_tuple_ID].origRowID;
+rowhammer_mitigation.cc:            table->tuples[reswap_tuple_ID].origRowID = remapped_rowAddr;
+rowhammer_mitigation.cc:            table->rowHasEntry[prev_swap_rowAddr] = 0;
+rowhammer_mitigation.cc:            table->rowHasEntry[remapped_rowAddr] = reswap_tuple_ID + 1;
+rowhammer_mitigation.cc:            if (!table->tuples[ii].valid) {
+rowhammer_mitigation.cc:                table->tuples[ii].valid = true;
+rowhammer_mitigation.cc:                table->tuples[ii].locked = true;
+rowhammer_mitigation.cc:                table->tuples[ii].origRowID = prev_swap_rowAddr;
+rowhammer_mitigation.cc:                table->tuples[ii].remappedRowID = remapped_rowAddr;
+rowhammer_mitigation.cc:                table->rowHasEntry[prev_swap_rowAddr] = ii + 1;
+rowhammer_mitigation.cc:                table->rowHasEntry[remapped_rowAddr] = ii + 1;
+rowhammer_mitigation.cc:                table->valid_tuples++;
+rowhammer_mitigation.cc:        // No re-swapping required, install <X, Y>
+rowhammer_mitigation.cc:            if (!table->tuples[ii].valid) {
+rowhammer_mitigation.cc:                table->tuples[ii].valid = true;
+rowhammer_mitigation.cc:                table->tuples[ii].locked = true;
+rowhammer_mitigation.cc:                table->tuples[ii].origRowID = __origRowID;
+rowhammer_mitigation.cc:                table->tuples[ii].remappedRowID = remapped_rowAddr;
+rowhammer_mitigation.cc:                table->rowHasEntry[__origRowID] = ii + 1;
+rowhammer_mitigation.cc:                table->rowHasEntry[remapped_rowAddr] = ii + 1;
+rowhammer_mitigation.cc:                table->valid_tuples++;
+rowhammer_mitigation.cc:    if (table->valid_tuples > maxValidTuples) {
+rowhammer_mitigation.cc:        // Need to evict a valid but unlocked tuple, that is, un-swap
+rowhammer_mitigation.cc:            if (table->tuples[ii].valid && !table->tuples[ii].locked) {
+rowhammer_mitigation.cc:                table->tuples[ii].valid = false;
+rowhammer_mitigation.cc:                table->tuples[ii].locked = false;
+rowhammer_mitigation.cc:                decision.addrs[decision.validAddrs] = table->tuples[ii].origRowID;
+rowhammer_mitigation.cc:                decision.addrs[decision.validAddrs] = table->tuples[ii].remappedRowID;
+rowhammer_mitigation.cc:                //         __origRowID, table->tuples[ii].origRowID, table->tuples[ii].remappedRowID);
+rowhammer_mitigation.cc:                table->rowHasEntry[table->tuples[ii].origRowID] = 0;
+rowhammer_mitigation.cc:                table->rowHasEntry[table->tuples[ii].remappedRowID] = 0;
+rowhammer_mitigation.cc:                table->tuples[ii].origRowID = 0;
+rowhammer_mitigation.cc:                table->tuples[ii].remappedRowID = 0;
+rowhammer_mitigation.cc:                table->valid_tuples--;
+rowhammer_mitigation.cc:    assert(table->valid_tuples <= maxValidTuples);
+rowhammer_mitigation.cc:        max_tries--;
+rowhammer_mitigation.cc:        if (guessRow != avoidRow && table->rowHasEntry[guessRow] == 0 && 
+rowhammer_mitigation.cc:            detector->access(guessRow, bankID, rankID, channelID, /*Functional lookup*/ true) != true) {
+rowhammer_mitigation.cc:            if (ii != avoidRow && table->rowHasEntry[ii] == 0 && 
+rowhammer_mitigation.cc:                detector->access(ii, bankID, rankID, channelID, /*Functional lookup*/ true) != true) {
+rowhammer_mitigation.cc:    detector->reset();
+rowhammer_mitigation.cc:    decision.remappedAddr = -1;
+rowhammer_mitigation.cc:    if (currTick - last_reset >= 64000000000) {
+rowhammer_mitigation.cc:    decision.mitigate = detector->access(rowAddr, bankID, rankID, channelID);
+rowhammer_mitigation.cc:            entries[nthHash(n, hashValues[0], hashValues[1], numEntries)]--;
+rowhammer_mitigation.cc: * Constructs a set-associative cache level
+rowhammer_mitigation.cc:                m_cache[set][way].rrip--;
+rowhammer_mitigation.cc:            loop_count--;
+rowhammer_mitigation.cc:    // cout << setw(30) << "Misses: " << s_lookups - s_hits << endl;
+rowhammer_mitigation.cc:    decision.remappedAddr = -1;
+rowhammer_mitigation.cc:    mapping->channelID = 0;
+rowhammer_mitigation.cc:    mapping->rankID = 0;
+rowhammer_mitigation.cc:    mapping->bankID = rowAddr % 16;
+rowhammer_mitigation.cc:    mapping->rowID = (rowAddr % (numRows/16)); // numRows is actually numDRAMRows
+rowhammer_mitigation.cc:Decision& Row_Quarantine::access(Tick currTick, /*Byte-aligned address */ Addr addr, 
+rowhammer_mitigation.cc:    if (currTick - last_reset >= 64000000000) {
+rowhammer_mitigation.cc:    // Detector is still per-bank, so use decoded address
+rowhammer_mitigation.cc:    decision.mitigate = detector->access(mapping.rowID, mapping.bankID, 0, 0);
+rowhammer_mitigation.cc:    else if ((s_cache_miss + s_cache_partial_hit_orr_unset - prev_drain_cache_miss_val) >= drain_cache_miss_threshold) {
+rowhammer_mitigation.cc:    uint32_t blk_way = cache->Lookup(index, ONLY_LOOKUP);
+rowhammer_mitigation.cc:    if (blk_way < cache->m_ways) {
+rowhammer_mitigation.cc:        // row is in cache, invalidate it and write-back if required
+rowhammer_mitigation.cc:        isDirty = cache->QueryDirtyBit(index, blk_way);
+rowhammer_mitigation.cc:        evicted_rowID = cache->Get_Block_Addr(index, blk_way);
+rowhammer_mitigation.cc:        cache->Invalidate(index, blk_way);
+rowhammer_mitigation.cc:    uint64_t blk_way = cache->Find_Victim(index);
+rowhammer_mitigation.cc:    if (cache->Is_Block_Valid(index, blk_way)) {
+rowhammer_mitigation.cc:        isDirty = cache->QueryDirtyBit(index, blk_way);
+rowhammer_mitigation.cc:        evicted_rowID = cache->Get_Block_Addr(index, blk_way);
+rowhammer_mitigation.cc:    cache->Invalidate(index, blk_way);
+rowhammer_mitigation.cc:    cache->Fill(index, blk_way);
+rowhammer_mitigation.cc:        cache->SetDirtyBit(index, blk_way);
+rowhammer_mitigation.cc:    if ((filter && filter->query(index)) || (bitvector && bitvector[index/rows_per_btv_bit])) {
+rowhammer_mitigation.cc:            if (cache->Lookup(index) < cache->m_ways) {
+rowhammer_mitigation.cc:                uint32_t RQT_cacheline_way = cache->PartialLookup(index);
+rowhammer_mitigation.cc:                if (RQT_cacheline_way < cache->m_ways) {
+rowhammer_mitigation.cc:                        // A may be remapped, check {Row->QR} table
+rowhammer_mitigation.cc:                    // No remapping info in cache, check {Row->QR} table
+rowhammer_mitigation.cc:                        // Delay is 90ns, the fine-tuning is done at DRAM side
+rowhammer_mitigation.cc:                    if (indirStructs->row_To_QR_T[rowID].valid) {
+rowhammer_mitigation.cc:                            if (indirStructs->row_To_QR_T[i].valid) {
+rowhammer_mitigation.cc:                            // Update evicted entry in {Row->QR} table
+rowhammer_mitigation.cc:                            // We first fetch it, then re-write updated value
+rowhammer_mitigation.cc:            // Check {Row->QR} table
+rowhammer_mitigation.cc:                // Delay is 90ns, the fine-tuning is done at DRAM side
+rowhammer_mitigation.cc:        // We now have the mapping A->Qj, if it exists
+rowhammer_mitigation.cc:        if (filter && indirStructs->row_To_QR_T[rowID].valid) {
+rowhammer_mitigation.cc:            filter->s_truePositives++;
+rowhammer_mitigation.cc:            filter->s_falsePositives++;
+rowhammer_mitigation.cc:        else if (indirStructs->row_To_QR_T[rowID].valid) {
+rowhammer_mitigation.cc:            filter->s_trueNegatives++;
+rowhammer_mitigation.cc:        assert(indirStructs->row_To_QR_T[rowID].valid == false);
+rowhammer_mitigation.cc:    uint32_t remove_rowID = indirStructs->QR_To_Row_T[QRT_id].value; // get B
+rowhammer_mitigation.cc:    indirStructs->QR_To_Row_T[QRT_id].valid = false;
+rowhammer_mitigation.cc:    // Reset B->Qi mapping in {Row->QR} table
+rowhammer_mitigation.cc:    assert(indirStructs->row_To_QR_T[remove_rowID].valid);
+rowhammer_mitigation.cc:    indirStructs->row_To_QR_T[remove_rowID].valid = false; // reset B->Qi
+rowhammer_mitigation.cc:        assert(filter->query(index));
+rowhammer_mitigation.cc:        filter->del(index);
+rowhammer_mitigation.cc:        bitvector[index/rows_per_btv_bit]--;
+rowhammer_mitigation.cc:        ORR_CBF[index/rows_per_btv_bit]--;
+rowhammer_mitigation.cc:    // Fetch {QR->Row} table entry to get rowID
+rowhammer_mitigation.cc:    printf("[RQ] DRAIN function- HEAD: %d, PREV-HEAD: %d, TAIL: %d VALID? %d\n",
+rowhammer_mitigation.cc:            indirStructs->nextFreeQR_ID, indirStructs->prevQRHead_ID, 
+rowhammer_mitigation.cc:            indirStructs->QRTail_ID, indirStructs->QR_To_Row_T[indirStructs->QRTail_ID].valid);
+rowhammer_mitigation.cc:    if ((indirStructs->QRTail_ID != indirStructs->prevQRHead_ID) && 
+rowhammer_mitigation.cc:        indirStructs->QR_To_Row_T[indirStructs->QRTail_ID].valid) {
+rowhammer_mitigation.cc:        bool isCacheDirty = removeRow(indirStructs->QRTail_ID, 0, 0, 0);
+rowhammer_mitigation.cc:        indirStructs->QRTail_ID = (indirStructs->QRTail_ID + 1)%numQREntries;
+rowhammer_mitigation.cc:    // update {Row->QR} table with A->Qi mapping and add update delay accordingly 
+rowhammer_mitigation.cc:    if (indirStructs->row_To_QR_T[rowID].valid) {
+rowhammer_mitigation.cc:        orig_RowQRID = indirStructs->row_To_QR_T[rowID].value; // get Qj
+rowhammer_mitigation.cc:            filter->add(index);
+rowhammer_mitigation.cc:    indirStructs->row_To_QR_T[rowID].valid = true;
+rowhammer_mitigation.cc:    indirStructs->row_To_QR_T[rowID].value = indirStructs->nextFreeQR_ID; // put A->Qi, reset A->Qj
+rowhammer_mitigation.cc:        uint32_t blk_way = cache->Lookup(index, ONLY_LOOKUP);
+rowhammer_mitigation.cc:        if (blk_way == cache->m_ways) {
+rowhammer_mitigation.cc:            // // A is not in cache, insert A->Qi
+rowhammer_mitigation.cc:            // Update evicted entry in {Row->QR} table
+rowhammer_mitigation.cc:            // We first fetch it, then re-write updated value
+rowhammer_mitigation.cc:            cache->SetDirtyBit(index, blk_way);
+rowhammer_mitigation.cc:        // This is the update delay for A's entry in {Row->QR} table
+rowhammer_mitigation.cc:    // Check if B is in Qi and add access delay for {QR->Row} table
+rowhammer_mitigation.cc:    if (indirStructs->QR_To_Row_T[indirStructs->nextFreeQR_ID].valid) {
+rowhammer_mitigation.cc:        uint32_t remove_rowID = indirStructs->QR_To_Row_T[indirStructs->nextFreeQR_ID].value; // get B
+rowhammer_mitigation.cc:        bool isCacheDirty = removeRow(indirStructs->nextFreeQR_ID, bankID, rankID, channelID);
+rowhammer_mitigation.cc:            // Add update delay depending on whether {Row->QR} table 
+rowhammer_mitigation.cc:            // has B->Qi and A->Qj are in same cacheline 
+rowhammer_mitigation.cc:    // Update Qi mapping in {QR->Row} table
+rowhammer_mitigation.cc:    indirStructs->QR_To_Row_T[indirStructs->nextFreeQR_ID].valid = true;
+rowhammer_mitigation.cc:    indirStructs->QR_To_Row_T[indirStructs->nextFreeQR_ID].value = rowID; // put Qi->A, reset Qi->B
+rowhammer_mitigation.cc:    // Add update delay depending on whether {QR->Row} table has Qi->B and Qj->A are in same cacheline
+rowhammer_mitigation.cc:        if (virtualize_RIT && ((indirStructs->nextFreeQR_ID/16) != (orig_RowQRID/16))) {
+rowhammer_mitigation.cc:        assert(indirStructs->QR_To_Row_T[orig_RowQRID].valid);
+rowhammer_mitigation.cc:        indirStructs->QR_To_Row_T[orig_RowQRID].valid = false; // reset Qj->A
+rowhammer_mitigation.cc:    if (indirStructs->nextFreeQR_ID == indirStructs->QRTail_ID && 
+rowhammer_mitigation.cc:        indirStructs->nextFreeQR_ID != indirStructs->prevQRHead_ID) {
+rowhammer_mitigation.cc:        indirStructs->QRTail_ID = (indirStructs->QRTail_ID + 1)%numQREntries;
+rowhammer_mitigation.cc:    indirStructs->nextFreeQR_ID = (indirStructs->nextFreeQR_ID + 1)%numQREntries;
+rowhammer_mitigation.cc:    detector->reset();
+rowhammer_mitigation.cc:                    if (indirStructs->QR_To_Row_T[ll].valid) {
+rowhammer_mitigation.cc:                indirStructs->prevQRHead_ID = indirStructs->nextFreeQR_ID;
+rowhammer_mitigation.cc:    decision.remappedAddr = -1;
+rowhammer_mitigation.cc:    if (currTick - last_reset >= 64000000000) {
+rowhammer_mitigation.cc:        if (threshold > numAccessesToRow[DRAMRowID] - 1) {
+rowhammer_mitigation.cc:            ACTs_Remaining = threshold - numAccessesToRow[DRAMRowID] - 1;
+rowhammer_mitigation.cc:        decision.MC_delay = (64000000000 + last_reset - currTick)/ACTs_Remaining;
+rowhammer_mitigation.cc:     printf("RFM details - rfm_act_threshold: %ld, blast_radius: %ld, delay_per_rfm: %ld ps.\n",rfm_act_threshold, blast_radius,delay_ticks_tRC * 2 * blast_radius);
+rowhammer_mitigation.cc:    if (currTick - last_reset >= 7800000) {
+rowhammer_mitigation.cc:    decision.remappedAddr = -1;
+rowhammer_mitigation.cc:  return (x << r) | (x >> (32 - r));
+rowhammer_mitigation.cc:  return (x << r) | (x >> (64 - r));
+rowhammer_mitigation.cc://-----------------------------------------------------------------------------
+rowhammer_mitigation.cc:// Block read - if your platform needs to do endian-swapping or can only
+rowhammer_mitigation.cc://-----------------------------------------------------------------------------
+rowhammer_mitigation.cc:// Finalization mix - force all bits of a hash block to avalanche
+rowhammer_mitigation.cc://----------
+rowhammer_mitigation.cc://-----------------------------------------------------------------------------
+rowhammer_mitigation.cc:  //----------
+rowhammer_mitigation.cc:  //----------
+rowhammer_mitigation.cc:  //----------
+rowhammer_mitigation.cc:// ---> RFM + PRESS.
+rowhammer_mitigation.cc:// - 1. RFM-CMD-ON-BUS:  -- NO DELAY for CMD. (decision.data_bus_delay)
+rowhammer_mitigation.cc:// - 2. BANK BUSY K ACTS -- mem_interface.cc: bank busy for 2*tRC*br (passed to dram->doburst) && precharge bank. (decision.bank_delay)
+rowhammer_mitigation.cc://                       -- bank_ref.actAllowedAt incremented by bank_delay, bank_ref[others].actAllowedAt += tRR*numACTs.
+rowhammer_mitigation.cc:// ---> PARA.
+rowhammer_mitigation.cc:// - 1. K*ACT*CMD-ON_BUS + tCL + tBURST: mem_interface.cc: next_burst_at += K-ACT*(tBURST) delay  (decision.data_bus_delay)
+rowhammer_mitigation.cc:// - 2. BANK BUSY K ACTS -- mem_interface.cc: bank busy for 2*tRC*br (passed to dram->doburst) && precharge bank. (decision.bank_delay)
+se_translating_port_proxy.cc: * Copyright (c) 2001-2005 The Regents of The University of Michigan
+se_translating_port_proxy.cc:    auto *process = _tc->getProcessPtr();
+se_translating_port_proxy.cc:            process->allocateMem(roundDown(addr, pageBytes), pageBytes);
+se_translating_port_proxy.cc:        } else if (allocating == NextPage && process->fixupFault(addr)) {
+se_translating_port_proxy.hh: * Copyright (c) 2001-2005 The Regents of The University of Michigan
+serial_link.cc: * Copyright (c) 2011-2013 ARM Limited
+serial_link.cc: * Implementation of the SerialLink Class, modeling Hybrid-Memory-Cube's
+serial_link.cc:      cpu_side_port(p->name + ".cpu_side_port", *this, mem_side_port,
+serial_link.cc:                ticksToCycles(p->delay), p->resp_size, p->ranges),
+serial_link.cc:      mem_side_port(p->name + ".mem_side_port", *this, cpu_side_port,
+serial_link.cc:                 ticksToCycles(p->delay), p->req_size),
+serial_link.cc:      num_lanes(p->num_lanes),
+serial_link.cc:      link_speed(p->link_speed)
+serial_link.cc:            pkt->cmdString(), pkt->getAddr());
+serial_link.cc:    pkt->headerDelay = pkt->payloadDelay = 0;
+serial_link.cc:    cycles += Cycles(divCeil(pkt->getSize() * 8, serial_link.num_lanes
+serial_link.cc:            pkt->cmdString(), pkt->getAddr());
+serial_link.cc:        bool expects_response = pkt->needsResponse() &&
+serial_link.cc:            !pkt->cacheResponding();
+serial_link.cc:            pkt->headerDelay = pkt->payloadDelay = 0;
+serial_link.cc:            cycles += Cycles(divCeil(pkt->getSize() * 8,
+serial_link.cc:            pkt->getAddr(), transmitList.size());
+serial_link.cc:            Cycles cycles = Cycles(divCeil(pkt->getSize() * 8,
+serial_link.cc:            pkt->getAddr(), outstandingResponses);
+serial_link.cc:        --outstandingResponses;
+serial_link.cc:            Cycles cycles = Cycles(divCeil(pkt->getSize() * 8,
+serial_link.cc:    pkt->pushLabel(name());
+serial_link.cc:        if (pkt->trySatisfyFunctional((*i).pkt)) {
+serial_link.cc:            pkt->makeResponse();
+serial_link.cc:    // also check the memory-side port's request queue
+serial_link.cc:    pkt->popLabel();
+serial_link.cc:        if (pkt->trySatisfyFunctional((*i).pkt)) {
+serial_link.cc:            pkt->makeResponse();
+serial_link.hh: * Copyright (c) 2011-2013 ARM Limited
+serial_link.hh: * Declaration of the SerialLink Class, modeling Hybrid-Memory-Cube's serial
+serial_link.hh:    // Forward declaration to allow the CPU-side port to have a pointer
+serial_link.hh:     * responses. The CPU-side port has a set of address ranges that it
+serial_link.hh:     * is responsible for. The CPU-side port also has a buffer for the
+serial_link.hh:         * @param _mem_side_port the memory-side port on the other side of the
+serial_link.hh:     * responses. The memory-side port has a buffer for the requests not
+serial_link.hh:         * The response (CPU-side port) port on the other side of
+serial_link.hh:         * @param _cpu_side_port the CPU-side port on the other
+simple_mem.cc: * Copyright (c) 2010-2013, 2015 ARM Limited
+simple_mem.cc: * Copyright (c) 2001-2005 The Regents of The University of Michigan
+simple_mem.cc:    port(name() + ".port", *this), latency(p->latency),
+simple_mem.cc:    latency_var(p->latency_var), bandwidth(p->bandwidth), isBusy(false),
+simple_mem.cc:    panic_if(pkt->cacheResponding(), "Should not see packets where cache "
+simple_mem.cc:    pkt->pushLabel(name());
+simple_mem.cc:        done = pkt->trySatisfyFunctional(p->pkt);
+simple_mem.cc:    pkt->popLabel();
+simple_mem.cc:    panic_if(pkt->cacheResponding(), "Should not see packets where cache "
+simple_mem.cc:    panic_if(!(pkt->isRead() || pkt->isWrite()),
+simple_mem.cc:             "saw %s to %#llx\n", pkt->cmdString(), pkt->getAddr());
+simple_mem.cc:    Tick receive_delay = pkt->headerDelay + pkt->payloadDelay;
+simple_mem.cc:    pkt->headerDelay = pkt->payloadDelay = 0;
+simple_mem.cc:    Tick duration = pkt->getSize() * bandwidth;
+simple_mem.cc:    bool needsResponse = pkt->needsResponse();
+simple_mem.cc:        assert(pkt->isResponse());
+simple_mem.cc:        // re-order in front of some existing packet with the same
+simple_mem.cc:        --i;
+simple_mem.cc:        while (i != packetQueue.begin() && when_to_send < i->tick &&
+simple_mem.cc:               !i->pkt->matchAddr(pkt))
+simple_mem.cc:            --i;
+simple_mem.cc:            // if there were packets that got in-between then we
+simple_mem.cc:            // already have an event scheduled, so use re-schedule
+simple_mem.hh: * Copyright (c) 2012-2013 ARM Limited
+simple_mem.hh: * Copyright (c) 2001-2005 The Regents of The University of Michigan
+simple_mem.hh: * The simple memory is a basic single-ported memory controller with
+snoop_filter.cc: * Copyright (c) 2013-2017,2019 ARM Limited
+snoop_filter.cc:    SnoopItem& sf_item = sf_it->second;
+snoop_filter.cc:            cpu_side_port.name(), cpkt->print());
+snoop_filter.cc:    bool allocate = !cpkt->req->isUncacheable() && cpu_side_port.isSnooping()
+snoop_filter.cc:        && cpkt->fromCache();
+snoop_filter.cc:    Addr line_addr = cpkt->getBlockAddr(linesize);
+snoop_filter.cc:    if (cpkt->isSecure()) {
+snoop_filter.cc:    SnoopItem& sf_item = reqLookupResult.it->second;
+snoop_filter.cc:    if (cpkt->needsResponse()) {
+snoop_filter.cc:        if (!cpkt->cacheResponding()) {
+snoop_filter.cc:            // Mark in-flight requests to distinguish later on
+snoop_filter.cc:            // to the CPU, already -> the response will not be seen by this
+snoop_filter.cc:            // filter -> we do not need to keep the in-flight request, but make
+snoop_filter.cc:    } else { // if (!cpkt->needsResponse())
+snoop_filter.cc:        assert(cpkt->isEviction());
+snoop_filter.cc:        // CleanEvicts and Writebacks -> the sender and all caches above
+snoop_filter.cc:        if (!cpkt->isBlockCached()) {
+snoop_filter.cc:        Addr line_addr = (addr & ~(Addr(linesize - 1)));
+snoop_filter.cc:        assert(reqLookupResult.it->first == line_addr);
+snoop_filter.cc:            reqLookupResult.it->second = retry_item;
+snoop_filter.cc:    DPRINTF(SnoopFilter, "%s: packet %s\n", __func__, cpkt->print());
+snoop_filter.cc:    assert(cpkt->isRequest());
+snoop_filter.cc:    Addr line_addr = cpkt->getBlockAddr(linesize);
+snoop_filter.cc:    if (cpkt->isSecure()) {
+snoop_filter.cc:    SnoopItem& sf_item = sf_it->second;
+snoop_filter.cc:    assert(cpkt->isWriteback() || cpkt->req->isUncacheable() ||
+snoop_filter.cc:           (cpkt->isInvalidate() == cpkt->needsWritable()) ||
+snoop_filter.cc:           cpkt->req->isCacheMaintenance());
+snoop_filter.cc:    if (cpkt->isInvalidate() && sf_item.requested.none()) {
+snoop_filter.cc:            __func__, rsp_port.name(), req_port.name(), cpkt->print());
+snoop_filter.cc:    assert(cpkt->isResponse());
+snoop_filter.cc:    assert(cpkt->cacheResponding());
+snoop_filter.cc:    if (cpkt->req->isUncacheable() || !req_port.isSnooping()) {
+snoop_filter.cc:    Addr line_addr = cpkt->getBlockAddr(linesize);
+snoop_filter.cc:    if (cpkt->isSecure()) {
+snoop_filter.cc:    if (!cpkt->hasSharers()) {
+snoop_filter.cc:                "%s: dropping %x because non-shared snoop "
+snoop_filter.cc:    assert(!cpkt->isWriteback());
+snoop_filter.cc:            __func__, rsp_port.name(), req_port.name(), cpkt->print());
+snoop_filter.cc:    assert(cpkt->isResponse());
+snoop_filter.cc:    assert(cpkt->cacheResponding());
+snoop_filter.cc:    Addr line_addr = cpkt->getBlockAddr(linesize);
+snoop_filter.cc:    if (cpkt->isSecure()) {
+snoop_filter.cc:    if (!cpkt->hasSharers()) {
+snoop_filter.cc:        SnoopItem& sf_item = sf_it->second;
+snoop_filter.cc:            __func__, cpu_side_port.name(), cpkt->print());
+snoop_filter.cc:    assert(cpkt->isResponse());
+snoop_filter.cc:    if (cpkt->req->isUncacheable() || !cpu_side_port.isSnooping())
+snoop_filter.cc:    Addr line_addr = cpkt->getBlockAddr(linesize);
+snoop_filter.cc:    if (cpkt->isSecure()) {
+snoop_filter.cc:    SnoopItem& sf_item = sf_it->second;
+snoop_filter.cc:    if (cpkt->req->isCacheMaintenance()) {
+snoop_filter.cc:        if (cpkt->isInvalidate()) {
+snoop_filter.hh: * Copyright (c) 2013-2016,2019 ARM Limited
+snoop_filter.hh: * allows the snoop filter to model cache-line residency by snooping
+snoop_filter.hh: * between in-flight requests (in requested) and already pulled in
+snoop_filter.hh: * (2) side-channel information is funnelled through direct modifications of
+snoop_filter.hh:        linesize(p->system->cacheLineSize()), lookupLatency(p->lookup_latency),
+snoop_filter.hh:        maxEntryCount(p->max_capacity / p->system->cacheLineSize())
+snoop_filter.hh:            if (p->isSnooping()) {
+snoop_filter.hh:                localResponsePortIds[p->getId()] = id++;
+snoop_filter.hh:     * Lookup a request (from a CPU-side port) in the snoop filter and
+snoop_filter.hh:     * return a list of other CPU-side ports that need forwarding of the
+snoop_filter.hh:     * For an un-successful request, revert the change to the snoop
+snoop_filter.hh:     * Handle an incoming snoop from below (the memory-side port). These
+snoop_filter.hh:     * Convert a single port to a corresponding, one-hot bitmask
+snoop_filter.hh:     * @return One-hot bitmask corresponding to the port.
+snoop_filter.hh:    /** List of all attached snooping CPU-side ports. */
+stack_dist_calc.cc: * Copyright (c) 2014-2015 ARM Limited
+stack_dist_calc.cc:    tree[1][root_node->nodeIndex] = root_node;
+stack_dist_calc.cc:    uint64_t node_sum_l = node->sumLeft;
+stack_dist_calc.cc:    uint64_t node_sum_r = node->sumRight;
+stack_dist_calc.cc:    bool node_left = node->isLeftNode;
+stack_dist_calc.cc:    bool node_discard_left = node->discardLeft;
+stack_dist_calc.cc:    bool node_discard_right = node->discardRight;
+stack_dist_calc.cc:    uint64_t node_n_index = node->nodeIndex;
+stack_dist_calc.cc:    Node* node_parent_ptr = node->parent;
+stack_dist_calc.cc:        panic_if(node_sum_l > (1 << (level - 1)),
+stack_dist_calc.cc:        panic_if(node_sum_r > (1 << (level - 1)),
+stack_dist_calc.cc:    node->nodeIndex = node_n_index;
+stack_dist_calc.cc:    node->sumLeft = node_sum_l;
+stack_dist_calc.cc:    node->sumRight = node_sum_r;
+stack_dist_calc.cc:    node->isLeftNode = node_left;
+stack_dist_calc.cc:    node->discardLeft = node_discard_left;
+stack_dist_calc.cc:    node->discardRight = node_discard_right;
+stack_dist_calc.cc:        node->sumLeft = 1;
+stack_dist_calc.cc:        updateSum(node->parent,
+stack_dist_calc.cc:                  node->isLeftNode, node->sumLeft,
+stack_dist_calc.cc:        node->sumLeft = 0;
+stack_dist_calc.cc:        stack_dist = updateSum(node->parent,
+stack_dist_calc.cc:                                  node->isLeftNode, 0,
+stack_dist_calc.cc:        stack_dist += node->sumRight;
+stack_dist_calc.cc:    if (node->parent) {
+stack_dist_calc.cc:        stack_dist = getSum(node->parent, node->isLeftNode,
+stack_dist_calc.cc:                            node->sumLeft + node->sumRight,
+stack_dist_calc.cc:    return  getSum(node->parent, node->isLeftNode, 0, 0, 0);
+stack_dist_calc.cc:        newRootNode->sumLeft = tree[getTreeDepth()][0]->sumRight +
+stack_dist_calc.cc:            tree[getTreeDepth()][0]->sumLeft;
+stack_dist_calc.cc:        newRootNode->discardLeft = tree[getTreeDepth()][0]->discardLeft &&
+stack_dist_calc.cc:            tree[getTreeDepth()][0]->discardRight;
+stack_dist_calc.cc:        tree[getTreeDepth()][newRootNode->nodeIndex] = newRootNode;
+stack_dist_calc.cc:        tree[getTreeDepth() - 1][0]->parent = tree[getTreeDepth()][0];
+stack_dist_calc.cc:        for (i = getTreeDepth() - 1; i >= 1; --i) {
+stack_dist_calc.cc:                newINode->isLeftNode = true;
+stack_dist_calc.cc:                newINode->isLeftNode = false;
+stack_dist_calc.cc:            newINode->parent = tree[i + 1][nextIndex[i + 1] - 1];
+stack_dist_calc.cc:            newINode->nodeIndex = ++nextIndex[i] - 1;
+stack_dist_calc.cc:            tree[i][newINode->nodeIndex] = newINode;
+stack_dist_calc.cc:        for (i = getTreeDepth() - 1; i >= 1; --i) {
+stack_dist_calc.cc:                    newINode->isLeftNode = true;
+stack_dist_calc.cc:                    newINode->isLeftNode = false;
+stack_dist_calc.cc:                newINode->parent = tree[i + 1][nextIndex[i + 1] - 1];
+stack_dist_calc.cc:                newINode->nodeIndex = ++nextIndex[i] - 1;
+stack_dist_calc.cc:                tree[i][newINode->nodeIndex] = newINode;
+stack_dist_calc.cc:    if (ai != aiMap.end() && !(aiMap.key_comp()(r_address, ai->first))) {
+stack_dist_calc.cc:        uint64_t r_index = ai->second;
+stack_dist_calc.cc:            ai->second   = index;
+stack_dist_calc.cc:        _mark = newLeafNode->isMarked;
+stack_dist_calc.cc:            // At odd values of index counter, a new right-type node is
+stack_dist_calc.cc:            // added to the leaf layer, else a left-type node is added
+stack_dist_calc.cc:        newLeafNode->nodeIndex=index;
+stack_dist_calc.cc:        newLeafNode->isLeftNode=isLeft;
+stack_dist_calc.cc:        newLeafNode->parent = tree[1][nextIndex[1] - 1];
+stack_dist_calc.cc:                     "Expected stack-distance for address \
+stack_dist_calc.cc:        // (unique or non-unique)
+stack_dist_calc.cc:    if (ai != aiMap.end() && !(aiMap.key_comp()(r_address, ai->first))) {
+stack_dist_calc.cc:        uint64_t r_index = ai->second;
+stack_dist_calc.cc:        _mark = tree[0][r_index]->isMarked;
+stack_dist_calc.cc:        tree[0][r_index]->isMarked = mark;
+stack_dist_calc.cc:                 "Expected stack-distance for address \
+stack_dist_calc.cc:    const Node* next_up = node->parent;
+stack_dist_calc.cc:    for (uint64_t i = level + 1; i < getTreeDepth() - level; ++i) {
+stack_dist_calc.cc:        next_up = next_up->parent;
+stack_dist_calc.cc:                 node->nodeIndex);
+stack_dist_calc.cc:    panic_if(next_up->parent, "Sanity check failed for node %ull \n",
+stack_dist_calc.cc:             node->nodeIndex);
+stack_dist_calc.cc:        node = it->second;
+stack_dist_calc.cc:        uint64_t r_index = node->nodeIndex;
+stack_dist_calc.cc:            if (ai->second == r_index) {
+stack_dist_calc.cc:                DPRINTF(StackDist,"Tree leaves, Rightmost-[%d] = %#lx\n",
+stack_dist_calc.cc:                        count, ai->first);
+stack_dist_calc.cc:            DPRINTF(StackDist, "Verif Stack, Top-[%d] = %#lx\n", count, *a);
+stack_dist_calc.hh: * Copyright (c) 2014-2015 ARM Limited
+stack_dist_calc.hh:  * (unique or non-unique). The tree is implemented as an STL vector
+stack_dist_calc.hh:  * At every transaction a hash-map (aiMap) is looked up to check if
+stack_dist_calc.hh:  * transaction can be termed as unique or non-unique.
+stack_dist_calc.hh:  * the intermediate nodes is updated till the root. The stack-distance is
+stack_dist_calc.hh:  * At every non-unique transaction the tree is traversed from the
+stack_dist_calc.hh:  * At every unique transaction the stack-distance is returned as a constant
+stack_dist_calc.hh:  * At every non-unique transaction the tree is traversed from the
+stack_dist_calc.hh:  *  *U: Delete old-address from stack, no new entry is added
+stack_dist_calc.hh:  *  *GD: Get-Stack distance of an address,
+stack_dist_calc.hh:  *  *I: stack-distance = infinity,
+stack_dist_calc.hh:  * a cache, either autonoumously (due-to cache's own replacement
+stack_dist_calc.hh:     * the root to check if the ultimate parent node (root-node) points
+stack_dist_calc.hh:     * non-unique). This is further used to dump stats at
+stack_dist_calc.hh:    uint64_t getTreeDepth() const { return tree.size() - 1; }
+stack_dist_calc.hh:     * This is an alternative implementation of the stack-distance
+stack_dist_calc.hh:     *  - Lookup the tree for the given address
+stack_dist_calc.hh:     *  - delete old node if found in tree
+stack_dist_calc.hh:     *  - add a new node (if addNewNode flag is set)
+stack_dist_calc.hh:        // Flag to indicate that sumLeft has gone from non-zero value to 0
+stack_dist_calc.hh:        // Flag to indicate that sumRight has gone from non-zero value to 0
+stack_dist_calc.hh:     * Internal counter for address accesses (unique and non-unique)
+stack_dist_calc.hh:     * called. This counter is used as a key for the hash- map at the
+token_port.cc: * Copyright (c) 2016-2020 Advanced Micro Devices, Inc.
+token_port.cc:    tokenManager->recvTokens(num_tokens);
+token_port.cc:    return tokenManager->haveTokens(num_tokens);
+token_port.cc:    tokenManager->acquireTokens(num_tokens);
+token_port.cc:    fatal_if(!tokenRequestPort, "Tried sendTokens to non-token requestor!\n");
+token_port.cc:    tokenRequestPort->recvTokens(num_tokens);
+token_port.cc:        tokenRequestPort->bind(*this);
+token_port.cc:    // fallback to QueuedResponsePort-like impl for now
+token_port.cc:    availableTokens -= num_tokens;
+token_port.hh: * Copyright (c) 2016-2020 Advanced Micro Devices, Inc.
+tport.cc:    if (pkt->cacheResponding())
+tport.cc:    bool needsResponse = pkt->needsResponse();
+tport.cc:        assert(pkt->isResponse());
+translating_port_proxy.cc:    PortProxy(tc->getCpuPtr()->getSendFunctional(),
+translating_port_proxy.cc:              tc->getSystemPtr()->cacheLineSize()), _tc(tc),
+translating_port_proxy.cc:              pageBytes(tc->getSystemPtr()->getPageBytes()),
+translating_port_proxy.cc:    BaseTLB *dtb = _tc->getDTBPtr();
+translating_port_proxy.cc:    BaseTLB *itb = _tc->getDTBPtr();
+translating_port_proxy.cc:    return dtb->translateFunctional(req, _tc, mode) == NoFault ||
+translating_port_proxy.cc:           itb->translateFunctional(req, _tc, BaseTLB::Read) == NoFault;
+translating_port_proxy.cc:        (fixupAddr(req->getVaddr(), mode) && tryTLBsOnce(req, mode));
+translating_port_proxy.cc:                _tc->contextId());
+translating_port_proxy.cc:                req->getPaddr(), req->getFlags(), p, gen.size());
+translating_port_proxy.cc:                _tc->contextId());
+translating_port_proxy.cc:                req->getPaddr(), req->getFlags(), p, gen.size());
+translating_port_proxy.cc:                _tc->contextId());
+translating_port_proxy.cc:                req->getPaddr(), req->getFlags(), v, gen.size());
+translating_port_proxy.hh:    /** Version of tryReadblob that translates virt->phys and deals
+translating_port_proxy.hh:    /** Version of tryWriteBlob that translates virt->phys and deals
+xbar.cc: * Copyright (c) 2011-2015, 2018-2020 ARM Limited
+xbar.cc:      frontendLatency(p->frontend_latency),
+xbar.cc:      forwardLatency(p->forward_latency),
+xbar.cc:      responseLatency(p->response_latency),
+xbar.cc:      headerLatency(p->header_latency),
+xbar.cc:      width(p->width),
+xbar.cc:      gotAddrRanges(p->port_default_connection_count +
+xbar.cc:                          p->port_mem_side_ports_connection_count, false),
+xbar.cc:      useDefaultRange(p->use_default_range),
+xbar.cc:        // the memory-side ports index translates directly to the vector
+xbar.cc:        // the CPU-side ports index translates directly to the vector position
+xbar.cc:    Tick offset = clockEdge() - curTick();
+xbar.cc:    pkt->headerDelay += offset + header_delay;
+xbar.cc:    panic_if(pkt->headerDelay > SimClock::Int::us,
+xbar.cc:    if (pkt->hasData()) {
+xbar.cc:        pkt->payloadDelay = std::max<Tick>(pkt->payloadDelay,
+xbar.cc:                                           divCeil(pkt->getSize(), width) *
+xbar.cc:    // packet to prevent any follow-on calls to sendTiming seeing an
+xbar.cc:    occupancy += until - curTick();
+xbar.cc:    // response port that mirrors the actual CPU-side port) as we leave
+xbar.cc:    // ranges of all connected CPU-side-port modules
+xbar.cc:        return i->second;
+xbar.cc:            memSidePorts[mem_side_port_id]->getPeer());
+xbar.cc:    // remember that we got a range from this memory-side port and thus the
+xbar.cc:    // connected CPU-side-port module
+xbar.cc:            AddrRangeList ranges = memSidePorts[mem_side_port_id]->
+xbar.cc:                if (p->second == mem_side_port_id)
+xbar.cc:        AddrRangeList ranges = memSidePorts[mem_side_port_id]->
+xbar.cc:                PortID conflict_id = portMap.intersects(r)->second;
+xbar.cc:                      memSidePorts[mem_side_port_id]->getPeer(),
+xbar.cc:                      memSidePorts[conflict_id]->getPeer());
+xbar.cc:    // if we have received ranges from all our neighbouring CPU-side-port
+xbar.cc:    // modules, go ahead and tell our connected memory-side-port modules in
+xbar.cc:            DPRINTF(AddrRanges, "-- Adding default %s\n",
+xbar.cc:                    DPRINTF(AddrRanges, "-- Merging range from %d ranges\n",
+xbar.cc:                        DPRINTF(AddrRanges, "-- Adding merged range %s\n",
+xbar.cc:                    DPRINTF(AddrRanges, "-- Adding range %s\n",
+xbar.cc:            DPRINTF(AddrRanges, "-- Merging range from %d ranges\n",
+xbar.cc:                DPRINTF(AddrRanges, "-- Adding merged range %s\n",
+xbar.cc:        // tell all our neighbouring memory-side ports that our address
+xbar.cc:            port->sendRangeChange();
+xbar.cc:    // both the packet count and total size are two-dimensional
+xbar.cc:    // vectors, indexed by CPU-side port id and memory-side port id, thus the
+xbar.cc:    // neighbouring memory-side ports and CPU-side ports, they do not
+xbar.cc:    // differentiate what came from the memory-side ports and was forwarded to
+xbar.cc:    // the CPU-side ports (requests and snoop responses) and what came from
+xbar.cc:    // the CPU-side ports and was forwarded to the memory-side ports (responses
+xbar.cc:        pktCount.subname(i, cpuSidePorts[i]->getPeer().name());
+xbar.cc:        pktSize.subname(i, cpuSidePorts[i]->getPeer().name());
+xbar.cc:            pktCount.ysubname(j, memSidePorts[j]->getPeer().name());
+xbar.cc:            pktSize.ysubname(j, memSidePorts[j]->getPeer().name());
+xbar.hh: * Copyright (c) 2011-2015, 2018-2020 ARM Limited
+xbar.hh: * Copyright (c) 2002-2005 The Regents of The University of Michigan
+xbar.hh: * The base crossbar contains the common elements of the non-coherent
+xbar.hh:     * port type for the layer. The retry list holds either memory-side ports
+xbar.hh:     * or CPU-side ports, depending on the direction of the
+xbar.hh:     * CPU-side ports, whereas a response layer holds memory-side ports.
+xbar.hh:            retry_port->sendRetryReq();
+xbar.hh:            retry_port->sendRetryResp();
+xbar.hh:            retry_port->sendRetrySnoopResp();
+xbar.hh:     * Cycles of front-end pipeline including the delay to accept the request
+xbar.hh:     * @return a list of non-overlapping address ranges
+xbar.hh:     * Remember for each of the memory-side ports of the crossbar if we got
+xbar.hh:     * an address range from the connected CPU-side ports. For convenience,
+xbar.hh:     * also keep track of if we got ranges from all the CPU-side-port modules
+xbar.hh:    /** The memory-side ports and CPU-side ports of the crossbar */
+xbar.hh:     * size are two-dimensional vectors that are indexed by the
+xbar.hh:     * CPU-side port and memory-side port id (thus the neighbouring memory-side
+xbar.hh:     * ports and neighbouring CPU-side ports), summing up both directions

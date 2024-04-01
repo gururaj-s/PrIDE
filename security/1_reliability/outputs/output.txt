@@ -1,0 +1,54 @@
+
+
+***********Printing Data for Fig-9***********
+Bufsize: 1	 TRH_STAR(NoTardy): 7803	 TRH_STAR(Tardy): 7842
+Bufsize: 2	 TRH_STAR(NoTardy): 4145	 TRH_STAR(Tardy): 4223
+Bufsize: 3	 TRH_STAR(NoTardy): 3461	 TRH_STAR(Tardy): 3579
+Bufsize: 4	 TRH_STAR(NoTardy): 3266	 TRH_STAR(Tardy): 3423
+Bufsize: 5	 TRH_STAR(NoTardy): 3179	 TRH_STAR(Tardy): 3376
+Bufsize: 6	 TRH_STAR(NoTardy): 3125	 TRH_STAR(Tardy): 3361
+Bufsize: 7	 TRH_STAR(NoTardy): 3089	 TRH_STAR(Tardy): 3365
+Bufsize: 8	 TRH_STAR(NoTardy): 3061	 TRH_STAR(Tardy): 3376
+Bufsize: 9	 TRH_STAR(NoTardy): 3039	 TRH_STAR(Tardy): 3394
+Bufsize: 10	 TRH_STAR(NoTardy): 3022	 TRH_STAR(Tardy): 3416
+Bufsize: 11	 TRH_STAR(NoTardy): 3009	 TRH_STAR(Tardy): 3443
+Bufsize: 12	 TRH_STAR(NoTardy): 2998	 TRH_STAR(Tardy): 3471
+Bufsize: 13	 TRH_STAR(NoTardy): 2987	 TRH_STAR(Tardy): 3500
+Bufsize: 14	 TRH_STAR(NoTardy): 2980	 TRH_STAR(Tardy): 3532
+Bufsize: 15	 TRH_STAR(NoTardy): 2973	 TRH_STAR(Tardy): 3565
+Bufsize: 16	 TRH_STAR(NoTardy): 2967	 TRH_STAR(Tardy): 3598
+
+
+***********Printing Table-VI***********
+PRIDE        	TRH_STAR-S: 3402	 TRH_STAR-D: 1701
+PRIDE+RFM40  	TRH_STAR-S: 1762	 TRH_STAR-D: 881
+PRIDE+RFM16  	TRH_STAR-S: 733 	 TRH_STAR-D: 366
+
+
+
+
+***********Printing Table-VIII***********
+10 Years	0.01 Years	 TRH_STAR-S: 3003	 TRH_STAR-D: 1501
+100 Years	0.10 Years	 TRH_STAR-S: 3203	 TRH_STAR-D: 1601
+1000 Years	1.00 Years	 TRH_STAR-S: 3402	 TRH_STAR-D: 1701
+10000 Years	10.00 Years	 TRH_STAR-S: 3600	 TRH_STAR-D: 1800
+100000 Years	100.00 Years	 TRH_STAR-S: 3800	 TRH_STAR-D: 1900
+1000000 Years	1000.00 Years	 TRH_STAR-S: 3999	 TRH_STAR-D: 1999
+
+
+
+
+***********Printing Table-IX***********
+TRDH-D: 4800	>1 mil_years	>1 mil_years	>1 mil_years	>1 mil_years
+TRDH-D: 2000	1020 years	>1 mil_years	>1 mil_years	>1 mil_years
+TRDH-D: 1800	10 years	>1 mil_years	>1 mil_years	>1 mil_years
+TRDH-D: 1600	36 days	>1 mil_years	>1 mil_years	>1 mil_years
+TRDH-D: 1400	9 hrs	>1 mil_years	>1 mil_years	>1 mil_years
+TRDH-D: 1200	5 min	>1 mil_years	>1 mil_years	>1 mil_years
+TRDH-D: 1000	3 sec	219 years	>1 mil_years	>1 mil_years
+TRDH-D: 800	<1 sec	10 days	>1 mil_years	>1 mil_years
+TRDH-D: 600	<1 sec	2 min	>1 mil_years	>1 mil_years
+TRDH-D: 400	<1 sec	<1 sec	40 years	>1 mil_years
+TRDH-D: 200	<1 sec	<1 sec	<1 sec	14 hrs
+
+

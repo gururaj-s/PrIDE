@@ -1,0 +1,47 @@
+Running command: ./runscript.sh imagick PARA5.BR4.4C 4 2017 --rh_defense --rh_mitigation=PARA --rh_rfm_per_trefi=5 --rh_rfm_blast_radius=4 --rh_rfm_maxacts_per_trefi=166
+Running exports
+GEM5_PATH is set to '/home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5'
+SPEC17_PATH is set to '/home/gsaileshwar/rowhammer_defense/spec2017/spec-cpu-2017-main'
+CKPT_PATH is set to '/home/gsaileshwar/rowhammer_defense/aqua_gem5/cpts'
+RH_DEFENSE: --rh_defense is ENABLED
+checkpoint directory:  /home/gsaileshwar/rowhammer_defense/aqua_gem5/cpts/multiprogram_16GBmem_25Bn.SPEC2017.C4/imagick-1-ref-x86
+output directory:  /home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/stats/multiprogram_16GBmem_250Mn.SPEC2017.C4/PARA5.BR4.4C/imagick
+Command line:
+./runscript.sh imagick PARA5.BR4.4C 4 2017 --rh_defense --rh_mitigation=PARA --rh_rfm_per_trefi=5 --rh_rfm_blast_radius=4 --rh_rfm_maxacts_per_trefi=166
+
+------------------------------------------------------------
+Sender: LSF System <lsflin@dc2-sim-e12-059>
+Subject: Job 1675048901: </home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts/qsub_cmds/run_61/13_runscript.sh_imagick_PARA5.BR4.4C_4_2017_--rh_defense_--rh_mitigation=PARA_--rh_rfm_per_trefi=5_--rh_rfm_blast_radius=4_--rh_rfm_maxacts_per_trefi=166.sh> in cluster <nvidia> Done
+
+Job </home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts/qsub_cmds/run_61/13_runscript.sh_imagick_PARA5.BR4.4C_4_2017_--rh_defense_--rh_mitigation=PARA_--rh_rfm_per_trefi=5_--rh_rfm_blast_radius=4_--rh_rfm_maxacts_per_trefi=166.sh> was submitted from host <sc-xterm-260> by user <gsaileshwar> in cluster <nvidia> at Fri Jul  7 18:44:03 2023
+Job was executed on host(s) <dc2-sim-e12-059>, in queue <o_long>, as user <gsaileshwar> in cluster <nvidia> at Sat Jul  8 03:41:51 2023
+</home/gsaileshwar> was used as the home directory.
+</home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts> was used as the working directory.
+Started at Sat Jul  8 03:41:51 2023
+Terminated at Sat Jul  8 04:45:56 2023
+Results reported at Sat Jul  8 04:45:56 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts/qsub_cmds/run_61/13_runscript.sh_imagick_PARA5.BR4.4C_4_2017_--rh_defense_--rh_mitigation=PARA_--rh_rfm_per_trefi=5_--rh_rfm_blast_radius=4_--rh_rfm_maxacts_per_trefi=166.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   3832.00 sec.
+    Max Memory :                                 380.61 MB
+    Average Memory :                             374.83 MB
+    Total Requested Memory :                     6000.00 MB
+    Delta Memory :                               5619.39 MB
+    Max Swap :                                   -
+    Max Processes :                              1
+    Max Threads :                                1
+    Run time :                                   3849 sec.
+    Turnaround time :                            36113 sec.
+
+The output (if any) is above this job summary.
+
