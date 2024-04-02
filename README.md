@@ -30,9 +30,7 @@ The artifacts provided are C++ source files that are organized in two sub direct
    - **HW Dependencies:** 
      - A 22 core system to finish experiments in ~3 days (majority of the time is required to generate the checkpoints for benchmarks - 1-2 days).
 
-### Instructions to Reproduce Results:
-
-#### Reproduce Security Results
+### Reproduce Security Results
 
 **Key Results:** Figure 8, Figure 9, Table-III, Tables VI, VIII, and IX.
 
@@ -50,7 +48,7 @@ cd security                                        # Change into the `security` 
 * Subsequently, it runs the python script `0_loss_probability/analytical/loss_1entry.py` to generate the *loss probability* vs *position of attacked row* (Figure 8) and will save the plot in `0_loss_probability/analytical/output`.
 * Then the script will change into the `1_reliability` directory, compile the reliabiility model, and print the data in Figure 9, and Tables VI, VIII, IX.
 
-#### Reproduce Performance Results on Gem5
+### Reproduce Performance Results on Gem5
 
 **Key Result:** Figure 14
 
