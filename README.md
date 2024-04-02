@@ -12,7 +12,7 @@ The artifacts provided are C++ source files that are organized in two sub direct
 
 * `security` directory includes the code and scripts to reproduce our key results of PrIDE.
   *  `0_loss_probability` folder provides the loss-probability evaluation (Table-III, Figure 8) for an arbitrary sized tracker (analytically and using monte-carlo simulations) 
-  * `1_reliability` folder provides our time-to-failure and TRH calculations (Figure 9, and Tables VI, VIII, and IX)
+  * `1_reliability` folder provides our time-to-failure and TRH calculations (Figure 9, Tables VI, VIII, and IX)
 
 * `performance` directory:  includes the gem5 infrastructure that we used for performance
   modeling of PrIDE. 
