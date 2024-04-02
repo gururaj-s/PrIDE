@@ -32,10 +32,6 @@ The artifacts provided are C++ source files that are organized in two sub direct
 
 ### Instructions to Reproduce Results:
 
-#### Clone the Repo
-
-* Use the following command: ```git clone https://github.com/gururaj-s/PrIDE.git```
-
 #### Reproduce Security Results
 
 **Key Results:** Figure 8, Figure 9, Table-III, Tables VI, VIII, and IX.
@@ -43,8 +39,9 @@ The artifacts provided are C++ source files that are organized in two sub direct
 **Code to Execute:**
 
 ```bash
-cd security                    # Change into the `security` directory
-./run_security_analysis.sh     # Run the script `run_security_analysis.sh`
+git clone https://github.com/gururaj-s/PrIDE.git   # Clone the repo
+cd security                                        # Change into the `security` directory
+./run_security_analysis.sh                         # Run the script `run_security_analysis.sh`
 ```
 
 **Steps Executed:**
