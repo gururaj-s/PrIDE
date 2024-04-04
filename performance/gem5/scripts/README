@@ -1,0 +1,15 @@
+To launch PrIDE performance studies, perform the following steps:
+
+
+a) Modify the 'env.sh' file and update the following paths:
+
+# set the path to this gem5 repository
+export GEM5_PATH=/home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/aqua_gem5/gem5
+
+# set the path to the SPEC 2017 repository
+export SPEC17_PATH=/home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/spec2017/spec-cpu-2017-main
+
+# set the path to the checkpoints directory of SPEC 2017
+export CKPT_PATH=/home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/aqua_gem5/cpts
+
+b) Run: run_isca_pride.sh to launch the experiments
