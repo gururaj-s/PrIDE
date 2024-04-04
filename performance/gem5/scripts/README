@@ -12,4 +12,11 @@ export SPEC17_PATH=/home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_
 # set the path to the checkpoints directory of SPEC 2017
 export CKPT_PATH=/home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/aqua_gem5/cpts
 
-b) Run: run_isca_pride.sh to launch the experiments
+b) Launching simulations
+
+To fire off baseline runs please run: run_pride_baseline_experiments.sh
+To fire of PrIDE runs, please run: run_isca_pride.sh to launch the experiments
+
+c) Collecting simulation results
+
+change into stats_scripts and run: rfm.perf.pride.sh
