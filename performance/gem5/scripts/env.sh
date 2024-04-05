@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Paths for Gem5 & SPEC
 # Must change these paths
 
@@ -6,6 +8,5 @@ export SPEC17_PATH=/home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_
 export CKPT_PATH=/home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/aqua_gem5/cpts
 
 # Optional: change as per maximum number of parallel gem5 runs the system can handle
-
-export MAX_GEM5_PARALLEL_RUNS=70
+export MAX_GEM5_PARALLEL_RUNS=22
 

@@ -1,9 +1,7 @@
 #!/bin/bash
 
 #### LOAD ENV #####
-#source /home/gsaileshwar/rowhammer_defense/spec2017/env.lsf.sh
-#source /home/gsaileshwar/rowhammer_defense/spec2017/env.lsf.gem5.sh
-source /home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts/env.sh
+#source /home/gsaileshwar/rowhammer_defense/aqua_gem5/gem5/scripts/env.sh
 #python --version 
  
 ############ CHECKPOINT CONFIGURATION #############

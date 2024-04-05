@@ -1,8 +1,7 @@
 #!/bin/bash
 
 ## Environment
-source /home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/spec2017/env.lsf.gem5.sh
-source /home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/aqua_gem5/gem5/scripts/env.sh
+#source /home/scratch.ajaleel_nvresearch/rowhammer/gururaj/rowhammer_defense/aqua_gem5/gem5/scripts/env.sh
 
 ############ NOTE: This script sets up the following variables and then runs the command below ############
 

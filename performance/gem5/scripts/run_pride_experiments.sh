@@ -4,7 +4,17 @@
 ######------------- RUN FOR 4/1-CORE EXPERIMENTS ---------- ######
 ######----------------------------------------------------- ######
 
-export MAX_GEM5_PARALLEL_RUNS=22
+## Set the paths
+source env.sh;
+
+## Eror Checking
+if [ -z ${MAX_GEM5_PARALLEL_RUNS+x} ];
+then
+    echo "MAX_GEM5_PARALLEL_RUNS is unset";
+    exit
+else
+    echo "MAX_GEM5_PARALLEL_RUNS is set to '$MAX_GEM5_PARALLEL_RUNS'";
+fi
 
 rfm=$1
 br=$2

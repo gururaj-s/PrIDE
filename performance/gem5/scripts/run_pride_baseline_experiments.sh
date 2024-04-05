@@ -1,6 +1,16 @@
 #!/bin/bash
 
-export MAX_GEM5_PARALLEL_RUNS=22
+## Set the paths
+source env.sh;
+
+## Eror Checking
+if [ -z ${MAX_GEM5_PARALLEL_RUNS+x} ];
+then
+    echo "MAX_GEM5_PARALLEL_RUNS is unset";
+    exit
+else
+    echo "MAX_GEM5_PARALLEL_RUNS is set to '$MAX_GEM5_PARALLEL_RUNS'";
+fi
 
 ######----------------------------------------------------- ######
 ######------------- RUN FOR 4/1-CORE EXPERIMENTS ---------- ######
@@ -53,13 +63,13 @@ for bmk in \
 
 #    if [ -z "$qsub" ] 
 #    then
-	while [ $exp_count -gt ${MAX_GEM5_PARALLEL_RUNS} ]
-	do
-            sleep 300
-            exp_count=`ps aux | grep -i "gem5" | grep -v "grep" | wc -l`
-            echo
-	done
-#    fi
+    while [ $exp_count -gt ${MAX_GEM5_PARALLEL_RUNS} ]
+    do
+        sleep 300
+        exp_count=`ps aux | grep -i "gem5" | grep -v "grep" | wc -l`
+        echo
+    done
+    #    fi
 done
 
 exp_count=`ps aux | grep -i "gem5" | grep -v "grep" | wc -l`
