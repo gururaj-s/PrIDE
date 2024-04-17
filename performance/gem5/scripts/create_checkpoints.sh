@@ -86,4 +86,14 @@ then
     echo "Sending jobs to farm"
     ./run_qsub.sh $qsub_cmdfile ;
     echo "Done sending jobs to farm"
+    ## exit immediately
+else
+    ## wait for all checkpoints to be created before exiting
+    exp_count=`ps aux | grep -i "gem5" | grep -v "grep" | wc -l`
+    while [ $exp_count -gt 0 ]
+    do
+	sleep 300
+	exp_count=`ps aux | grep -i "gem5" | grep -v "grep" | wc -l`
+	echo "Still running ${exp_count} gem5 checkpointing processes"
+    done
 fi
