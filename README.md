@@ -105,13 +105,12 @@ cd security                                        # Change into the `security` 
     ./rfm.perf.pride.sh                        # Collect and Report Stats for Figure 14 
     ```
 
-#### Notes on Gem5 Simulations: 
+#### Helpful Debugging Notes:
 
-**Note on Simulation Time:** Running all experiments takes almost 3-4 days on a system with 22 cores. This can be sped up by increasing the `MAX_GEM5_PARALLEL_RUNS` . By default it is set to 22.
+* **Note on Simulation Time:** Running all experiments takes almost 3-4 days on a system with 22 cores. This can be sped up by increasing the `MAX_GEM5_PARALLEL_RUNS` . By default it is set to 22.
+  * To reduce experiment runtime, you may reduce instr. count (`MAX_INSTS`) in `runscript.sh`to 100Mn.
+  * The dominant simulation cost then is running the checkpointing process, which takes ~1.5 days,
 
-* To reduce experiment runtime, you may reduce instr. count (`MAX_INSTS`) in `runscript.sh`to 100Mn.
-* The dominant simulation cost then is running the checkpointing process, which takes ~1.5 days,
-
-**Note on Simulation Crashese:** One reason could be an issue with the benchmarks. A limited number of processor cores or limited DRAM can also be incapable of running 22 Gem5 processes in parallel causing crashes.
-* To check the benchmarks, one can try to run the benchmarks natively (without Gem5).
-* If amount of cores or DRAM is the limitation, one can decrease the `MAX_GEM5_PARALLEL_RUNS`. This will however linearly increase the simulation time.
+* **Note on Simulation Crashes:** One reason could be an issue with the benchmarks. A limited number of processor cores or limited DRAM can also be incapable of running 22 Gem5 processes in parallel causing crashes.
+  * To check the benchmarks, one can try to run the benchmarks natively (without Gem5).
+  * If amount of cores or DRAM is the limitation, one can decrease the `MAX_GEM5_PARALLEL_RUNS`. This will however linearly increase the simulation time.
