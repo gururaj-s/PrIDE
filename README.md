@@ -105,6 +105,8 @@ cd security                                        # Change into the `security` 
     ./rfm.perf.pride.sh                        # Collect and Report Stats for Figure 14 
     ```
 
+#### Notes on Gem5 Simulations: 
+
 **Note on Simulation Time:** Running all experiments takes almost 3-4 days on a system with 22 cores. This can be sped up by increasing the `MAX_GEM5_PARALLEL_RUNS` . By default it is set to 22.
 
 * To reduce experiment runtime, you may reduce instr. count (`MAX_INSTS`) in `runscript.sh`to 100Mn.
