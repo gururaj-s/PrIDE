@@ -1,7 +1,7 @@
-#!/bin/tcsh
+#!/bin/bash
 
-set PARA = 0  # use RFMs
-set QSUB = 0
+PARA=0  # use RFMs
+QSUB=0
 
 ## Create Checkpoints
 ./create_checkpoints.sh
@@ -10,8 +10,8 @@ set QSUB = 0
 ./run_pride_baseline_experiments.sh
 
 ## Run PrIDE (all configurations).
-foreach num_mitig ( 1 2 5 )
-  foreach br (1)
-    ./run_pride_experiments.sh $num_mitig $br $PARA $QSUB
-  end
-end
+for num_mitig in 1 2 5; do
+    for br in 1; do
+      ./run_pride_experiments.sh "$num_mitig" "$br" "$PARA" "$QSUB";
+    done
+done
