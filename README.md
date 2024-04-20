@@ -2,7 +2,7 @@
 
 Authors: Aamer Jaleel, Gururaj Saileshwar, Steve Keckler, and Moinuddin K. Qureshi
 
-To appear in [ISCA 2024](https://iscaconf.org/isca2024/)
+Appears in [ISCA 2024](https://iscaconf.org/isca2024/)
 
 ### Overview:
 
