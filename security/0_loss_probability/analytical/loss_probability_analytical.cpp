@@ -21,6 +21,14 @@ double MCSoln[MAX_SIZE]; // steady state probability
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
+uns get_trh_star(double ins_prob, double loss_prob){
+  double trh_star = 38.9 / (ins_prob * (1-loss_prob));
+  return trh_star;
+}
+
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+
 double calc_binomial_prob(uns n, uns k, double p){
 
   double log_ans=0;
@@ -195,8 +203,9 @@ void print_loss_prob(uns window_size){
   printf("\n***** LossProbability for Window-Size: %u ******\n", window_size);
 
   double loss_single_entry = 1-pow(1-INS_PROB, TREFI-1);
+  double trh_single_entry = get_trh_star(INS_PROB, loss_single_entry);
 
-  printf("Capacity: 1\tLossProb: %5.4f\n", loss_single_entry);
+  printf("Capacity: 1\tLossProb: %5.4f \t TRH*(TIF+TRF): %5.0f \n", loss_single_entry,trh_single_entry);
 
   int sizes[] = {2, 4, 8, 16};
 //  for(uns capacity=2; capacity<=16; capacity+=1){
@@ -208,7 +217,8 @@ void print_loss_prob(uns window_size){
       double my_lossprob = calc_lossprob(capacity, s, s+1);
       s_lossprob += (MCSoln[s]*my_lossprob);
     }
-    printf("Capacity: %u\tLossProb: %5.4f\n", capacity, s_lossprob);
+    double trh = get_trh_star(INS_PROB, s_lossprob);
+    printf("Capacity: %u\tLossProb: %5.4f \t TRH*(TIF+TRF): %5.0f \n", capacity, s_lossprob,trh);
   }
 
   printf("\n");
