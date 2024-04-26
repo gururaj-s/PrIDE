@@ -189,17 +189,16 @@ void print_fig_9(double ins_prob){
 
 void print_table_6(){
    uns trh_star, tardy;
-   double my_loss_prob, my_ins_prob;
+   double my_ins_prob;
 
    uns size=DEFAULT_BUFFER_SIZE; // default size of buffer
-   my_loss_prob = loss_prob[size];
 
    printf("\n\n***********Printing Table-VI***********\n");
 
    // PRIDE
    my_ins_prob=1/80.0;
    tardy = get_tardy(size, WINDOW_ACTS); 
-   trh_star = get_trh_star(my_ins_prob, my_loss_prob)+tardy;
+   trh_star = get_trh_star(my_ins_prob, loss_prob[size])+tardy;
    printf("PRIDE        \tTRH_STAR-S: %u\t TRH_STAR-D: %u\n", trh_star, trh_star/2);
 
    // PRIDE+RFM40
@@ -207,7 +206,7 @@ void print_table_6(){
    WINDOW_ACTS=40;
    tardy = get_tardy(size, WINDOW_ACTS); 
    my_ins_prob=1/41.0;
-   trh_star = get_trh_star(my_ins_prob, my_loss_prob)+tardy;
+   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm40[size])+tardy;
    printf("PRIDE+RFM40  \tTRH_STAR-S: %u\t TRH_STAR-D: %u\n", trh_star, trh_star/2);
 
    // PRIDE+RFM16
@@ -215,7 +214,7 @@ void print_table_6(){
    WINDOW_ACTS=16;
    tardy = get_tardy(size, WINDOW_ACTS); 
    my_ins_prob=1/17.0;
-   trh_star = get_trh_star(my_ins_prob, my_loss_prob)+tardy;
+   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm16[size])+tardy;
    printf("PRIDE+RFM16  \tTRH_STAR-S: %u \t TRH_STAR-D: %u\n", trh_star, trh_star/2);
 
    printf("\n\n");
