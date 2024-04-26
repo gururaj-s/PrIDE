@@ -22,7 +22,7 @@ typedef enum PRIDE_Policy_Enum {
 uns  OPEN_PAGE_TARDY             =     0;
 uns  TARGET_MTTF_YRS             =     10000;
 uns  DEFEND_TRANSITIVE_ATTACKS   =     0;
-uns  DEFAULT_BUFFER_SIZE         =     (OPEN_PAGE_TARDY)? 4:6;
+uns  DEFAULT_BUFFER_SIZE         =     (OPEN_PAGE_TARDY)? 6:4;
 
 double WINDOW_ACTS=79; // activations in window
 
