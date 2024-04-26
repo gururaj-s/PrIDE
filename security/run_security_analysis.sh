@@ -10,4 +10,3 @@ cd - ;
 # Report the reliability data
 cd 1_reliability/
 make
-./sim-reliability
