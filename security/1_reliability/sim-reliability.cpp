@@ -1,6 +1,10 @@
+#include<iostream>
 #include <stdio.h>
 #include <assert.h>
 #include <cmath>
+
+
+using namespace std;
 
 
 #define tREFI  (3900 * pow(10, -9)) // 3900ns

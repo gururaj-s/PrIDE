@@ -190,7 +190,7 @@ void print_loss_prob(uns window_size){
   INS_PROB = 1/(double)(TREFI);
 
   init();
-  printf("\n***********Printing Table-III***********\n", window_size);
+  printf("\n***********Printing Table-III***********\n");
 
   printf("\n***** LossProbability for Window-Size: %u ******\n", window_size);
 
