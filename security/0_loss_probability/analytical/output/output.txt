@@ -2,9 +2,9 @@
 ***********Printing Table-III***********
 
 ***** LossProbability for Window-Size: 79 ******
-Capacity: 1	LossProb: 0.6298
-Capacity: 2	LossProb: 0.3048
-Capacity: 4	LossProb: 0.1192
-Capacity: 8	LossProb: 0.0601
-Capacity: 16	LossProb: 0.0304
+Capacity: 1	LossProb: 0.6298 	 TRH*(TIF+TRF):  8307 
+Capacity: 2	LossProb: 0.3048 	 TRH*(TIF+TRF):  4423 
+Capacity: 4	LossProb: 0.1192 	 TRH*(TIF+TRF):  3491 
+Capacity: 8	LossProb: 0.0601 	 TRH*(TIF+TRF):  3272 
+Capacity: 16	LossProb: 0.0304 	 TRH*(TIF+TRF):  3172 
 

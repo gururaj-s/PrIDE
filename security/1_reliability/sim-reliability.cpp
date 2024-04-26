@@ -1,4 +1,4 @@
-#include<iostream>
+ #include<iostream>
 #include <stdio.h>
 #include <assert.h>
 #include <cmath>
@@ -187,6 +187,96 @@ void print_fig_9(double ins_prob){
 
 }
 
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+
+void print_table_4(){
+   uns trh_star, tardy;
+   double my_ins_prob;
+
+   uns size=DEFAULT_BUFFER_SIZE; // default size of buffer
+
+   printf("\n\n***********Printing Table-IV***********\n");
+
+   // PARA-DRFM
+   WINDOW_ACTS = 158; 
+   my_ins_prob=1.0/160;
+   tardy = get_tardy(1, WINDOW_ACTS); 
+   trh_star = get_trh_star(my_ins_prob, loss_prob[1], TARGET_MTTF_YRS) + tardy;
+   printf("PARA-DRFM        \tTRH_STAR: %u\t \n", trh_star);
+
+   // PARA-DRFM+
+   WINDOW_ACTS=79;
+   my_ins_prob=1.0/80 ;
+   tardy = get_tardy(1, WINDOW_ACTS); 
+   trh_star = get_trh_star(my_ins_prob, loss_prob[1], TARGET_MTTF_YRS) + tardy;
+   printf("PARA-DRFM+        \tTRH_STAR: %u\t \n", trh_star);
+
+   // PRIDE
+   WINDOW_ACTS=79;
+   my_ins_prob=1/80.0;
+   tardy = get_tardy(size, WINDOW_ACTS); 
+   trh_star = get_trh_star(my_ins_prob, loss_prob[size], TARGET_MTTF_YRS) + tardy;
+   printf("PRIDE             \tTRH_STAR: %u\t \n", trh_star);
+
+   printf("\n\n");
+
+   // return params to default
+   PRIDE_POLICY=NO_RFM;
+   WINDOW_ACTS=79;
+
+}
+
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+
+void print_table_5(){
+   uns trh_star, tardy;
+   double my_ins_prob;
+
+   uns size=DEFAULT_BUFFER_SIZE; // default size of buffer
+
+   printf("\n\n***********Printing Table-V***********\n");
+
+   // PRIDE (1 mit per 2 tREFI)
+   PRIDE_POLICY=NO_RFM;
+   my_ins_prob=1/159.0;
+   WINDOW_ACTS=158;
+   tardy = get_tardy(size, WINDOW_ACTS); 
+   trh_star = get_trh_star(my_ins_prob, loss_prob[size], TARGET_MTTF_YRS) + tardy;
+   printf("PRIDE (0.5x)        \tTRH_STAR-S: %u\n", trh_star);
+
+   // PRIDE
+   PRIDE_POLICY=NO_RFM;
+   my_ins_prob=1/80.0;
+   WINDOW_ACTS=79;
+   tardy = get_tardy(size, WINDOW_ACTS); 
+   trh_star = get_trh_star(my_ins_prob, loss_prob[size], TARGET_MTTF_YRS) + tardy;
+   printf("PRIDE        \tTRH_STAR-S: %u\n", trh_star);
+
+   // PRIDE+RFM40
+   PRIDE_POLICY=RFM_40;
+   WINDOW_ACTS=40;
+   tardy = get_tardy(size, WINDOW_ACTS); 
+   my_ins_prob=1/41.0;
+   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm40[size], TARGET_MTTF_YRS)+tardy;
+   printf("PRIDE+RFM40  \tTRH_STAR-S: %u\n", trh_star);
+
+   // PRIDE+RFM16
+   PRIDE_POLICY=RFM_16;
+   WINDOW_ACTS=16;
+   tardy = get_tardy(size, WINDOW_ACTS); 
+   my_ins_prob=1/17.0;
+   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm16[size], TARGET_MTTF_YRS)+tardy;
+   printf("PRIDE+RFM16  \tTRH_STAR-S: %u\n", trh_star);
+
+   printf("\n\n");
+
+   // return params to default
+   PRIDE_POLICY=NO_RFM;
+   WINDOW_ACTS=79;
+
+}
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
@@ -201,6 +291,7 @@ void print_table_6(){
 
    // PRIDE
    my_ins_prob=1/80.0;
+   WINDOW_ACTS=79;
    tardy = get_tardy(size, WINDOW_ACTS); 
    trh_star = get_trh_star(my_ins_prob, loss_prob[size], TARGET_MTTF_YRS) + tardy;
    printf("PRIDE        \tTRH_STAR-S: %u\t TRH_STAR-D: %u\n", trh_star, trh_star/2);
@@ -381,6 +472,10 @@ int main(int argc, char* argv[]){
    }
 
    print_fig_9(ins_prob);
+
+   print_table_4();
+
+   print_table_5();
 
    print_table_6();
 
