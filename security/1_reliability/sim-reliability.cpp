@@ -133,22 +133,24 @@ double get_mttf(uns th, double ins_prob, double loss_prob){
 /////////////////////////////////////////////////////
 
 uns get_trh_star(double ins_prob, double loss_prob){
-  double start=100;
-  double end=10000;
-  double mid=0;
-
-  while(end-start > 1){
-     mid=(start+end)/2.0;
-     
-     if(get_mttf(mid, ins_prob, loss_prob) < TARGET_MTTF_YRS){
-       start = mid;
-     }else{
-       end = mid;
-     }
-
-  }
-  
-  return mid;
+//   double start=100;
+//   double end=10000;
+//   double mid=0;
+// 
+//   while(end-start > 1){
+//      mid=(start+end)/2.0;
+//      
+//      if(get_mttf(mid, ins_prob, loss_prob) < TARGET_MTTF_YRS){
+//        start = mid;
+//      }else{
+//        end = mid;
+//      }
+// 
+//   }
+//   
+//   return mid;
+    double trh_star = 38.9 / (ins_prob * (1-loss_prob));
+    return trh_star;
 }
 
 
