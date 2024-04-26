@@ -21,8 +21,10 @@ double MCSoln[MAX_SIZE]; // steady state probability
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
-uns get_trh_star(double ins_prob, double loss_prob){
-  double trh_star = 38.9 / (ins_prob * (1-loss_prob));
+uns get_trh_star(double ins_prob, double loss_prob, double target_ttf_yrs){
+
+  double ln_ttf_by_trefi = log(target_ttf_yrs * 365.0*24*3600*1000000 / 3.9);
+  double trh_star = ln_ttf_by_trefi / (ins_prob * (1-loss_prob));
   return trh_star;
 }
 
@@ -203,7 +205,7 @@ void print_loss_prob(uns window_size){
   printf("\n***** LossProbability for Window-Size: %u ******\n", window_size);
 
   double loss_single_entry = 1-pow(1-INS_PROB, TREFI-1);
-  double trh_single_entry = get_trh_star(INS_PROB, loss_single_entry);
+  double trh_single_entry = get_trh_star(INS_PROB, loss_single_entry,10000);
 
   printf("Capacity: 1\tLossProb: %5.4f \t TRH*(TIF+TRF): %5.0f \n", loss_single_entry,trh_single_entry);
 
@@ -217,7 +219,7 @@ void print_loss_prob(uns window_size){
       double my_lossprob = calc_lossprob(capacity, s, s+1);
       s_lossprob += (MCSoln[s]*my_lossprob);
     }
-    double trh = get_trh_star(INS_PROB, s_lossprob);
+    double trh = get_trh_star(INS_PROB, s_lossprob,10000);
     printf("Capacity: %u\tLossProb: %5.4f \t TRH*(TIF+TRF): %5.0f \n", capacity, s_lossprob,trh);
   }
 

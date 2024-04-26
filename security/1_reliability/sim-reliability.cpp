@@ -132,7 +132,7 @@ double get_mttf(uns th, double ins_prob, double loss_prob){
 // Binary search to find TRH*
 /////////////////////////////////////////////////////
 
-uns get_trh_star(double ins_prob, double loss_prob){
+uns get_trh_star(double ins_prob, double loss_prob, double target_ttf_yrs){
 //   double start=100;
 //   double end=10000;
 //   double mid=0;
@@ -149,8 +149,10 @@ uns get_trh_star(double ins_prob, double loss_prob){
 //   }
 //   
 //   return mid;
-    double trh_star = 38.9 / (ins_prob * (1-loss_prob));
-    return trh_star;
+
+  double ln_ttf_by_trefi = log(target_ttf_yrs * 365.0*24*3600*1000000 / 3.9);
+  double trh_star = ln_ttf_by_trefi / (ins_prob * (1-loss_prob));
+  return trh_star;
 }
 
 
@@ -176,7 +178,7 @@ void print_fig_9(double ins_prob){
    
   for(uns size=1; size<=16; size++){
      double my_loss_prob = loss_prob[size];
-     trh_star = get_trh_star(ins_prob, my_loss_prob);
+     trh_star = get_trh_star(ins_prob, my_loss_prob, TARGET_MTTF_YRS);
 
      tardy = get_tardy(size, WINDOW_ACTS); 
 
@@ -200,7 +202,7 @@ void print_table_6(){
    // PRIDE
    my_ins_prob=1/80.0;
    tardy = get_tardy(size, WINDOW_ACTS); 
-   trh_star = get_trh_star(my_ins_prob, loss_prob[size])+tardy;
+   trh_star = get_trh_star(my_ins_prob, loss_prob[size], TARGET_MTTF_YRS) + tardy;
    printf("PRIDE        \tTRH_STAR-S: %u\t TRH_STAR-D: %u\n", trh_star, trh_star/2);
 
    // PRIDE+RFM40
@@ -208,7 +210,7 @@ void print_table_6(){
    WINDOW_ACTS=40;
    tardy = get_tardy(size, WINDOW_ACTS); 
    my_ins_prob=1/41.0;
-   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm40[size])+tardy;
+   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm40[size], TARGET_MTTF_YRS)+tardy;
    printf("PRIDE+RFM40  \tTRH_STAR-S: %u\t TRH_STAR-D: %u\n", trh_star, trh_star/2);
 
    // PRIDE+RFM16
@@ -216,7 +218,7 @@ void print_table_6(){
    WINDOW_ACTS=16;
    tardy = get_tardy(size, WINDOW_ACTS); 
    my_ins_prob=1/17.0;
-   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm16[size])+tardy;
+   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm16[size], TARGET_MTTF_YRS)+tardy;
    printf("PRIDE+RFM16  \tTRH_STAR-S: %u \t TRH_STAR-D: %u\n", trh_star, trh_star/2);
 
    printf("\n\n");
@@ -244,7 +246,7 @@ void print_table_8(){
 
    for(uns ii=10; ii<=1000000; ii *= 10){
      TARGET_MTTF_YRS  =  ii;
-     trh_star = get_trh_star(my_ins_prob, my_loss_prob)+tardy;
+     trh_star = get_trh_star(my_ins_prob, my_loss_prob, ii)+tardy;
      printf("%u Years\t%4.2f Years\t TRH_STAR-S: %u\t TRH_STAR-D: %u\n", ii, (double)(ii)/NUM_TFAW_BANKS, trh_star, trh_star/2);
    }
 
