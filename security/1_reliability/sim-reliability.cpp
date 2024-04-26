@@ -1,10 +1,6 @@
-#include<iostream>
 #include <stdio.h>
 #include <assert.h>
 #include <cmath>
-
-
-using namespace std;
 
 
 #define tREFI  (3900 * pow(10, -9)) // 3900ns
@@ -16,7 +12,6 @@ typedef enum PRIDE_Policy_Enum {
     NO_RFM=0,
     RFM_40=1,
     RFM_16=2, 
-    RFM_8=3, 
 } PRIDE_Policy;
 
 
@@ -24,9 +19,10 @@ typedef enum PRIDE_Policy_Enum {
 // Params
 /////////////////////////////////////////////////////
 
-
-uns  TARGET_MTTF_YRS  =              1000;
+uns  OPEN_PAGE_TARDY             =     0;
+uns  TARGET_MTTF_YRS             =     10000;
 uns  DEFEND_TRANSITIVE_ATTACKS   =     0;
+uns  DEFAULT_BUFFER_SIZE         =     (OPEN_PAGE_TARDY)? 4:6;
 
 double WINDOW_ACTS=79; // activations in window
 
@@ -37,8 +33,9 @@ uns   PRIDE_POLICY=NO_RFM; // default
 /////////////////////////////////////////////////////
 
 //---- PRIDE loss prob (from analytical model)
+
 double loss_prob[17]={0,
-0.63,
+0.6298	,
 0.3048	,
 0.1683	,
 0.1192	,
@@ -54,6 +51,44 @@ double loss_prob[17]={0,
 0.0347	,
 0.0324	,
 0.0304	};
+
+
+double loss_prob_rfm40[17]={0,
+0.6275	,
+0.3046	,
+0.1673	,
+0.1184	,
+0.0945	,
+0.0791	,
+0.068	,
+0.0596	,
+0.0531	,
+0.0479	,
+0.0436	,
+0.04	,
+0.037	,
+0.0344	,
+0.0321	,
+0.0301  };
+
+
+double loss_prob_rfm16[17]={0,
+0.6202	,
+0.3042	,
+0.1639	,
+0.1159	,
+0.0926	,
+0.0774	,
+0.0664	,
+0.0582	,
+0.0518	,
+0.0466	,
+0.0424	,
+0.0389	,
+0.0359	,
+0.0334	,
+0.0312	,
+0.0292	};
 
 
 
@@ -81,15 +116,10 @@ double get_mttf(uns th, double ins_prob, double loss_prob){
   if(PRIDE_POLICY==RFM_16){
     time_round/=5;
   }
-
-  if(PRIDE_POLICY==RFM_8){
-    time_round/=10;
-  }
   
   double pfail_round = get_pfail_round(th, ins_prob, loss_prob);
 
   double mttf_sec = time_round/pfail_round;
-
   double mttf_yrs = mttf_sec/(3600*24*365); // sec in year
 
   return mttf_yrs;
@@ -123,8 +153,8 @@ uns get_trh_star(double ins_prob, double loss_prob){
 /////////////////////////////////////////////////////
 
 uns get_tardy(uns buf_size, uns window_size){
-  uns use_open_page=1;
-  if(use_open_page){
+
+  if(OPEN_PAGE_TARDY){
     return (buf_size*window_size-1)/2;
   }else{
     return (buf_size*window_size-1);
@@ -134,14 +164,18 @@ uns get_tardy(uns buf_size, uns window_size){
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
-void print_fig_9(double ins_prob){
+void print_fig_9(){
    uns trh_star, tardy;
+   double my_ins_prob;
 
-  printf("\n\n***********Printing Data for Fig-9***********\n");
+   WINDOW_ACTS=79;
+   my_ins_prob = 1/(double)(WINDOW_ACTS);
+
+  printf("\n\n***********Printing Data for Fig-IX***********\n");
    
   for(uns size=1; size<=16; size++){
      double my_loss_prob = loss_prob[size];
-     trh_star = get_trh_star(ins_prob, my_loss_prob);
+     trh_star = get_trh_star(my_ins_prob, my_loss_prob);
 
      tardy = get_tardy(size, WINDOW_ACTS); 
 
@@ -158,13 +192,14 @@ void print_table_6(){
    uns trh_star, tardy;
    double my_loss_prob, my_ins_prob;
 
-   uns size=6; // default size of buffer
-   my_loss_prob = loss_prob[size];
+   uns size= DEFAULT_BUFFER_SIZE; // default size of buffer
+
 
    printf("\n\n***********Printing Table-VI***********\n");
 
    // PRIDE
    my_ins_prob=1/80.0;
+   my_loss_prob = loss_prob[size];
    tardy = get_tardy(size, WINDOW_ACTS); 
    trh_star = get_trh_star(my_ins_prob, my_loss_prob)+tardy;
    printf("PRIDE        \tTRH_STAR-S: %u\t TRH_STAR-D: %u\n", trh_star, trh_star/2);
@@ -174,6 +209,7 @@ void print_table_6(){
    WINDOW_ACTS=40;
    tardy = get_tardy(size, WINDOW_ACTS); 
    my_ins_prob=1/41.0;
+   my_loss_prob = loss_prob_rfm40[size];
    trh_star = get_trh_star(my_ins_prob, my_loss_prob)+tardy;
    printf("PRIDE+RFM40  \tTRH_STAR-S: %u\t TRH_STAR-D: %u\n", trh_star, trh_star/2);
 
@@ -182,6 +218,7 @@ void print_table_6(){
    WINDOW_ACTS=16;
    tardy = get_tardy(size, WINDOW_ACTS); 
    my_ins_prob=1/17.0;
+   my_loss_prob = loss_prob_rfm16[size];
    trh_star = get_trh_star(my_ins_prob, my_loss_prob)+tardy;
    printf("PRIDE+RFM16  \tTRH_STAR-S: %u \t TRH_STAR-D: %u\n", trh_star, trh_star/2);
 
@@ -198,8 +235,9 @@ void print_table_6(){
 void print_table_8(){
    uns trh_star, tardy;
    double my_loss_prob, my_ins_prob;
+   uns prev_val = TARGET_MTTF_YRS;
 
-   uns size=6; // default size of buffer
+   uns size=DEFAULT_BUFFER_SIZE; // default size of buffer
    my_loss_prob = loss_prob[size];
 
    WINDOW_ACTS=79;
@@ -208,14 +246,14 @@ void print_table_8(){
 
    printf("\n\n***********Printing Table-VIII***********\n");
 
-   for(uns ii=10; ii<=1000000; ii *= 10){
+   for(uns ii=100; ii<=1000000; ii *= 10){
      TARGET_MTTF_YRS  =  ii;
      trh_star = get_trh_star(my_ins_prob, my_loss_prob)+tardy;
-     printf("%u Years\t%4.2f Years\t TRH_STAR-S: %u\t TRH_STAR-D: %u\n", ii, (double)(ii)/1000.0, trh_star, trh_star/2);
+     printf("%u Years\t%4.2f Years\t TRH_STAR-S: %u\t TRH_STAR-D: %u\n", ii, (double)(ii)/22.0, trh_star, trh_star/2);
    }
 
    // return params to default
-   TARGET_MTTF_YRS  =  1000;
+   TARGET_MTTF_YRS  =  prev_val;
 
    printf("\n\n");
 }
@@ -223,119 +261,50 @@ void print_table_8(){
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
-void PrintMTTF( double TTF_system_years )
-{
-    double TTF_system_sec = TTF_system_years * (365*24*60*60);
-
-    double TTF_system_min = TTF_system_sec / 60;
-    double TTF_system_hrs = TTF_system_sec / (60*60);
-    double TTF_system_days = TTF_system_sec / (24*60*60);
-
-    std::string metric = "";
-    double val;
-    
-    int print = 1;
-    if( (val=TTF_system_sec) < 1 )
-    {
-        print = 0;
-        cout<<"<1 sec";
-    }
-    else if( (val=TTF_system_sec) < 60 )
-    {
-        metric = "sec";
-    }
-    else if ( (val=TTF_system_min) < 60 )
-    {
-        metric = "min";
-    }
-    else if ( (val=TTF_system_hrs) < 24 )
-    {
-        metric = "hrs";
-    }
-    else if ( (val=TTF_system_days) < 365 )
-    {
-        metric = "days";
-    }
-    else if ( (val=TTF_system_years) < 1000000 )
-    {
-        metric = "years";
-    }
-    else 
-    {
-        print = 0;
-        // val /= 1000000;
-        // metric = "mil_years";
-        cout<<">1 mil_years";
-
-    }
-    
-//     printf("%5.2E yrs", TTF_system_years);
-    if (print ) cout<<int(val+1)<<" "<<metric;
-}
-
-
 void print_table_9(){
   double my_loss_prob, my_ins_prob, my_bank_mttf, my_sys_mttf;
-  uns trhd;
-  uns tardy;
-  uns size=6; // default size of buffer
-  my_loss_prob = loss_prob[size];
+  uns trhd, tardy;
+
+  uns NUM_TFAW_BANKS=22; // we have 64 banks, but only 22 can be concurrently used
+  
+  uns size=DEFAULT_BUFFER_SIZE; // default size of buffer
   
   printf("\n\n***********Printing Table-IX***********\n");
 
   for(trhd=4800; trhd >= 200; trhd -= 200){
+
     printf("TRDH-D: %u\t", trhd);
     
     // PRIDE
     PRIDE_POLICY=NO_RFM;
     WINDOW_ACTS=79;
-    tardy = (size*WINDOW_ACTS - 1)/2;
-    
+    tardy = get_tardy(size, WINDOW_ACTS); 
     my_ins_prob=1/80.0;
+    my_loss_prob = loss_prob[size];
     my_bank_mttf = get_mttf(trhd*2-tardy, my_ins_prob, my_loss_prob);
-
-    my_sys_mttf  = my_bank_mttf/1000;
-
-    PrintMTTF( my_sys_mttf );
+    my_sys_mttf  = my_bank_mttf/NUM_TFAW_BANKS;
+    printf("%5.2E yrs\t", my_sys_mttf);
     
     // PRIDE+RFM40
     PRIDE_POLICY=RFM_40;
     WINDOW_ACTS=40;
-    tardy = (size*WINDOW_ACTS - 1)/2;
-
+    tardy = get_tardy(size, WINDOW_ACTS); 
     my_ins_prob=1/41.0;
+    my_loss_prob = loss_prob_rfm40[size];
     my_bank_mttf = get_mttf(trhd*2-tardy, my_ins_prob, my_loss_prob);
-    my_sys_mttf  = my_bank_mttf/1000;
-
-    printf("\t");
-    PrintMTTF( my_sys_mttf );
+    my_sys_mttf  = my_bank_mttf/NUM_TFAW_BANKS;
+    printf("%5.2E yrs\t", my_sys_mttf);
   
     // PRIDE+RFM16
     PRIDE_POLICY=RFM_16;
     WINDOW_ACTS=16;
-    tardy = (size*WINDOW_ACTS - 1)/2;
-
+    tardy = get_tardy(size, WINDOW_ACTS); 
     my_ins_prob=1/17.0;
+    my_loss_prob = loss_prob_rfm16[size];
     my_bank_mttf = get_mttf(trhd*2-tardy, my_ins_prob, my_loss_prob);
-    my_sys_mttf  = my_bank_mttf/1000;
+    my_sys_mttf  = my_bank_mttf/NUM_TFAW_BANKS;
+    printf("%5.2E yrs\n", my_sys_mttf);
 
-    printf("\t");
-    PrintMTTF( my_sys_mttf );
-
-
-    // PRIDE+RFM8
-    PRIDE_POLICY=RFM_8;
-    WINDOW_ACTS=10;
-    tardy = (size*WINDOW_ACTS - 1)/2;
-
-    my_ins_prob=1/11.0;
-    my_bank_mttf = get_mttf(trhd*2-tardy, my_ins_prob, my_loss_prob);
-    my_sys_mttf  = my_bank_mttf/1000;
-
-    printf("\t");
-    PrintMTTF( my_sys_mttf );
-
-    printf("\n");
 
     if(trhd==4800){trhd=2200;} // skip after first row in table
   }
@@ -358,7 +327,7 @@ int main(int argc, char* argv[]){
      ins_prob=(double)(1)/(double)(WINDOW_ACTS+1);
    }
 
-   print_fig_9(ins_prob);
+   print_fig_9();
 
    print_table_6();
 
@@ -368,6 +337,5 @@ int main(int argc, char* argv[]){
 
   return 0;
 }
-
 
 
