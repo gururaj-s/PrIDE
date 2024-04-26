@@ -247,7 +247,7 @@ void print_table_8(){
    }
 
    // return params to default
-   TARGET_MTTF_YRS  =  1000;
+   TARGET_MTTF_YRS  =  10000;
 
    printf("\n\n");
 }
