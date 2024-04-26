@@ -261,6 +261,57 @@ void print_table_8(){
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
+void PrintMTTF( double TTF_system_years )
+{
+    double TTF_system_sec = TTF_system_years * (365*24*60*60);
+
+    double TTF_system_min = TTF_system_sec / 60;
+    double TTF_system_hrs = TTF_system_sec / (60*60);
+    double TTF_system_days = TTF_system_sec / (24*60*60);
+
+    std::string metric = "";
+    double val;
+
+    int print = 1;
+    if( (val=TTF_system_sec) < 1 )
+    {
+        print = 0;
+        cout<<"<1 sec";
+    }
+    else if( (val=TTF_system_sec) < 60 )
+    {
+        metric = "sec";
+    }
+    else if ( (val=TTF_system_min) < 60 )
+    {
+        metric = "min";
+    }
+    else if ( (val=TTF_system_hrs) < 24 )
+    {
+        metric = "hrs";
+    }
+    else if ( (val=TTF_system_days) < 365 )
+    {
+        metric = "days";
+    }
+    else if ( (val=TTF_system_years) < 1000000 )
+    {
+        metric = "years";
+    }
+    else
+    {
+        print = 0;
+        // val /= 1000000;
+        // metric = "mil_years";
+        cout<<">1 mil_years";
+
+    }
+
+//     printf("%5.2E yrs", TTF_system_years);
+    if (print ) cout<<int(val+1)<<" "<<metric;
+}
+
+
 void print_table_9(){
   double my_loss_prob, my_ins_prob, my_bank_mttf, my_sys_mttf;
   uns trhd, tardy;
@@ -283,7 +334,7 @@ void print_table_9(){
     my_loss_prob = loss_prob[size];
     my_bank_mttf = get_mttf(trhd*2-tardy, my_ins_prob, my_loss_prob);
     my_sys_mttf  = my_bank_mttf/NUM_TFAW_BANKS;
-    printf("%5.2E yrs\t", my_sys_mttf);
+    PrintMTTF( my_sys_mttf );
     
     // PRIDE+RFM40
     PRIDE_POLICY=RFM_40;
@@ -293,7 +344,7 @@ void print_table_9(){
     my_loss_prob = loss_prob_rfm40[size];
     my_bank_mttf = get_mttf(trhd*2-tardy, my_ins_prob, my_loss_prob);
     my_sys_mttf  = my_bank_mttf/NUM_TFAW_BANKS;
-    printf("%5.2E yrs\t", my_sys_mttf);
+    PrintMTTF( my_sys_mttf );
   
     // PRIDE+RFM16
     PRIDE_POLICY=RFM_16;
@@ -303,8 +354,7 @@ void print_table_9(){
     my_loss_prob = loss_prob_rfm16[size];
     my_bank_mttf = get_mttf(trhd*2-tardy, my_ins_prob, my_loss_prob);
     my_sys_mttf  = my_bank_mttf/NUM_TFAW_BANKS;
-    printf("%5.2E yrs\n", my_sys_mttf);
-
+    PrintMTTF( my_sys_mttf );
 
     if(trhd==4800){trhd=2200;} // skip after first row in table
   }
