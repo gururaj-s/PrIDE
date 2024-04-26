@@ -1,4 +1,4 @@
-#include<iostream>
+ #include<iostream>
 #include <stdio.h>
 #include <assert.h>
 #include <cmath>
@@ -348,6 +348,8 @@ void print_table_9(){
     my_loss_prob = loss_prob_rfm40[size];
     my_bank_mttf = get_mttf(trhd*2-tardy, my_ins_prob, my_loss_prob);
     my_sys_mttf  = my_bank_mttf/NUM_TFAW_BANKS;
+    
+    printf("\t");
     PrintMTTF( my_sys_mttf );
   
     // PRIDE+RFM16
@@ -358,8 +360,12 @@ void print_table_9(){
     my_loss_prob = loss_prob_rfm16[size];
     my_bank_mttf = get_mttf(trhd*2-tardy, my_ins_prob, my_loss_prob);
     my_sys_mttf  = my_bank_mttf/NUM_TFAW_BANKS;
+
+    printf("\t");
     PrintMTTF( my_sys_mttf );
 
+    printf("\n");
+    
     if(trhd==4800){trhd=2200;} // skip after first row in table
   }
   
