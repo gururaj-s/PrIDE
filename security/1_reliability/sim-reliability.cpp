@@ -226,7 +226,7 @@ void print_table_5(){
    my_ins_prob=1/159.0;
    WINDOW_ACTS=158;
    tardy = get_tardy(size, WINDOW_ACTS); 
-   trh_star = get_trh_star(my_ins_prob, loss_prob[size], TARGET_MTTF_YRS) + tardy;
+   trh_star = get_trh_star(my_ins_prob, loss_prob[size], TARGET_MTTF_YRS/2) + tardy;
    printf("PRIDE (0.5x)        \tTRH_STAR-S: %u\n", trh_star);
 
    // PRIDE
@@ -242,7 +242,7 @@ void print_table_5(){
    WINDOW_ACTS=40;
    tardy = get_tardy(size, WINDOW_ACTS); 
    my_ins_prob=1/41.0;
-   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm40[size], TARGET_MTTF_YRS)+tardy;
+   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm40[size], TARGET_MTTF_YRS*2)+tardy;
    printf("PRIDE+RFM40  \tTRH_STAR-S: %u\n", trh_star);
 
    // PRIDE+RFM16
@@ -250,7 +250,7 @@ void print_table_5(){
    WINDOW_ACTS=16;
    tardy = get_tardy(size, WINDOW_ACTS); 
    my_ins_prob=1/17.0;
-   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm16[size], TARGET_MTTF_YRS)+tardy;
+   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm16[size], TARGET_MTTF_YRS*5)+tardy;
    printf("PRIDE+RFM16  \tTRH_STAR-S: %u\n", trh_star);
 
    printf("\n\n");
@@ -284,7 +284,7 @@ void print_table_6(){
    WINDOW_ACTS=40;
    tardy = get_tardy(size, WINDOW_ACTS); 
    my_ins_prob=1/41.0;
-   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm40[size], TARGET_MTTF_YRS)+tardy;
+   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm40[size], TARGET_MTTF_YRS*2)+tardy;
    printf("PRIDE+RFM40  \tTRH_STAR-S: %u\t TRH_STAR-D: %u\n", trh_star, trh_star/2);
 
    // PRIDE+RFM16
@@ -292,7 +292,7 @@ void print_table_6(){
    WINDOW_ACTS=16;
    tardy = get_tardy(size, WINDOW_ACTS); 
    my_ins_prob=1/17.0;
-   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm16[size], TARGET_MTTF_YRS)+tardy;
+   trh_star = get_trh_star(my_ins_prob, loss_prob_rfm16[size], TARGET_MTTF_YRS*5)+tardy;
    printf("PRIDE+RFM16  \tTRH_STAR-S: %u \t TRH_STAR-D: %u\n", trh_star, trh_star/2);
 
    printf("\n\n");
@@ -318,7 +318,7 @@ void print_table_8(){
 
    printf("\n\n***********Printing Table-VIII***********\n");
 
-   for(uns ii=10; ii<=1000000; ii *= 10){
+   for(uns ii=100; ii<=1000000; ii *= 10){
      TARGET_MTTF_YRS  =  ii;
      trh_star = get_trh_star(my_ins_prob, my_loss_prob, ii)+tardy;
      printf("%u Years\t%4.2f Years\t TRH_STAR-S: %u\t TRH_STAR-D: %u\n", ii, (double)(ii)/NUM_TFAW_BANKS, trh_star, trh_star/2);
