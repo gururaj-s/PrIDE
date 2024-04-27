@@ -22,9 +22,8 @@ double MCSoln[MAX_SIZE]; // steady state probability
 /////////////////////////////////////////////////////
 
 uns get_trh_star(double ins_prob, double loss_prob, double target_ttf_yrs){
-
-  double ln_ttf_by_trefi = log(target_ttf_yrs * 365.0*24*3600*1000000 / 3.9);
-  double trh_star = ln_ttf_by_trefi / (ins_prob * (1-loss_prob));
+  double ln_trefi_by_ttf = log( 3.9 / (target_ttf_yrs * 365.0*24*3600*1000000) );
+  double trh_star = ln_trefi_by_ttf / log((1-(ins_prob*(1-loss_prob))));
   return trh_star;
 }
 
