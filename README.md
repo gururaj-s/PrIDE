@@ -4,8 +4,8 @@ Authors: Aamer Jaleel, Gururaj Saileshwar, Steve Keckler, and Moinuddin K. Qures
 
 Appears in [ISCA 2024](https://iscaconf.org/isca2024/)
 
-[![DOI](https://zenodo.org/badge/780517403.svg)](https://zenodo.org/doi/10.5281/zenodo.11002953)
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11076040.svg)](https://zenodo.org/doi/10.5281/zenodo.11076040)
+https://zenodo.org/badge/DOI/10.5281/zenodo.11076040.svg
 ### Overview:
 
 This repository provides the artifacts to reproduce the data in our ISCA paper titled "PrIDE: Achieving Secure Rowhammer Mitigation with Low-Cost In-DRAM Trackers".
