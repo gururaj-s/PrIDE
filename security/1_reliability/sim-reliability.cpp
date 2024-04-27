@@ -133,7 +133,8 @@ double get_mttf(uns th, double ins_prob, double loss_prob){
 /////////////////////////////////////////////////////
 
 uns get_trh_star(double ins_prob, double loss_prob, double target_ttf_yrs){
-  double trh_star = -38.93 / log((1-(ins_prob*(1-loss_prob))));
+  double ln_trefi_by_ttf = log( 3.9 / (target_ttf_yrs * 365.0*24*3600*1000000) );
+  double trh_star = ln_trefi_by_ttf / log((1-(ins_prob*(1-loss_prob))));
   return trh_star;
 }
 
@@ -158,7 +159,7 @@ void print_fig_9(double ins_prob){
 
   printf("\n\n***********Printing Data for Fig-9***********\n");
    
-  for(uns size=0; size<=16; size++){
+  for(uns size=1; size<=16; size++){
      double my_loss_prob = loss_prob[size];
      trh_star = get_trh_star(ins_prob, my_loss_prob, TARGET_MTTF_YRS);
 
